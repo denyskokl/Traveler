@@ -19,6 +19,7 @@ public class MarkerDAOImpl implements MarkerDAO{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public List<Marker> getAllMarkers() {
         return getSession().createCriteria(Marker.class).list();
     }

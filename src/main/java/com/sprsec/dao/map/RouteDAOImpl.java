@@ -23,16 +23,13 @@ public class RouteDAOImpl implements RouteDAO{
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public Set<Route> getRoutes(User user) {
-        List<Route> userList;
-        Query query = openSession().createQuery("from Route r where r.user = :user");
-        query.setParameter("user", user);
-        userList = query.list();
-        if (userList.size() > 0) {
-            return new HashSet<>(userList);
-        } else {
-            return null;
-        }
+        List<Route> userList = openSession().createQuery("from Route r where r.user = :user")
+                .setParameter("user", user)
+                .list();
+        if (userList.size() > 0) return new HashSet<>(userList);
+        return null;
     }
 
     @Override
@@ -41,11 +38,8 @@ public class RouteDAOImpl implements RouteDAO{
         Query query = openSession().createQuery("from Route r where r.routeId = :routeId");
         query.setParameter("routeId", id);
         userList = query.list();
-        if (userList.size() > 0) {
-            return userList.get(0);
-        } else {
-            return null;
-        }
+        if (userList.size() > 0) return userList.get(0);
+        return null;
     }
 
     @Override

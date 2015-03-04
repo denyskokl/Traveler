@@ -29,7 +29,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {
 
         com.sprsec.model.User domainUser = userDAO.getUser(login);
-
         return new User(
                 domainUser.getLogin(),
                 domainUser.getPassword(),
