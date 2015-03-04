@@ -17,6 +17,7 @@ public class IndexController {
     @ResponseBody
     @RequestMapping(value = "/")
     public ModelAndView index() {
+        //TODO: test todo
         ModelAndView m = new ModelAndView("index");
         m.addObject(markerService.getAllMarkers());
 
