@@ -25,31 +25,29 @@
         </div>
     </div>
     <div class="row">
-        <form:form action="/registration" method="POST" id="form" commandName="user"
-                   class="form-horizontal"
-                   enctype="multipart/form-data">
+        <form action="/registration" method="POST">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <label for="login">Введіть логін</label>
+                    <label for="login">Введіть логін 1</label>
 
                     <div class="input-group">
-                        <form:input type="text" class="form-control" id="login"
-                                    path="login" name="login" placeholder=""/>
+                        <input type="text" class="form-control" id="login"
+                                    name="login" placeholder="enter login"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="password"><spring:message text="Пароль"/></label>
+                    <%--<label for="password"><spring:message text="Пароль"/></label>--%>
 
                     <div class="input-group">
-                        <form:input type="password" class="form-control" id="password"
-                                    path="password" name="password" placeholder=""/>
+                        <input type="password" class="form-control" id="password"
+                                    name="password" placeholder=""/>
                     </div>
                 </div>
-                <input type="submit" name="submit" id="submit" value="Створити"
+                <input type="submit" id="submit" value="Створити"
                        class="btn btn-info pull-right">
             </div>
-        </form:form>
+        </form>
     </div>
     <h1 class="page-header"></h1>
 
