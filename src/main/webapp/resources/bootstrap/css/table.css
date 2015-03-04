@@ -1,0 +1,27 @@
+img.resize {
+    width: 200px;
+    height: 200px;
+}
+
+img.category {
+    width: 200px;
+    height: 100px;
+}
+
+img.subcategory{
+    width: 200px;
+    height: 100px;
+}
+
+div.colorsubcategory {
+    color: #7ab5d3;
+    margin-left: 50px;
+}
+
+div.category {
+    align-content: center;
+}
+
+h3.color {
+    color: red;
+}
