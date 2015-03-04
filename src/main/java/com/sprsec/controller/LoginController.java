@@ -27,7 +27,7 @@ public class LoginController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String register(HttpServletRequest request, ModelMap model) {
-        model.addAttribute("user", new User());
+//        model.addAttribute("user");
         return "frames/registration";
     }
 
