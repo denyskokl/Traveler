@@ -64,7 +64,7 @@ $(document).ready(function() {
                 '</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
             //call create_marker() function
-            create_marker(event.latLng, 'New Marker', EditForm, true, true, true, map);
+            create_marker(event.latLng, 'New Marker', EditForm, true, true, map);
         });
     }
 });

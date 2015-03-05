@@ -1,6 +1,5 @@
 function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map)
 {
-    sdfsdf = MapPos;
     //new marker
     var marker = new google.maps.Marker({
         position: MapPos,
