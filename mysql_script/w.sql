@@ -44,10 +44,23 @@ INSERT INTO W.user_roles (user_id, role)
 INSERT INTO W.user_roles (user_id, role)
 	VALUES (2, 'ROLE_USER');
 	
-INSERT INTO W.markers (marker_id, address)
-	VALUES (1, 'Cherkasy');
-INSERT INTO W.markers (marker_id, address)
-	VALUES (2, 'Kiev');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (1,32.056258,49.445019,'Lubava','sdsqwe11');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (2,32.063446,49.446637,'Kontrabas','2222');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (3,32.054734,49.435957,'Stadion','333');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (4,32.063317,49.438343,'Central Runok','Runok');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (5,32.070463,49.434659,'Smachne Excpresso','Excpreso');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (6,32.081621,49.435176,'Apelsin','Apelsin');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (7,32.076058,49.439306,'Grand','MArket');
+INSERT INTO W.markers (marker_id, latitude, longitude, address, message)
+	VALUES (8,32.067636,49.450412,'Rivera','Rivera');
+
 	
 INSERT INTO W.routes (router_id, user_id)
 	VALUES (1, 1);

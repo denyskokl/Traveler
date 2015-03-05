@@ -15,7 +15,6 @@ function initialize() {
             marker.push(data[i].message);
             markers.push(marker);
         }
-
         addMarkers(markers);
     });
 }
