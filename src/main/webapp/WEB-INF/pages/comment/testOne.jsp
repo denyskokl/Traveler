@@ -34,10 +34,10 @@
 <body>
 <div class = 'view'>
   <ul>
-    <li><img src='../img/red.gif' alt =''></li>
-    <li><img src='../img/green.gif' alt =''></li>
-    <li><img src='../img/yellow.gif' alt =''></li>
-    <li><img src='../img/blue.gif' alt =''></li>
+    <li><img src='${pageContext.request.contextPath}/resources/img/red.gif' alt =''></li>
+    <li><img src='${pageContext.request.contextPath}/resources/img/blue.gif' alt =''></li>
+    <li><img src='${pageContext.request.contextPath}/resources/img/green.gif' alt =''></li>
+    <li><img src='${pageContext.request.contextPath}/resources/img/yellow.gif' alt =''></li>
   </ul>
 </div>
 <div id ='show'>
