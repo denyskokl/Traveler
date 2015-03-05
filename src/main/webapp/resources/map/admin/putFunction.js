@@ -69,4 +69,3 @@ $(document).ready(function() {
     }
 });
 
-//<li><img src='${pageContext.request.contextPath}/resources/img/red.gif' alt =''></li>
