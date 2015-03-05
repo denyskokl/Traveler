@@ -10,7 +10,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
 
 
-    <script src="${pageContext.request.contextPath}/resources/map/createMap.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/map/createTrip.js"></script>
 
 </head>
 <body onload="initialize()">

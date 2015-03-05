@@ -28,20 +28,20 @@
         <form action="/registration" method="POST">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <label for="login">Введіть логін</label>
+                    <label for="login">Put login</label>
 
                     <div class="input-group">
                         <input type="text" class="form-control" id="login"
-                                    name="login" placeholder="enter login"/>
+                                    name="login" placeholder="Enter login"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <%--<label for="password"><spring:message text="Пароль"/></label>--%>
+                    <label for="password">Put password</label>
 
                     <div class="input-group">
                         <input type="password" class="form-control" id="password"
-                                    name="password" placeholder=""/>
+                                    name="password" placeholder="Enter password"/>
                     </div>
                 </div>
                 <input type="submit" id="submit" value="Створити"
@@ -51,7 +51,6 @@
     </div>
     <h1 class="page-header"></h1>
 
-</div>
 </div>
 </body>
 </html>

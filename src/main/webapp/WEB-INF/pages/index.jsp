@@ -17,7 +17,7 @@
 <div class="container">
     <sec:authorize access="isAnonymous()">
         <jsp:include page="frames/menu.jsp"/>
-        <jsp:include page="content/contentAnonymous.jsp"/>
+        <jsp:include page="content/contentAnonymous.jsp"    />
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">

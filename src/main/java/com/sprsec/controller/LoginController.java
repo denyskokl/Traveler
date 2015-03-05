@@ -41,6 +41,7 @@ public class LoginController {
         user.setPassword(password);
 
         addUser(user);
+        //todo validation, sproing mvc forvard
         return "redirect:/";
     }
 
