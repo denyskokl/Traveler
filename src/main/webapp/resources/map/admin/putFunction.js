@@ -56,15 +56,17 @@ $(document).ready(function() {
             //Edit form to be displayed with new marker
             var EditForm = '<p><div class="marker-edit">'+
                 '<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
-                    '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-                    '<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
-                    '<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
-                    '<option value="house">House</option></select></label>'+
+                '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
+                '<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
+                '<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
+                '<option value="house">House</option></select></label>'+
                 '</form>'+
                 '</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
             //call create_marker() function
-            create_marker(event.latLng, 'New Marker', EditForm, true, true, map);
+            create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://PATH-TO-YOUR-WEBSITE-ICON/icons/pin_blue.png');
         });
     }
 });
+
+//<li><img src='${pageContext.request.contextPath}/resources/img/red.gif' alt =''></li>

@@ -1,4 +1,4 @@
-function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map)
+function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map, iconPath)
 {
     //new marker
     var marker = new google.maps.Marker({
@@ -6,7 +6,8 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
         map: map,
         draggable:DragAble,
         animation: google.maps.Animation.DROP,
-        title:"Hello World!"
+        title:"Hello World!",
+        icon: iconPath
     });
 
     //marker = new google.maps.Marker({
