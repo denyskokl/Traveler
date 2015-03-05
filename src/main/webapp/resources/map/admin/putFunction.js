@@ -37,20 +37,6 @@ $(document).ready(function() {
             });
         });
 
-        //$.get("/markers").done(function(data) {
-        //    var markers = [];
-        //
-        //    for (var i = 0; i < data.length; i++) {
-        //        var marker = [];
-        //        marker.push(data[i].address);
-        //        marker.push(data[i].longitude);
-        //        marker.push(data[i].latitude);
-        //        marker.push(data[i].message);
-        //        markers.push(marker);
-        //    }
-        //
-        //});
-
         //drop a new marker on right click
         google.maps.event.addListener(map, 'rightclick', function(event) {
             //Edit form to be displayed with new marker
@@ -64,7 +50,7 @@ $(document).ready(function() {
                 '</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
 
             //call create_marker() function
-            create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://PATH-TO-YOUR-WEBSITE-ICON/icons/pin_blue.png');
+            create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://www.lemansdeveloppement.fr/wp-content/themes/lemansdev/img/pin_blue.png');
         });
     }
 });

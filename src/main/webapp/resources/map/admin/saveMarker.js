@@ -12,7 +12,7 @@ function save_marker(Marker, mName, mAddress, mType, replaceWin)
         success:function(data){
             replaceWin.html(data); //replace info window with new html
             Marker.setDraggable(false); //set marker to fixed
-            Marker.setIcon('http://PATH-TO-YOUR-WEBSITE-ICON/icons/pin_blue.png'); //replace icon
+            Marker.setIcon('http://babaweb3.alwaysdata.net/lemansdev2014/wp-content/themes/lemansdev/img/pin.png'); //replace icon
         },
         error:function (xhr, ajaxOptions, thrownError){
             alert(thrownError); //throw any errors

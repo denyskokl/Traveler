@@ -32,7 +32,7 @@ public class RootConfig {
         dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
         dataSource.setUrl(env.getRequiredProperty("db.url"));
         dataSource.setUsername(env.getRequiredProperty("db.username"));
-        dataSource.setPassword(env.getRequiredProperty("db.password"));
+//        dataSource.setPassword(env.getRequiredProperty("db.password"));
 
         return dataSource;
     }
