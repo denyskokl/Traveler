@@ -4,7 +4,7 @@
             .css('overflow', 'hidden')
             .children('ul'),
         imgs = viewUL.find('img'),
-        imgW = imgs[0].width,
+        imgW = 400;//imgs[0].width,
         imgsLen = imgs.length,
         totalImgsW = imgW * imgsLen,
         current = 1;
@@ -29,7 +29,7 @@
     function doIt(container, position, direction) {
         var sign;//-= +=
         if (direction && position !== 0) {
-            sign = (direction === 'next') ? '-=':'+='
+            sign = (direction === 'next') ? '-=':'+=';
         }
         container.animate({
             'margin-left' : sign ? (sign + position) : position

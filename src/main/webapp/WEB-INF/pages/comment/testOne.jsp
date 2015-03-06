@@ -4,6 +4,8 @@
   <meta charset=utf-8>
   <title>Слайд-шоу</title>
   <script src="${pageContext.request.contextPath}/resources/comment/imgs.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/bootstrap/js/handlebars/handlebars-v3.0.0.js" type="text/javascript"></script>
+
   <style>
     *{margin: 0; padding: 0}
     #show{
@@ -27,18 +29,24 @@
     }
     .view li{float: left}
   </style>
-  <script id = "myTemplate" type = "jquery/template">
-    <li><img src = '{{src}}' alt = '{{alt}}'></li>
+  <script id = "myTemplate" type="text/x-handlebars-template">
+    <ul>
+      {{#each this}}
+        <li><img src = '{{src}}' alt = '{{alt}}'></li>
+      {{/each}}
+    </ul>
   </script>
 </head>
 <body>
 <div class = 'view'>
-  <ul>
-    <li><img src='${pageContext.request.contextPath}/resources/img/red.gif' alt =''></li>
-    <li><img src='${pageContext.request.contextPath}/resources/img/blue.gif' alt =''></li>
-    <li><img src='${pageContext.request.contextPath}/resources/img/green.gif' alt =''></li>
-    <li><img src='${pageContext.request.contextPath}/resources/img/yellow.gif' alt =''></li>
-  </ul>
+
+    <%--<li><img src='${pageContext.request.contextPath}/resources/img/red.gif' alt =''></li>--%>
+    <%--<li><img src='${pageContext.request.contextPath}/resources/img/blue.gif' alt =''></li>--%>
+    <%--<li><img src='${pageContext.request.contextPath}/resources/img/green.gif' alt =''></li>--%>
+
+    <%--<li><img src='${pageContext.request.contextPath}/resources/img/yellow.gif' alt =''></li>--%>
+
+  <%--</ul>--%>
 </div>
 <div id ='show'>
   <button id = 'prev'>Prev</button>
@@ -46,13 +54,18 @@
 </div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/comment/slideShow.js"></script>
+
 <script type="text/javascript">
-  var template = $.trim($('#myTemplate').html());
-  $.each(aImgs, function(key, val) {
-    var tmp = template.replace(/{{src}}/ig, val.src);
-    console.log(tmp);
-  });
+  var tmp = Handlebars.compile($.trim($('#myTemplate').html()));
+  $('div.view').append(tmp(aImgs));
+//  var template = $.trim($('#myTemplate').html());
+//  var text = '';
+//  $.each(aImgs, function(key, val) {
+//    text += template.replace(/{{src}}/ig, val.src)
+//            .replace(/{{alt}}/ig, val.alt);
+//  });
+
 </script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/comment/slideShow.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 var aImgs = [
 
-    {src: '../img/red.gif', alt:'RED'},
-    {src: '../img/green.gif', alt:'GREEN'},
-    {src: '../img/yellow.gif', alt:'YELLOW'},
-    {src: '../img/blue.gif', alt:'BLUE'}
+    {src: '/resources/img/red.gif', alt:'RED'},
+    {src: '/resources/img/green.gif', alt:'GREEN'},
+    {src: '/resources/img/yellow.gif', alt:'YELLOW'},
+    {src: '/resources/img/blue.gif', alt:'BLUE'}
 ];
