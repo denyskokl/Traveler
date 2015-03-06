@@ -21,15 +21,11 @@ public class RoleDAOImpl implements RoleDAO {
         return sessionFactory.getCurrentSession();
     }
 
-    public Set<Role> getRole(String role) {
-        List<Role> userRole;
-        Query query = openSession().createQuery("from Role u where u.role = :role");
-		query.setParameter("role", role);
-        userRole = query.list();
+    public Set<Role> getRoles() {
+        List<Role> userRole = openSession().createQuery("from Role").list();
         if (userRole.size() > 0)
             return new HashSet<>(userRole);
         else
             return null;
     }
-
 }

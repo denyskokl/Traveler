@@ -1,9 +1,11 @@
 package com.sprsec.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "user_roles", catalog = "w")
+@Table(name = "roles", catalog = "travel")
 public class Role {
 
 	@Id
@@ -14,16 +16,15 @@ public class Role {
 	@Column(name = "role")
 	private String role;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userRoles")
+	private List<User> users = new ArrayList<>();
 
     public Role() {
     }
 
-    public Role(String role, User user) {
+    public Role(String role, List<User> users) {
         this.role = role;
-        this.user = user;
+        this.users = users;
     }
 
     public int getIdRole() {
@@ -42,11 +43,11 @@ public class Role {
 		this.role = role;
 	}
 
-	public User getUser() {
-		return user;
-	}
+    public List<User> getUsers() {
+        return users;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

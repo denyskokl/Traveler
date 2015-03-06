@@ -35,13 +35,6 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public void addUser(User user) {
-        Session session = sessionFactory.openSession();
-		session.beginTransaction();
-        session.saveOrUpdate(user);
-        for (Role role: user.getUserRoles()) {
-            session.saveOrUpdate(role);
-        }
-        session.getTransaction().commit();
-        session.close();
+        openSession().saveOrUpdate(user);
 	}
 }

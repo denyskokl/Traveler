@@ -22,12 +22,8 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private RoleService roleService;
-
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String register(HttpServletRequest request, ModelMap model) {
-//        model.addAttribute("user");
         return "frames/registration";
     }
 
@@ -36,23 +32,10 @@ public class LoginController {
             @RequestParam("login") String login,
             @RequestParam("password") String password) {
 
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
-
-        addUser(user);
-        //todo validation, sproing mvc forvard
-        return "redirect:/";
-    }
-
-    private void addUser(User user) {
-        Set<Role> roles = new HashSet<>();
-        Role role = new Role();
-        role.setRole(EnumRoles.ROLE_USER.toString());
-        role.setUser(user);
-        roles.add(role);
-        user.setUserRoles(roles);
+        User user = new User(login, password);
         userService.addUser(user);
+        //todo validation, spring mvc forward
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

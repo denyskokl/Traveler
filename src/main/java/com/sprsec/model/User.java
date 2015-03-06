@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", catalog = "w")
+@Table(name = "users", catalog = "travel")
 public class User {
 
     @Id
@@ -21,7 +21,10 @@ public class User {
 	@Column(name = "password")
 	private String password;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "users_roles", catalog = "travel", joinColumns = {
+            @JoinColumn(name = "user_id", nullable = false, updatable = false) },
+            inverseJoinColumns = { @JoinColumn(name = "role_id", nullable = false, updatable = false) })
 	private Set<Role> userRoles = new HashSet<>();
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")

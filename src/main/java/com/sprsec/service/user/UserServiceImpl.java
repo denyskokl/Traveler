@@ -2,6 +2,7 @@ package com.sprsec.service.user;
 
 import com.sprsec.dao.user.EnumRoles;
 import com.sprsec.model.Role;
+import com.sprsec.service.map.RouteService;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -21,6 +22,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDAO;
 
+    @Autowired
+    private RoleService roleService;
+
 	public User getUser(String login) {
 		return userDAO.getUser(login);
 	}
@@ -28,7 +32,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void addUser(User user) {
         Set<Role> roles = new HashSet<>();
-        roles.add(new Role(EnumRoles.ROLE_USER.toString(), user));
+        for (Role role: roleService.getRoles()) {
+            if (role.getRole().equals(EnumRoles.ROLE_USER.toString())) {
+                roles.add(role);
+            }
+        }
         user.setUserRoles(roles);
         userDAO.addUser(user);
 	}

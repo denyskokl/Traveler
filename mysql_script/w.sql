@@ -9,7 +9,6 @@ CREATE TABLE travel.users (
 CREATE TABLE travel.roles (
 	role_id int NOT NULL AUTO_INCREMENT,
 	role varchar(60) NOT NULL,
-	user_id int NOT NULL,
 	PRIMARY KEY (role_id));
 
 CREATE TABLE travel.users_roles (
@@ -46,9 +45,9 @@ INSERT INTO travel.users(user_id, login, password)
 INSERT INTO travel.users(user_id, login, password)
 	VALUES (2, 'serg', '1111');
 
-INSERT INTO travel.roles (user_id, role)
+INSERT INTO travel.roles (role_id, role)
 	VALUES (1, 'ROLE_ADMIN');
-INSERT INTO travel.roles (user_id, role)
+INSERT INTO travel.roles (role_id, role)
 	VALUES (2, 'ROLE_USER');
 
 INSERT INTO travel.users_roles (user_id, role_id)
