@@ -18,7 +18,7 @@ CREATE TABLE travel.users_roles (
 	CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id),
 	CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES travel.roles(role_id));
 
-  
+
 CREATE TABLE travel.markers (
 	marker_id int NOT NULL AUTO_INCREMENT,
 	latitude double NOT NULL,
@@ -26,20 +26,20 @@ CREATE TABLE travel.markers (
 	address varchar(250),
 	message varchar(250),
 	PRIMARY KEY (marker_id));
-  
+
 CREATE TABLE travel.routes (
 	router_id int NOT NULL AUTO_INCREMENT,
 	user_id int NOT NULL,
 	PRIMARY KEY (router_id),
 	CONSTRAINT fk_user_route FOREIGN KEY (user_id) REFERENCES travel.users(user_id));
-	
+
 CREATE TABLE travel.routes_markers (
 	router_id int NOT NULL,
 	marker_id int NOT NULL,
 	PRIMARY KEY (router_id, marker_id),
 	CONSTRAINT fk_route FOREIGN KEY (router_id) REFERENCES travel.routes(router_id),
 	CONSTRAINT fk_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id));
-	
+
 INSERT INTO travel.users(user_id, login, password)
 	VALUES (1, 'den', '1111');
 INSERT INTO travel.users(user_id, login, password)
@@ -54,7 +54,7 @@ INSERT INTO travel.users_roles (user_id, role_id)
 	VALUES (1, 1);
 INSERT INTO travel.users_roles (user_id, role_id)
 	VALUES (2, 2);
-	
+
 INSERT INTO travel.markers (marker_id, latitude, longitude, address, message)
 	VALUES (1,32.056258,49.445019,'Lubava','sdsqwe11');
 INSERT INTO travel.markers (marker_id, latitude, longitude, address, message)
@@ -72,7 +72,7 @@ INSERT INTO travel.markers (marker_id, latitude, longitude, address, message)
 INSERT INTO travel.markers (marker_id, latitude, longitude, address, message)
 	VALUES (8,32.067636,49.450412,'Rivera','Rivera');
 
-	
+
 INSERT INTO travel.routes (router_id, user_id)
 	VALUES (1, 1);
 INSERT INTO travel.routes (router_id, user_id)
