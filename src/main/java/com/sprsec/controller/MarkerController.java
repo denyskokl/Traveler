@@ -22,8 +22,13 @@ public class MarkerController {
         return markerService.getAllMarkers();
     }
 
-    @RequestMapping(value = "/save_markers", method = RequestMethod.POST, produces = "application/json")
-    public Marker saveMarkers(@RequestBody Marker marker) throws JSONException {
+    @RequestMapping(value = "/save_marker", method = RequestMethod.POST, produces = "application/json")
+    public Marker saveMarker(@RequestBody Marker marker) throws JSONException {
+        return marker;
+    }
+            //todo : як вернути string в ajax запросі якщо succsess
+    @RequestMapping(value = "/remove_marker", method = RequestMethod.POST, produces = "application/json")
+    public Marker removeMarker(@RequestBody Marker marker) throws JSONException {
         return marker;
     }
 }

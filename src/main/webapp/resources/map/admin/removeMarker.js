@@ -10,12 +10,14 @@ function remove_marker(Marker)
     else
     {
         //Remove saved marker from DB and map using jQuery Ajax
-        var mLatLang = Marker.getPosition().toUrlValue(); //get marker position
-        var myData = {del : 'true', latlang : mLatLang}; //post variables
+        var mLatLang = Marker.getPosition().toUrlValue().split(","); //get marker position
+        var myData = {latitude : mLatLang[0], longitude : mLatLang[1]}; //post variables
         $.ajax({
             type: "POST",
-            url: "map_process.php",
-            data: myData,
+            url: "/remove_marker",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(myData),
             success:function(data){
                 Marker.setMap(null);
                 alert(data);
