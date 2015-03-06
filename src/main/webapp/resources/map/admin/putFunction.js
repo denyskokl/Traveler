@@ -41,13 +41,11 @@ $(document).ready(function() {
         google.maps.event.addListener(map, 'rightclick', function(event) {
             //Edit form to be displayed with new marker
             var EditForm = '<p><div class="marker-edit">'+
-                '<form action="ajax-save.php" method="POST" name="SaveMarker" id="SaveMarker">'+
+                '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">'+
                 '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-                '<label for="pDesc"><span>Description :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
-                '<label for="pType"><span>Type :</span> <select name="pType" class="save-type"><option value="restaurant">Rastaurant</option><option value="bar">Bar</option>'+
-                '<option value="house">House</option></select></label>'+
+                '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
                 '</form>'+
-                '</div></p><button name="save-marker" class="save-marker">Save Marker Details</button>';
+                '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
 
             //call create_marker() function
             create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://www.lemansdeveloppement.fr/wp-content/themes/lemansdev/img/pin_blue.png');

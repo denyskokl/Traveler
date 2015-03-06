@@ -20,7 +20,7 @@
             } else if (current - 1 === imgsLen) {
                 current = 1;
                 position = 0;
-            };
+            }
             doIt(viewUL, position, direction);
         });
 

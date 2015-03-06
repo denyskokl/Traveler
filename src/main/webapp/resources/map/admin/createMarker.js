@@ -4,7 +4,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     var marker = new google.maps.Marker({
         position: MapPos,
         map: map,
-        draggable:DragAble,
+        draggable: DragAble,
         animation: google.maps.Animation.DROP,
         title:"Hello World!",
         icon: iconPath
@@ -20,7 +20,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     var contentString = $('<div class="marker-info-win">'+
     '<div class="marker-inner-win"><span class="info-content">'+
     '<h1 class="marker-heading">'+MapTitle+'</h1>'+
-    MapDesc+
+    MapDesc +
     '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>'+
     '</div></div>');
 
@@ -49,14 +49,13 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
             var mReplace = contentString.find('span.info-content'); //html to be replaced after success
             var mName = contentString.find('input.save-name')[0].value; //name input field value
             var mDesc  = contentString.find('textarea.save-desc')[0].value; //description input field value
-            var mType = contentString.find('select.save-type')[0].value; //type of marker
 
             if(mName =='' || mDesc =='')
             {
                 alert("Please enter Name and Description!");
             }else{
                 //call save_marker function and save the marker details
-                save_marker(marker, mName, mDesc, mType, mReplace);
+                save_marker(marker, mName, mDesc, mReplace);
             }
         });
     }

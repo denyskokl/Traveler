@@ -11,6 +11,7 @@ import java.util.List;
 @Table(name = "markers", catalog = "travel")
 public class Marker {
 
+
     @Id
     @Column(name = "marker_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,6 +30,10 @@ public class Marker {
     @Column(name = "message")
     private String message;
 
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
+    private List<Route> route = new ArrayList<>();
+
     public Marker() {
     }
 
@@ -38,10 +43,6 @@ public class Marker {
         this.address = address;
         this.message = message;
     }
-
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
-    @JsonIgnore
-    private List<Route> route = new ArrayList<>();
 
     public List<Route> getRoute() {
         return route;
