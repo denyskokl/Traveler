@@ -1,5 +1,4 @@
-
-$(document).ready(function() {
+$(document).ready(function () {
 
     var mapCenter = new google.maps.LatLng(49.445077, 32.056129); //Google map Coordinates
     var map;
@@ -7,8 +6,7 @@ $(document).ready(function() {
     map_initialize(); // initialize google map
 
     //############### Google Map Initialize ##############
-    function map_initialize()
-    {
+    function map_initialize() {
         var googleMapOptions =
         {
             center: mapCenter, // map center
@@ -26,25 +24,25 @@ $(document).ready(function() {
 
         //Load Markers from the XML File, Check (map_process.php)
         $.get("/markers", function (data) {
-            $(data).each(function() {
+            $(data).each(function () {
                 //Get user input values for the marker from the form
-                var name      = $(this).attr('message');
-                var address   = '<p>'+ $(this).attr('address') +'</p>';
+                var name = $(this).attr('message');
+                var address = '<p>' + $(this).attr('address') + '</p>';
                 //var type      = $(this).attr('type');
-                var point     = new google.maps.LatLng(parseFloat($(this).attr('longitude')),parseFloat($(this).attr('latitude')));
+                var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
                 //call create_marker() function for xml loaded maker
                 create_marker(point, name, address, false, false, map);
             });
         });
 
         //drop a new marker on right click
-        google.maps.event.addListener(map, 'rightclick', function(event) {
+        google.maps.event.addListener(map, 'rightclick', function (event) {
             //Edit form to be displayed with new marker
-            var EditForm = '<p><div class="marker-edit">'+
-                '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">'+
-                '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>'+
-                '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>'+
-                '</form>'+
+            var EditForm = '<p><div class="marker-edit">' +
+                '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
+                '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>' +
+                '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>' +
+                '</form>' +
                 '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
 
             //call create_marker() function

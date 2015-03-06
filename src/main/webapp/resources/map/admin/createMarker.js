@@ -10,11 +10,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
         icon: iconPath
     });
 
-    //marker = new google.maps.Marker({
-    //    position: position,
-    //    map: map,
-    //    title: markers[i][0]
-    //});
+
 
     //Content structure of info Window for the Markers
     var contentString = $('<div class="marker-info-win">'+

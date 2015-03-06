@@ -3,9 +3,11 @@ package com.sprsec.controller;
 import com.sprsec.model.Marker;
 import com.sprsec.service.map.MarkerService;
 import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -21,8 +23,7 @@ public class MarkerController {
     }
 
     @RequestMapping(value = "/save_markers", method = RequestMethod.POST, produces = "application/json")
-    @ResponseBody
-    public String saveMarkers(@RequestBody Marker marker) throws JSONException {
-         return "<h1 class=\"marker-heading\">" + marker.getMessage() + "</h1><p>" + marker.getAddress() + "</p>";
+    public Marker saveMarkers(@RequestBody Marker marker) throws JSONException {
+        return marker;
     }
 }

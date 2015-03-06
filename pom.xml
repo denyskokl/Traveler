@@ -194,6 +194,12 @@
             <version>2.5.0</version>
         </dependency>
 
+        <dependency>
+            <!--TODO delete after -->
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.3.1</version>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

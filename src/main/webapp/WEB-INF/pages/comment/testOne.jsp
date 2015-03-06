@@ -7,8 +7,8 @@
   <script src="${pageContext.request.contextPath}/resources/comment/imgs.js"></script>
   <script src="${pageContext.request.contextPath}/resources/bootstrap/js/handlebars/handlebars-v3.0.0.js" type="text/javascript"></script>
   <link href="${pageContext.request.contextPath}/resources/bootstrap/css/pictureModel.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/bootstrap/css/createComment.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/bootstrap/css/111.css" rel="stylesheet">
+  <link href="${pageContext.request.contextPath}/resources/bootstrap/css/createComment.css" rel="stylesheet">
 
   <script id = "myTemplate" type="text/x-handlebars-template">
     <ul>
