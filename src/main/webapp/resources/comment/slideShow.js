@@ -22,8 +22,6 @@
                 position = 0;
             };
             doIt(viewUL, position, direction);
-
-            //	console.log(current);
         });
 
     function doIt(container, position, direction) {
