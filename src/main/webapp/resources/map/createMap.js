@@ -5,17 +5,7 @@ jQuery(function($) {
 });
 function initialize() {
     $.get("/markers").done(function(data) {
-        var markers = [];
-
-        for (var i = 0; i < data.length; i++) {
-            var marker = [];
-            marker.push(data[i].address);
-            marker.push(data[i].longitude);
-            marker.push(data[i].latitude);
-            marker.push(data[i].message);
-            markers.push(marker);
-        }
-        addMarkers(markers);
+        addMarkers(data);
     });
 }
 
@@ -29,45 +19,45 @@ function addMarkers(markers) {
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    map.setTilt(45);
+    //map.setTilt(45);
 
 
-    function infoWindowContent(locationName,description){
-        var pattern = '<div class="info_content">' +
-            '<button onclick="myFunction()">Click me</button>' +
-            '<h3>'+locationName+'</h3>' +
-            '<a href="https://www.google.com">'+description+'</a>' +
-            '<p>'+locationName+'</p>' + '</div>'
-    }
-
-    var infoWindowContent = [
-        ['<div class="info_content">' +
-        '<button onclick="myFunction()">Click me</button>' +
-        '<h3>Lubava</h3>' +
-        '<a href="https://www.google.com">=)-------</a>' +
-        '<p>lubava</p>' + '</div>'],
-        ['<div class="info_content">' +
-        '<button onclick="myFunction()">Click me</button>' +
-        '<h3>Kontrabas</h3>' +
-        '<p>kontrabas</p>' +
-        '</div>']
-    ];
+    //function infoWindowContent(locationName,description){
+    //    var pattern = '<div class="info_content">' +
+    //        '<button onclick="myFunction()">Click me</button>' +
+    //        '<h3>'+locationName+'</h3>' +
+    //        '<a href="https://www.google.com">'+description+'</a>' +
+    //        '<p>'+locationName+'</p>' + '</div>'
+    //}
+    //
+    //var infoWindowContent = [
+    //    ['<div class="info_content">' +
+    //    '<button onclick="myFunction()">Click me</button>' +
+    //    '<h3>Lubava</h3>' +
+    //    '<a href="https://www.google.com">=)-------</a>' +
+    //    '<p>lubava</p>' + '</div>'],
+    //    ['<div class="info_content">' +
+    //    '<button onclick="myFunction()">Click me</button>' +
+    //    '<h3>Kontrabas</h3>' +
+    //    '<p>kontrabas</p>' +
+    //    '</div>']
+    //];
 
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
 
     for (i = 0; i < markers.length; i++) {
-        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+        var position = new google.maps.LatLng(markers[i].longitude, markers[i].latitude);
         bounds.extend(position);
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: markers[i][0]
+            title: markers[i].address + "<br>"+ markers[i].message
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infoWindow.setContent(infoWindowContent[i][0]);
+                infoWindow.setContent(marker.title);
                 infoWindow.open(map, marker);
             }
         })(marker, i));

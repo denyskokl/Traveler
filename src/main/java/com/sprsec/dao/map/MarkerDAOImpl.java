@@ -1,6 +1,7 @@
 package com.sprsec.dao.map;
 
 import com.sprsec.model.Marker;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class MarkerDAOImpl implements MarkerDAO{
+public class MarkerDAOImpl implements MarkerDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -22,5 +23,19 @@ public class MarkerDAOImpl implements MarkerDAO{
     @SuppressWarnings("unchecked")
     public List<Marker> getAllMarkers() {
         return getSession().createCriteria(Marker.class).list();
+    }
+
+    @Override
+    public Marker removeMarker(double latitude, double longitude) {
+        Query query = getSession().createQuery("delete Marker m where m.latitude = :latitude and m.longitude = :longitude ");
+        query.setParameter("latitude", latitude).setParameter("longitude", longitude);
+        int result = query.executeUpdate();
+        return new Marker();
+    }
+
+    @Override
+    public Marker saveMarker(Marker marker) {
+        getSession().saveOrUpdate(marker);
+        return marker;
     }
 }

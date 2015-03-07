@@ -19,4 +19,14 @@ public class MarkerServiceImpl implements MarkerService {
     public List<Marker> getAllMarkers() {
         return markerDAO.getAllMarkers();
     }
+
+    @Override
+    public Marker removeMarker(double latitude, double longitude) {
+        return markerDAO.removeMarker(latitude,longitude);
+    }
+
+    @Override
+    public Marker saveMarker(Marker marker) {
+        return markerDAO.saveMarker(marker);
+    }
 }
