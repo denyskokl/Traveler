@@ -34,6 +34,9 @@ public class Marker {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
     private List<Route> route = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "marker")
+    private List<Comment> comments = new ArrayList<>();
+
     public Marker() {
     }
 
@@ -49,12 +52,28 @@ public class Marker {
         this.message = message;
     }
 
-    public List<Route> getRoute() {
-        return route;
+    public int getMarkerId() {
+        return markerId;
     }
 
-    public void setRoute(List<Route> route) {
-        this.route = route;
+    public void setMarkerId(int markerId) {
+        this.markerId = markerId;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public String getAddress() {
@@ -65,35 +84,27 @@ public class Marker {
         this.address = address;
     }
 
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public int getMarkerId() {
-        return markerId;
-    }
-
-    public void setMarkerId(int markerId) {
-        this.markerId = markerId;
-    }
-
     public String getMessage() {
         return message;
     }
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public List<Route> getRoute() {
+        return route;
+    }
+
+    public void setRoute(List<Route> route) {
+        this.route = route;
     }
 }

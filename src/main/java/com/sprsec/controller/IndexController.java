@@ -19,7 +19,6 @@ public class IndexController {
     public ModelAndView index() {
         ModelAndView m = new ModelAndView("index");
         m.addObject(markerService.getAllMarkers());
-
         return m;
     }
 }

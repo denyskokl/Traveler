@@ -1,22 +1,11 @@
 function createdUserMarkerTitle(marker) {
-    //var text = '<h1 id="firstHeading" class="firstHeading">' +
-    //    marker.address + '</h1>'+
-    //    '<div id="bodyContent">'+
-    //    marker.message +
-    //    '</div>' +
-    //    '';
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
-    '<label>Comment Box</label>' +
-    '<button type="button" class="close" aria-hidden="true">&times;</button>' +
+    '<label>' + marker.address + '</label>' +
+    '<button onclick="myFunction()" type="button" class="close" aria-hidden="true" >Add to trip</button>' +
     '</div>' +
     '<div class="commentBox">' +
-    '<p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
-    '<p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
-    '<p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
-    '<p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
-    '<p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>' +
-
+    '<p class="taskDescription">' + marker.message + '</p>' +
     '</div>' +
     '<div class="actionBox">' +
     '<ul class="commentList">' +

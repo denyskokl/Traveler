@@ -27,7 +27,6 @@ public class MarkerController {
         markerService.saveMarker(marker);
         return marker;
     }
-            //todo : як вернути string в ajax запросі якщо succsess =)
 
     @RequestMapping(value = "/remove_marker", method = RequestMethod.POST, produces = "application/json")
     public ResponseEntity<Marker> removeMarker(@RequestBody Marker marker) throws JSONException {

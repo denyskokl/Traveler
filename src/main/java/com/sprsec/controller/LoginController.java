@@ -23,7 +23,7 @@ public class LoginController {
     private UserService userService;
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String register(HttpServletRequest request, ModelMap model) {
+    public String register() {
         return "frames/registration";
     }
 
@@ -31,7 +31,6 @@ public class LoginController {
     public String addNewUser(
             @RequestParam("login") String login,
             @RequestParam("password") String password) {
-
         User user = new User(login, password);
         userService.addUser(user);
         //todo validation, spring mvc forward

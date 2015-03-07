@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class ShowPhotoController {
+public class CommentController {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String register(HttpServletRequest request, ModelMap model) {
+    public String register() {
         return "comment/testOne";
     }
 }

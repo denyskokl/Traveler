@@ -30,6 +30,9 @@ public class User {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Route> routes = new ArrayList<>();
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Comment> comments = new ArrayList<>();
+
     public User() {
     }
 
@@ -38,27 +41,51 @@ public class User {
         this.password = password;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
+    }
+
     public String getLogin() {
-		return login;
-	}
+        return login;
+    }
 
-	public void setLogin(String login) {
-		this.login = login;
-	}
+    public void setLogin(String login) {
+        this.login = login;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public Set<Role> getUserRoles() {
-		return userRoles;
-	}
+    public Set<Role> getUserRoles() {
+        return userRoles;
+    }
 
-	public void setUserRoles(Set<Role> userRoles) {
-		this.userRoles = userRoles;
-	}
+    public void setUserRoles(Set<Role> userRoles) {
+        this.userRoles = userRoles;
+    }
+
+    public List<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 }

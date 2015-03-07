@@ -18,7 +18,6 @@ CREATE TABLE travel.users_roles (
 	CONSTRAINT fk_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id),
 	CONSTRAINT fk_role FOREIGN KEY (role_id) REFERENCES travel.roles(role_id));
 
-
 CREATE TABLE travel.markers (
 	marker_id int NOT NULL AUTO_INCREMENT,
 	latitude double NOT NULL,
@@ -39,6 +38,15 @@ CREATE TABLE travel.routes_markers (
 	PRIMARY KEY (router_id, marker_id),
 	CONSTRAINT fk_route FOREIGN KEY (router_id) REFERENCES travel.routes(router_id),
 	CONSTRAINT fk_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id));
+
+CREATE TABLE travel.comments (
+	comment_id int NOT NULL AUTO_INCREMENT,
+	user_id int NOT NULL,
+	marker_id int NOT NULL,
+	comment varchar(250),
+	PRIMARY KEY (comment_id),
+	CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id),
+	CONSTRAINT fk_comment_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id));
 
 INSERT INTO travel.users(user_id, login, password)
 	VALUES (1, 'den', '1111');
