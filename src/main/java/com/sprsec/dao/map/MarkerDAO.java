@@ -8,7 +8,7 @@ public interface MarkerDAO {
 
     public List<Marker> getAllMarkers();
 
-    Marker removeMarker(double latitude, double longitude);
-
     Marker saveMarker(Marker marker);
+
+    int removeMarker(Marker marker);
 }

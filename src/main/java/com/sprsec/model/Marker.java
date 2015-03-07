@@ -37,6 +37,11 @@ public class Marker {
     public Marker() {
     }
 
+    public Marker(Double latitude, Double longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public Marker(Double latitude, Double longitude, String address, String message) {
         this.latitude = latitude;
         this.longitude = longitude;

@@ -26,16 +26,15 @@ public class MarkerDAOImpl implements MarkerDAO {
     }
 
     @Override
-    public Marker removeMarker(double latitude, double longitude) {
-        Query query = getSession().createQuery("delete Marker m where m.latitude = :latitude and m.longitude = :longitude ");
-        query.setParameter("latitude", latitude).setParameter("longitude", longitude);
-        int result = query.executeUpdate();
-        return new Marker();
-    }
-
-    @Override
     public Marker saveMarker(Marker marker) {
         getSession().saveOrUpdate(marker);
         return marker;
+    }
+
+    @Override
+    public int removeMarker(Marker marker) {
+        Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
+        query.setProperties(marker);
+        return query.executeUpdate();
     }
 }
