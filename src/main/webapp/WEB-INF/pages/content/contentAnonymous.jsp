@@ -2,21 +2,23 @@
 <html>
 <head>
     <title></title>
+    <link href="${pageContext.request.contextPath}/resources/css/222.css" rel="stylesheet" type="text/css" >
     <%--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ru"></script>--%>
     <%--<script type="text/javascript" src="${pageContext.request.contextPath}/resources/map/array.js"></script>--%>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <%--<link href="${pageContext.request.contextPath}/resources/map/array.css"/>--%>
     <script src="${pageContext.request.contextPath}/resources/map/createMap.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
-    <style>
-        #bodyContent {
-            overflow: scroll; /* Добавляем полосы прокрутки */
-            width: 300px; /* Ширина блока */
-            height: 150px; /* Высота блока */
-            padding: 5px; /* Поля вокруг текста */
-            border: solid 1px black; /* Параметры рамки */
-        }
-    </style>
+
+    <%--<style>--%>
+        <%--#bodyContent {--%>
+            <%--overflow: scroll; /* Добавляем полосы прокрутки */--%>
+            <%--width: 300px; /* Ширина блока */--%>
+            <%--height: 150px; /* Высота блока */--%>
+            <%--padding: 5px; /* Поля вокруг текста */--%>
+            <%--border: solid 1px black; /* Параметры рамки */--%>
+        <%--}--%>
+    <%--</style>--%>
 
 </head>
 <body onload="initialize()">
