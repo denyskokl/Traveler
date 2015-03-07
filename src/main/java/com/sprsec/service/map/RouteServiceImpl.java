@@ -25,7 +25,6 @@ public class RouteServiceImpl implements RouteService{
     public Route getRoute(int id) {
         return routeDAO.getRoute(id);
     }
-    //todo bal bal bal
 
     @Override
     public void addRoute(Route route) {

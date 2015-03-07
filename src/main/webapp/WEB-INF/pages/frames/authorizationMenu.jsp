@@ -15,9 +15,6 @@
                 <a href="/">Main page</a>
             </li>
             <li>
-                <a href="/account">Account</a>
-            </li>
-            <li>
                 <a href="/j_spring_security_logout">Logout </a>
             </li>
         </ul>

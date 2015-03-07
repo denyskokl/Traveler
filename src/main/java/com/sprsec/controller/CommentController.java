@@ -21,10 +21,7 @@ public class CommentController {
     @Autowired
     private MarkerService markerService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public String register() {
-        return "comment/testOne";
-    }
+
 //    @RequestMapping(value = "/save_comment", method = RequestMethod.GET)
 //    public String saveComment() {
 //        commentService.saveComment(new Comment("com1", new User("serg","1111"), new Marker(32.067636,49.450412)));

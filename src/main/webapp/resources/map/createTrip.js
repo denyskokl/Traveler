@@ -1,9 +1,3 @@
-//jQuery(function($) {
-//    var script = document.createElement('script');
-//    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-//    document.body.appendChild(script);
-//});
-
 var directionsDisplay;
 var directionsService = new google.maps.DirectionsService();
 var map;
@@ -50,7 +44,6 @@ function calcRoute() {
                 var route = response.routes[0];
                 var summaryPanel = document.getElementById('directions_panel');
                 summaryPanel.innerHTML = '';
-                // For each route, display summary information.
                 for (var i = 0; i < route.legs.length; i++) {
                     var routeSegment = i + 1;
                     summaryPanel.innerHTML += '<b>Route Segment: ' + routeSegment + '</b><br>';

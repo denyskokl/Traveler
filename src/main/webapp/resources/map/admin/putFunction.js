@@ -3,41 +3,35 @@ $(document).ready(function () {
     var mapCenter = new google.maps.LatLng(49.445077, 32.056129); //Google map Coordinates
     var map;
 
-    map_initialize(); // initialize google map
+    map_initialize();
 
-    //############### Google Map Initialize ##############
+
     function map_initialize() {
         var googleMapOptions =
         {
-            center: mapCenter, // map center
-            zoom: 13, //zoom level, 0 = earth view to higher value
-            panControl: true, //enable pan Control
-            zoomControl: true, //enable zoom control
+            center: mapCenter,
+            zoom: 13,
+            panControl: true,
+            zoomControl: true,
             zoomControlOptions: {
-                style: google.maps.ZoomControlStyle.SMALL //zoom control size
+                style: google.maps.ZoomControlStyle.SMALL
             },
-            scaleControl: true, // enable scale control
-            mapTypeId: google.maps.MapTypeId.ROADMAP // google map type
+            scaleControl: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
         map = new google.maps.Map(document.getElementById("map-canvas"), googleMapOptions);
 
-        //Load Markers from the XML File, Check (map_process.php)
         $.get("/markers", function (data) {
             $(data).each(function () {
-                //Get user input values for the marker from the form
                 var name = $(this).attr('message');
-                    var address = '<p>' + $(this).attr('address') + '</p>';
-                //var type      = $(this).attr('type');
+                var address = '<p>' + $(this).attr('address') + '</p>';
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
-                //call create_marker() function for xml loaded maker
                 create_marker(point, name, address, false, false, map);
             });
         });
 
-        //drop a new marker on right click
         google.maps.event.addListener(map, 'rightclick', function (event) {
-            //Edit form to be displayed with new marker
             var EditForm = '<p><div class="marker-edit">' +
                 '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
                 '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>' +
@@ -45,8 +39,7 @@ $(document).ready(function () {
                 '</form>' +
                 '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
 
-            //call create_marker() function
-            create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://www.lemansdeveloppement.fr/wp-content/themes/lemansdev/img/pin_blue.png');
+            create_marker(event.latLng, 'New Marker', EditForm, true, true, map, 'http://localhost:8080/resources/img/pin_blue.png');
         });
     }
 });

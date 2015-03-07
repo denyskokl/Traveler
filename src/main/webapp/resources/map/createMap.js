@@ -1,10 +1,10 @@
-jQuery(function($) {
+jQuery(function ($) {
     var script = document.createElement('script');
     script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
     document.body.appendChild(script);
 });
 function initialize() {
-    $.get("/markers").done(function(markers) {
+    $.get("/markers").done(function (markers) {
         addMarkers(markers);
     });
 }

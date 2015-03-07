@@ -44,13 +44,12 @@
                                     name="password" placeholder="Enter password"/>
                     </div>
                 </div>
-                <input type="submit" id="submit" value="Створити"
+                <input type="submit" id="submit" value="Create"
                        class="btn btn-info pull-right">
             </div>
         </form>
     </div>
     <h1 class="page-header"></h1>
-
 </div>
 </body>
 </html>

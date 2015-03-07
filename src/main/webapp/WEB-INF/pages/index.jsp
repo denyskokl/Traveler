@@ -6,18 +6,16 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>qwe</title>
+    <title>Welcome to Traveler</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
-    <%--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ru"></script>--%>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-responsive.min.css"
           rel="stylesheet">
 </head>
-
 <body>
 <div class="container">
     <sec:authorize access="isAnonymous()">
         <jsp:include page="frames/menu.jsp"/>
-        <jsp:include page="content/contentAnonymous.jsp"    />
+        <jsp:include page="content/contentAnonymous.jsp"/>
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
@@ -34,7 +32,6 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-               вава
             </h1>
         </div>
     </div>
