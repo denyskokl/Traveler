@@ -3,11 +3,14 @@ package com.sprsec.controller;
 import com.sprsec.model.Comment;
 import com.sprsec.service.comment.CommentService;
 import com.sprsec.service.map.MarkerService;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class CommentController {
@@ -28,13 +31,9 @@ public class CommentController {
 //        return "comment/testOne";
 //    }
 
+    @ResponseBody
     @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
-    public ModelAndView getAllComments() {
-        for (Comment com : commentService.getAllComments()) {
-            System.out.println(com.getComment());
-        }
-        ModelAndView m = new ModelAndView("index");
-        m.addObject(markerService.getAllMarkers());
-        return m;
+    public List<Comment> getAllComments() throws JSONException {
+        return commentService.getAllComments();
     }
 }

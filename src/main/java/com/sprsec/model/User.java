@@ -1,5 +1,7 @@
 package com.sprsec.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,20 +18,23 @@ public class User {
     private int idUser;
 
     @Column(name = "login")
-	private String login;
+    private String login;
 
-	@Column(name = "password")
-	private String password;
+    @Column(name = "password")
+    private String password;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles", catalog = "travel", joinColumns = {
-            @JoinColumn(name = "user_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "role_id", nullable = false, updatable = false) })
-	private Set<Role> userRoles = new HashSet<>();
+            @JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", nullable = false, updatable = false)})
+    private Set<Role> userRoles = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     private List<Route> routes = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Comment> comments = new ArrayList<>();
 
