@@ -10,6 +10,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
 
 
+    <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/createTrip.js"></script>
 
 </head>

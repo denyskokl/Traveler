@@ -4,8 +4,8 @@ jQuery(function($) {
     document.body.appendChild(script);
 });
 function initialize() {
-    $.get("/markers").done(function(data) {
-        addMarkers(data);
+    $.get("/markers").done(function(markers) {
+        addMarkers(markers);
     });
 }
 
@@ -19,29 +19,6 @@ function addMarkers(markers) {
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    //map.setTilt(45);
-
-
-    //function infoWindowContent(locationName,description){
-    //    var pattern = '<div class="info_content">' +
-    //        '<button onclick="myFunction()">Click me</button>' +
-    //        '<h3>'+locationName+'</h3>' +
-    //        '<a href="https://www.google.com">'+description+'</a>' +
-    //        '<p>'+locationName+'</p>' + '</div>'
-    //}
-    //
-    //var infoWindowContent = [
-    //    ['<div class="info_content">' +
-    //    '<button onclick="myFunction()">Click me</button>' +
-    //    '<h3>Lubava</h3>' +
-    //    '<a href="https://www.google.com">=)-------</a>' +
-    //    '<p>lubava</p>' + '</div>'],
-    //    ['<div class="info_content">' +
-    //    '<button onclick="myFunction()">Click me</button>' +
-    //    '<h3>Kontrabas</h3>' +
-    //    '<p>kontrabas</p>' +
-    //    '</div>']
-    //];
 
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
@@ -52,7 +29,7 @@ function addMarkers(markers) {
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: markers[i].address + "<br>"+ markers[i].message
+            title: createdUserMarkerTitle(markers[i])
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {

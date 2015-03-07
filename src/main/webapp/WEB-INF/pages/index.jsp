@@ -29,7 +29,6 @@
         <jsp:include page="frames/authorizationMenu.jsp"/>
         <jsp:include page="content/contentUser.jsp"/>
     </sec:authorize>
-
 </div>
 <div class="container">
     <div class="row">
