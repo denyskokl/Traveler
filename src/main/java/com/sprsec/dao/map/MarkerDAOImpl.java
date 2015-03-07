@@ -27,8 +27,8 @@ public class MarkerDAOImpl implements MarkerDAO {
 
     @Override
     public Marker saveMarker(Marker marker) {
-        getSession().saveOrUpdate(marker);
-        return marker;
+            getSession().saveOrUpdate(marker);
+            return marker;
     }
 
     @Override

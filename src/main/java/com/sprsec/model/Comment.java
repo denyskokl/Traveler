@@ -23,6 +23,15 @@ public class Comment {
     @JoinColumn(name = "marker_id", nullable = false)
     private Marker marker;
 
+    public Comment() {
+    }
+
+    public Comment(String comment, User user, Marker marker) {
+        this.comment = comment;
+        this.user = user;
+        this.marker = marker;
+    }
+
     public int getCommentId() {
         return commentId;
     }

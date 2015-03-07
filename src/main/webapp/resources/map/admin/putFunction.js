@@ -27,7 +27,7 @@ $(document).ready(function () {
             $(data).each(function () {
                 //Get user input values for the marker from the form
                 var name = $(this).attr('message');
-                var address = '<p>' + $(this).attr('address') + '</p>';
+                    var address = '<p>' + $(this).attr('address') + '</p>';
                 //var type      = $(this).attr('type');
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
                 //call create_marker() function for xml loaded maker
