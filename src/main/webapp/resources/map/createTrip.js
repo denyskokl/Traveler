@@ -1,14 +1,18 @@
-jQuery(function($) {
-    var script = document.createElement('script');
-    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-    document.body.appendChild(script);
-});
+//jQuery(function($) {
+//    var script = document.createElement('script');
+//    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+//    document.body.appendChild(script);
+//});
+
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+var map;
 
 function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     var chicago = new google.maps.LatLng(49.445077, 32.056129);
     var mapOptions = {
-        zoom: 13,
+        zoom: 6,
         center: chicago
     }
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -23,9 +27,8 @@ function calcRoute() {
     for (var i = 0; i < checkboxArray.length; i++) {
         if (checkboxArray.options[i].selected == true) {
             waypts.push({
-                location: checkboxArray[i].value,
-                stopover: true
-            });
+                location:checkboxArray[i].value,
+                stopover:true});
         }
     }
 
@@ -34,10 +37,9 @@ function calcRoute() {
         destination: end,
         waypoints: waypts,
         optimizeWaypoints: true,
-        travelMode: google.maps.TravelMode.WALKING
+        travelMode: google.maps.TravelMode.DRIVING
     };
-
-    directionsService.route(request, function (response, status) {
+    directionsService.route(request, function(response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
             var route = response.routes[0];
