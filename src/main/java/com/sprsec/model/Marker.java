@@ -34,8 +34,7 @@ public class Marker {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
     private List<Route> route = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "marker")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "marker")
     private List<Comment> comments = new ArrayList<>();
 
     public Marker() {

@@ -1,10 +1,9 @@
 package com.sprsec.controller;
 
 import com.sprsec.model.Comment;
-import com.sprsec.model.Marker;
-import com.sprsec.model.User;
 import com.sprsec.service.comment.CommentService;
 import com.sprsec.service.map.MarkerService;
+import com.sprsec.service.user.UserService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +20,14 @@ public class CommentController {
     private CommentService commentService;
 
     @Autowired
-    private MarkerService markerService;
+    private UserService userService;
 
+    @Autowired
+    private MarkerService markerService;
 
     @RequestMapping(value = "/save_comment", method = RequestMethod.GET)
     public String saveComment() {
-        commentService.saveComment(new Comment("4 pidarasa", new User("serg","1111"), new Marker(32.067636,49.450412)));
+        commentService.saveComment(new Comment("1 pidaras", userService.getUser("serg"), markerService.getMark(32.067636,49.450412)));
         return "comment/testOne";
     }
 

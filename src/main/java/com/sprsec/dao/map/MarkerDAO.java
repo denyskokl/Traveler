@@ -11,4 +11,6 @@ public interface MarkerDAO {
     Marker saveMarker(Marker marker);
 
     int removeMarker(Marker marker);
+
+    Marker getMark(Double latitude, Double longitude);
 }
