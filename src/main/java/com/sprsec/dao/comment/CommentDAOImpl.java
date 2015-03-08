@@ -21,7 +21,7 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     public Comment saveComment(Comment comment) {
-        getSession().saveOrUpdate(comment);
+        getSession().save(comment);
         return comment;
     }
 

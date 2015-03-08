@@ -1,6 +1,7 @@
 package com.sprsec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Marker {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int markerId;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     @Column(name = "latitude")
     private Double latitude;
 

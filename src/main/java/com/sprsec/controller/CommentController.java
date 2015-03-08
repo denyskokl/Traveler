@@ -1,6 +1,8 @@
 package com.sprsec.controller;
 
 import com.sprsec.model.Comment;
+import com.sprsec.model.Marker;
+import com.sprsec.model.User;
 import com.sprsec.service.comment.CommentService;
 import com.sprsec.service.map.MarkerService;
 import org.json.JSONException;
@@ -22,11 +24,11 @@ public class CommentController {
     private MarkerService markerService;
 
 
-//    @RequestMapping(value = "/save_comment", method = RequestMethod.GET)
-//    public String saveComment() {
-//        commentService.saveComment(new Comment("com1", new User("serg","1111"), new Marker(32.067636,49.450412)));
-//        return "comment/testOne";
-//    }
+    @RequestMapping(value = "/save_comment", method = RequestMethod.GET)
+    public String saveComment() {
+        commentService.saveComment(new Comment("com1", new User("serg","1111"), new Marker(32.067636,49.450412)));
+        return "comment/testOne";
+    }
 
     @ResponseBody
     @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
