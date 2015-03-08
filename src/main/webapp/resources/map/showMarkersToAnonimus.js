@@ -1,8 +1,7 @@
 function createdUserMarkerTitle(marker) {
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
-    '<label>' + marker.message + '</label>' +
-    '<button onclick="myFunction()" type="button" class="close" aria-hidden="true" >Add to trip</button>' +
+        '<label>' + marker.message + '</label>' +
     '</div>' +
     '<div class="commentBox">' +
     '<p class="taskDescription">' + marker.address + '</p>' +
@@ -11,14 +10,6 @@ function createdUserMarkerTitle(marker) {
          '<ul class="commentList">' +
           commentMarker(marker.comments) +
         '</ul>' +
-    '<form class="form-inline" role="form">' +
-    '<div class="form-group">' +
-        '<input class="form-control" type="text" placeholder="Your comments" />' +
-    '</div>' +
-    '<div class="form-group">' +
-        '<button class="btn btn-default">Add</button>' +
-    '</div>' +
-    '</form>' +
     '</div>' +
     '</div>';
     return text;
