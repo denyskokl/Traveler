@@ -7,6 +7,7 @@ import com.sprsec.service.user.UserService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,9 +26,11 @@ public class CommentController {
     @Autowired
     private MarkerService markerService;
 
-    @RequestMapping(value = "/save_comment", method = RequestMethod.GET)
-    public String saveComment() {
-        commentService.saveComment(new Comment("1 pidaras", userService.getUser("serg"), markerService.getMark(32.067636,49.450412)));
+    @RequestMapping(value = "/comment", method = RequestMethod.GET)
+    public String saveComment(@RequestBody Comment comment) {
+//                commentService.saveComment(new Comment("1222 pidarasa", userService.getUser(user.getLogin()),
+//                markerService.getMark(marker.getLatitude(), marker.getLongitude())));
+        System.out.println(comment);
         return "comment/testOne";
     }
 
@@ -36,4 +39,6 @@ public class CommentController {
     public List<Comment> getAllComments() throws JSONException {
         return commentService.getAllComments();
     }
+
+
 }

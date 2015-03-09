@@ -8,29 +8,56 @@ function createdUserMarkerTitle(marker) {
     '<p class="taskDescription">' + marker.address + '</p>' +
     '</div>' +
     '<div class="actionBox">' +
-         '<ul class="commentList">' +
-          commentMarker(marker.comments) +
-        '</ul>' +
+    '<ul class="commentList">' +
+    commentMarker(marker.comments) +
+    '</ul>' +
     '<form class="form-inline" role="form">' +
     '<div class="form-group">' +
-        '<input class="form-control" type="text" placeholder="Your comments" />' +
+    '<input class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-        '<button class="btn btn-default">Add</button>' +
+    '<button  onclick="addComments()" class="btn btn-default">Add</button>' +
     '</div>' +
     '</form>' +
     '</div>' +
     '</div>';
+
     return text;
 }
-function commentMarker(comments){
+function commentMarker(comments) {
     var text = '';
-    for (var i =  comments.length - 1; i >= 0;  i --) {
+    for (var i = comments.length - 1; i >= 0; i--) {
         text += '<li>' +
         '<div class="commentText">' +
-        '<p class="">'+ comments[i].comment +'</p>' +
+        '<p class="">' + comments[i].comment + '</p>' +
         '</div>' +
-        '</li>' ;
+        '</li>';
     }
+
     return text;
+}
+
+function addComments(marker) {
+
+    var comment = $('.form-control').val();
+
+    $.ajax({
+        url: "/comment",
+        type: "GET",
+        dataType: "json",
+        data: JSON.stringify({comment: comment}),
+        ContentType: "application/json",
+        success: function (response) {
+            alert(JSON.stringify(response));
+        },
+        error: function (err) {
+            alert(JSON.stringify(err));
+        }
+    });
+    console.log(comment);
+}
+
+function markeeer(d, c) {
+
+    console.log(d,c);
 }
