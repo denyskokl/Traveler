@@ -1,5 +1,5 @@
 function createdUserMarkerTitle(marker) {
-
+    globalMarker = marker;
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
@@ -17,7 +17,7 @@ function createdUserMarkerTitle(marker) {
     '<input class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    '<button  onclick="addComments(marker)" class="btn btn-default">Add</button>' +
+    '<button  onclick="addComments()" class="btn btn-default">Add</button>' +
     '</div>' +
     '</form>' +
     '</div>' +
@@ -36,7 +36,7 @@ function commentMarker(comments) {
     return text;
 }
 
-function addComments(marker) {
+function addComments() {
 
     var comment = $('.form-control').val();
 
@@ -44,9 +44,11 @@ function addComments(marker) {
     $.ajax({
         url: "/comment",
         type: "GET",
-        dataType: "json",
-        data: JSON.stringify({comment: comment}),
-        ContentType: "application/json",
+        contentType: 'application/json',
+        dataType: 'json',
+        data: JSON.stringify({comment: comment,
+                            marker : {latitude : globalMarker.latitude,
+                                      longitude: globalMarker.longitude}}),
         success: function (response) {
             alert(JSON.stringify(response));
         },
