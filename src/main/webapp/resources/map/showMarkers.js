@@ -1,4 +1,5 @@
 function createdUserMarkerTitle(marker) {
+
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
@@ -16,12 +17,11 @@ function createdUserMarkerTitle(marker) {
     '<input class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    '<button  onclick="addComments()" class="btn btn-default">Add</button>' +
+    '<button  onclick="addComments(marker)" class="btn btn-default">Add</button>' +
     '</div>' +
     '</form>' +
     '</div>' +
     '</div>';
-
     return text;
 }
 function commentMarker(comments) {
@@ -33,13 +33,13 @@ function commentMarker(comments) {
         '</div>' +
         '</li>';
     }
-
     return text;
 }
 
-function addComments(d,d) {
+function addComments(marker) {
 
     var comment = $('.form-control').val();
+
 
     $.ajax({
         url: "/comment",
@@ -55,9 +55,6 @@ function addComments(d,d) {
         }
     });
     console.log(comment);
-}
 
-function markeeer(d, c) {
 
-    console.log(d,c);
 }
