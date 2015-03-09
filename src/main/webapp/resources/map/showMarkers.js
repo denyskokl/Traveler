@@ -37,7 +37,7 @@ function commentMarker(comments) {
     return text;
 }
 
-function addComments(marker) {
+function addComments(d,d) {
 
     var comment = $('.form-control').val();
 

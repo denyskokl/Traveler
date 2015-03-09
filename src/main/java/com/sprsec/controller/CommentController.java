@@ -28,7 +28,7 @@ public class CommentController {
 
     @RequestMapping(value = "/comment", method = RequestMethod.GET)
     public String saveComment(@RequestBody Comment comment) {
-//                commentService.saveComment(new Comment("1222 pidarasa", userService.getUser(user.getLogin()),
+//                commentService.saveComment(new Comment("1222 para", userService.getUser(user.getLogin()),
 //                markerService.getMark(marker.getLatitude(), marker.getLongitude())));
         System.out.println(comment);
         return "comment/testOne";
