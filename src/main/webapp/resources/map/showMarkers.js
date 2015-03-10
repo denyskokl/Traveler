@@ -1,4 +1,5 @@
 function createdUserMarkerTitle(marker) {
+    globalMarker = marker;
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
@@ -16,16 +17,11 @@ function createdUserMarkerTitle(marker) {
     '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    '<button id="btn-comment" class="btn btn-default">Add</button>' +
+    '<button id="btn-comment" onclick="addComments()" class="btn1 btn btn-default">Add</button>' +
     '</div>' +
     '</div>' +
     '</div>' +
     '</div>';
-    $(function(){
-        $("#btn-comment").click(function(){
-        alert($(marker).val());
-        });
-    });
     return text;
 }
 function commentMarker(comments) {
@@ -62,9 +58,3 @@ function addComments() {
         }
     });
 }
-
-$(document).ready(function(){
-    $("#btn-comment").click(function(){
-        alert("aaaa");
-    });
-});
