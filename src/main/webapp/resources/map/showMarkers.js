@@ -11,7 +11,7 @@ function createdUserMarkerTitle(marker) {
     '</div>' +
     '<div class="actionBox">' +
     '<ul class="commentList">' +
-    commentMarker(marker.comments) +
+    commentMarker(marker) +
     '</ul>' +
     '<div id="form-inline" class="form-inline" >' +
     '<div class="form-group">' +
@@ -25,12 +25,12 @@ function createdUserMarkerTitle(marker) {
     '</div>';
     return text;
 }
-function commentMarker(comments) {
+function commentMarker(marker) {
     var text = '';
-    for (var i = comments.length - 1; i >= 0; i--) {
+    for (var i = marker.comments.length - 1; i >= 0; i--) {
         text += '<li>' +
         '<div class="commentText">' +
-        '<p class="">' + comments[i].comment + '</p>' +
+        '<p class="">' + marker.comments[i].user.login + ': '+ marker.comments[i].comment + '</p>' +
         '</div>' +
         '</li>';
     }
