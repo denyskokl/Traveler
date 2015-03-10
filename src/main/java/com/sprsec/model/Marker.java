@@ -2,6 +2,7 @@ package com.sprsec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class Marker {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
     private List<Route> route = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "marker")
     private List<Comment> comments = new ArrayList<>();
 

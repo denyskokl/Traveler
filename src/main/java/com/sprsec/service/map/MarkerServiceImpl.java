@@ -29,9 +29,4 @@ public class MarkerServiceImpl implements MarkerService {
     public int removeMarker(Marker marker) {
         return markerDAO.removeMarker(marker);
     }
-
-    @Override
-    public Marker getMark(Double latitude, Double longitude) {
-        return markerDAO.getMark(latitude,longitude);
-    }
 }

@@ -40,10 +40,10 @@ public class MarkerDAOImpl implements MarkerDAO {
     }
 
     @Override
-    public Marker getMark(Double latitude, Double longitude) {
+    public Marker getMark(Marker marker) {
         List<Marker> markersList;
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
-        query.setParameter("latitude", latitude).setParameter("longitude", longitude);
+        query.setProperties(marker);
         markersList = query.list();
         if (markersList.size() > 0) {
             return markersList.get(0);

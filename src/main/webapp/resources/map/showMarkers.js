@@ -1,5 +1,4 @@
 function createdUserMarkerTitle(marker) {
-    globalMarker = marker;
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
@@ -12,16 +11,21 @@ function createdUserMarkerTitle(marker) {
     '<ul class="commentList">' +
     commentMarker(marker.comments) +
     '</ul>' +
-    '<form class="form-inline" role="form">' +
+    '<div id="form-inline" class="form-inline" >' +
     '<div class="form-group">' +
-    '<input class="form-control" type="text" placeholder="Your comments" />' +
+    '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    '<button  onclick="addComments()" class="btn btn-default">Add</button>' +
+    '<button id="btn-comment" class="btn btn-default">Add</button>' +
     '</div>' +
-    '</form>' +
+    '</div>' +
     '</div>' +
     '</div>';
+    $(function(){
+        $("#btn-comment").click(function(){
+        alert($(marker).val());
+        });
+    });
     return text;
 }
 function commentMarker(comments) {
@@ -37,26 +41,30 @@ function commentMarker(comments) {
 }
 
 function addComments() {
-
-    var comment = $('.form-control').val();
-
-
+    var comment = $('#form-control').val();
+    console.log(comment);
+    var commentObject = JSON.stringify({comment: comment,
+        marker : {latitude : globalMarker.latitude,
+            longitude: globalMarker.longitude}});
+    console.log(commentObject);
     $.ajax({
         url: "/comment",
-        type: "GET",
+        type: "POST",
         contentType: 'application/json',
+        accept: 'application/json',
         dataType: 'json',
-        data: JSON.stringify({comment: comment,
-                            marker : {latitude : globalMarker.latitude,
-                                      longitude: globalMarker.longitude}}),
+        data: commentObject,
         success: function (response) {
-            alert(JSON.stringify(response));
+            alert(response);
         },
         error: function (err) {
             alert(JSON.stringify(err));
         }
     });
-    console.log(comment);
-
-
 }
+
+$(document).ready(function(){
+    $("#btn-comment").click(function(){
+        alert("aaaa");
+    });
+});

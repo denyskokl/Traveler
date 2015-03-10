@@ -11,6 +11,4 @@ public interface MarkerService {
     Marker saveMarker(Marker marker);
 
     int removeMarker(Marker marker);
-
-    Marker getMark(Double latitude, Double longitude);
 }
