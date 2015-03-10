@@ -15,8 +15,8 @@ public class Route {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int routeId;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "routes_markers", catalog = "w", joinColumns = {
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "routes_markers", catalog = "travel", joinColumns = {
             @JoinColumn(name = "router_id", nullable = false, updatable = false) },
             inverseJoinColumns = { @JoinColumn(name = "marker_id", nullable = false, updatable = false) })
     private List<Marker> markers = new ArrayList<>();

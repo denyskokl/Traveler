@@ -1,12 +1,16 @@
 package com.sprsec.service.map;
 
 import com.sprsec.dao.map.RouteDAO;
+import com.sprsec.dao.user.UserDAO;
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -16,9 +20,14 @@ public class RouteServiceImpl implements RouteService{
     @Autowired
     private RouteDAO routeDAO;
 
+    @Autowired
+    private UserDAO userDAO;
+
     @Override
-    public Set<Route> getRoutes(User user) {
-        return routeDAO.getRoutes(user);
+    public List<Route> getRoutes() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        return routeDAO.getRoutes(userDAO.getUser(name));
     }
 
     @Override

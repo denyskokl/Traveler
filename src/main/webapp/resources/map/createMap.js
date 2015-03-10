@@ -1,13 +1,18 @@
-jQuery(function($) {
-    var script = document.createElement('script');
-    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-    document.body.appendChild(script);
-});
+//jQuery(function($) {
+//    var script = document.createElement('script');
+//    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+//    document.body.appendChild(script);
+//});
 function initialize() {
     $.get("/markers").done(function(markers) {
         addMarkers(markers);
     });
 }
+var rendererOptions = {
+    draggable: true
+};
+
+var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
 function addMarkers(markers) {
     var map;
@@ -46,4 +51,6 @@ function addMarkers(markers) {
         this.setZoom(14);
         google.maps.event.removeListener(boundsListener);
     });
+
+    directionsDisplay.setMap(map);
 }

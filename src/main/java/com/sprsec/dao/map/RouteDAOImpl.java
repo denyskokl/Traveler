@@ -24,12 +24,13 @@ public class RouteDAOImpl implements RouteDAO{
 
     @Override
     @SuppressWarnings("unchecked")
-    public Set<Route> getRoutes(User user) {
+    public List<Route> getRoutes(User user) {
         List<Route> userList = openSession().createQuery("from Route r where r.user = :user")
                 .setParameter("user", user)
                 .list();
-        if (userList.size() > 0) return new HashSet<>(userList);
-        return null;
+        if (userList.size() > 0) {
+            return userList;
+        }   return null;
     }
 
     @Override

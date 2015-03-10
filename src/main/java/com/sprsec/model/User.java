@@ -31,7 +31,7 @@ public class User {
     private Set<Role> userRoles = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Route> routes = new ArrayList<>();
 
     @JsonIgnore

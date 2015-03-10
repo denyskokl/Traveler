@@ -1,8 +1,11 @@
 package com.sprsec.controller;
 
 import com.sprsec.model.Comment;
+import com.sprsec.model.Marker;
+import com.sprsec.model.Route;
 import com.sprsec.service.comment.CommentService;
 import com.sprsec.service.map.MarkerService;
+import com.sprsec.service.map.RouteService;
 import com.sprsec.service.user.UserService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ public class CommentController {
     @Autowired
     private MarkerService markerService;
 
+    @Autowired
+    private RouteService routeService;
+
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public Comment saveComment(@RequestBody Comment comment) {
 //                commentService.saveComment(new Comment("1222 para", userService.getUser(user.getLogin()),
@@ -43,5 +49,10 @@ public class CommentController {
         return commentService.getAllComments();
     }
 
-
+    @ResponseBody
+    @RequestMapping(value = "/getAllRoute", method = RequestMethod.POST)
+    public Route getRoute(@RequestBody Marker marker) throws JSONException {
+        System.out.println(marker);
+        return routeService.getRoutes().get(0);
+    }
 }
