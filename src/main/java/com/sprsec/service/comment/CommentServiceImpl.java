@@ -30,6 +30,7 @@ public class CommentServiceImpl implements CommentService {
     public Comment saveComment(Comment comment) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
+        //todo чи можна так зберегти
         comment.setUser(userDAO.getUser(name));
         comment.setMarker(markerDAO.getMark(comment.getMarker()));
         return commentDAO.saveComment(comment);

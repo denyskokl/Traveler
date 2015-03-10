@@ -1,4 +1,5 @@
 function createdUserMarkerTitle(marker) {
+    //todo як навісити на кнопку id="btn-comment" подію з передачею обьекта(маркера)
     globalMarker = marker;
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
