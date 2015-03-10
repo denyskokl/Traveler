@@ -1,5 +1,3 @@
-
-
 function createdUserMarkerTitle(marker) {
     //todo як навісити на кнопку id="btn-comment" подію з передачею обьекта(маркера)
     globalMarker = marker;
@@ -32,7 +30,7 @@ function commentMarker(marker) {
     for (var i = marker.comments.length - 1; i >= 0; i--) {
         text += '<li>' +
         '<div class="commentText">' +
-        '<p class="">' + marker.comments[i].user.login + ': '+ marker.comments[i].comment + '</p>' +
+        '<p class="">' + marker.comments[i].user.login + ': ' + marker.comments[i].comment + '</p>' +
         '</div>' +
         '</li>';
     }
@@ -42,9 +40,13 @@ function commentMarker(marker) {
 function addComments() {
     var comment = $('#form-control').val();
     console.log(comment);
-    var commentObject = JSON.stringify({comment: comment,
-        marker : {latitude : globalMarker.latitude,
-            longitude: globalMarker.longitude}});
+    var commentObject = JSON.stringify({
+        comment: comment,
+        marker: {
+            latitude: globalMarker.latitude,
+            longitude: globalMarker.longitude
+        }
+    });
     console.log(commentObject);
     $.ajax({
         url: "/comment",
@@ -84,13 +86,15 @@ function calcRoute(route) {
 
     if (route.markers.length > 1) {
         var start = new google.maps.LatLng(route.markers[0].longitude, route.markers[0].latitude);
-        var end = new google.maps.LatLng(route.markers[route.markers.length - 1].longitude, route.markers[route.markers.length - 1].latitude);
+        var end = new google.maps.LatLng(route.markers[route.markers.length - 1]
+            .longitude, route.markers[route.markers.length - 1].latitude);
 
         if (route.markers.length > 2) {
             var waypts = [];
-            for (var i = 1; i < route.markers.length -1; i++) {
+            for (var i = 1; i < route.markers.length - 1; i++) {
                 waypts.push({
-                    location: new google.maps.LatLng(route.markers[i].longitude, route.markers[i].latitude),
+                    location: new google.maps.LatLng(route.markers[i]
+                        .longitude, route.markers[i].latitude),
                     stopover: true
                 });
             }
