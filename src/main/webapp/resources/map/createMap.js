@@ -3,9 +3,12 @@
 //    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
 //    document.body.appendChild(script);
 //});
+globalMarkers = {};
 function initialize() {
     $.get("/markers").done(function(markers) {
-        addMarkers(markers);
+        globalMarkers = markers;
+        addMarkers(globalMarkers);
+
     });
 }
 var rendererOptions = {
@@ -13,6 +16,12 @@ var rendererOptions = {
 };
 
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+function addEventClick() {
+    $(".addComment_js").click(function() {
+        var objId = $(this).attr("objId");
+        addComments(globalMarkers[objId]);
+    })
+}
 
 function addMarkers(markers) {
     var map;
@@ -27,8 +36,7 @@ function addMarkers(markers) {
 
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
-
-    for (i = 0; i < markers.length; i++) {
+    for (var i in markers) {
         var position = new google.maps.LatLng(markers[i].longitude, markers[i].latitude);
         bounds.extend(position);
         marker = new google.maps.Marker({
@@ -41,6 +49,7 @@ function addMarkers(markers) {
             return function () {
                 infoWindow.setContent(marker.title);
                 infoWindow.open(map, marker);
+                addEventClick()
             }
         })(marker, i));
 

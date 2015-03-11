@@ -1,6 +1,5 @@
 function createdUserMarkerTitle(marker) {
-    //todo як навісити на кнопку id="btn-comment" подію з передачею обьекта(маркера)
-    globalMarker = marker;
+    //todo як правиьлно воно має бути
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
@@ -18,7 +17,7 @@ function createdUserMarkerTitle(marker) {
     '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    '<button id="btn-comment" onclick="addComments()" class="btn1 btn btn-default">Add</button>' +
+    "<button objId=\"" + marker.markerId + "\" class=\"btn1 addComment_js btn btn-default\">Add</button>" +
     '</div>' +
     '</div>' +
     '</div>' +
@@ -37,14 +36,14 @@ function commentMarker(marker) {
     return text;
 }
 
-function addComments() {
+function addComments(marker) {
     var comment = $('#form-control').val();
     console.log(comment);
     var commentObject = JSON.stringify({
         comment: comment,
         marker: {
-            latitude: globalMarker.latitude,
-            longitude: globalMarker.longitude
+            latitude: marker.latitude,
+            longitude: marker.longitude
         }
     });
     console.log(commentObject);
@@ -52,14 +51,10 @@ function addComments() {
         url: "/comment",
         type: "POST",
         contentType: 'application/json',
-        accept: 'application/json',
-        dataType: 'json',
         data: commentObject,
         success: function (response) {
-            alert(response);
-        },
-        error: function (err) {
-            alert(JSON.stringify(err));
+         var commentText = "";
+
         }
     });
 }
@@ -71,7 +66,7 @@ function addToTrip() {
         contentType: 'application/json',
         accept: 'application/json',
         dataType: 'json',
-        data: JSON.stringify(globalMarker),
+        data: JSON.stringify(globalMarkers),
         success: function (route) {
             calcRoute(route)
         },

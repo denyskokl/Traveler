@@ -33,7 +33,7 @@ function commentMarker(comments){
 //
 //function createdUserMarkerTitle(marker) {
 //    //todo як навісити на кнопку id="btn-comment" подію з передачею обьекта(маркера)
-//    globalMarker = marker;
+//    globalMarkers = marker;
 //    text = '<div class="detailBox">' +
 //    '<div class="titleBox">' +
 //    '<label>' + marker.message + '</label>' +
@@ -74,8 +74,8 @@ function commentMarker(comments){
 //    var comment = $('#form-control').val();
 //    console.log(comment);
 //    var commentObject = JSON.stringify({comment: comment,
-//        marker : {latitude : globalMarker.latitude,
-//            longitude: globalMarker.longitude}});
+//        marker : {latitude : globalMarkers.latitude,
+//            longitude: globalMarkers.longitude}});
 //    console.log(commentObject);
 //    $.ajax({
 //        url: "/comment",
