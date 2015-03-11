@@ -1,7 +1,9 @@
 package com.sprsec.service.map;
 
+import com.sprsec.dao.map.MarkerDAO;
 import com.sprsec.dao.map.RouteDAO;
 import com.sprsec.dao.user.UserDAO;
+import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +12,21 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
-public class RouteServiceImpl implements RouteService{
+public class RouteServiceImpl implements RouteService {
 
     @Autowired
     private RouteDAO routeDAO;
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private MarkerDAO markerDAO;
 
     @Override
     public List<Route> getRoutes() {
@@ -36,7 +41,15 @@ public class RouteServiceImpl implements RouteService{
     }
 
     @Override
-    public void addRoute(Route route) {
-        routeDAO.addRoute(route);
+    public void saveRoute(Route route) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        User user = userDAO.getUser(name);
+        route.setUser(user);
+        List<Marker> markerList = new ArrayList<>();
+        markerList.add(markerDAO.getMark(route.getMarkers().get(0)));
+        route.setMarkers(markerList);
+        routeDAO.saveRoute(route);
+
     }
 }

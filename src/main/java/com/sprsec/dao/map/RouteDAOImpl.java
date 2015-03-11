@@ -44,7 +44,7 @@ public class RouteDAOImpl implements RouteDAO{
     }
 
     @Override
-    public void addRoute(Route route) {
-
+    public void saveRoute(Route route) {
+        openSession().saveOrUpdate(route);
     }
 }
