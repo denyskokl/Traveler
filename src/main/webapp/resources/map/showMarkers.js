@@ -53,7 +53,6 @@ function addComments(marker) {
         contentType: 'application/json',
         data: commentObject,
         success: function (response) {
-         var commentText = "";
 
         }
     });

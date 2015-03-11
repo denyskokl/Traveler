@@ -31,6 +31,11 @@ public class MarkerController {
         //todo як витягувати зразу мап
         return markerMap;
     }
+//todo refactor!!!!!!
+//    @RequestMapping(value = "/markers", method = RequestMethod.GET)
+//           public List<Marker> getMarkers() {
+//        return markerService.getAllMarkers();
+//    }
 
     @RequestMapping(value = "/save_marker", method = RequestMethod.POST, produces = "application/json")
     public Marker saveMarker(@RequestBody Marker marker) throws JSONException {

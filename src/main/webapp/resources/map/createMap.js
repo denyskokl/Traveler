@@ -8,7 +8,7 @@ function initialize() {
     $.get("/markers").done(function(markers) {
         globalMarkers = markers;
         addMarkers(globalMarkers);
-
+        addEventClick();
     });
 }
 var rendererOptions = {
@@ -35,6 +35,7 @@ function addMarkers(markers) {
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
     var infoWindow = new google.maps.InfoWindow(), marker, i;
+
 
     for (var i in markers) {
         var position = new google.maps.LatLng(markers[i].longitude, markers[i].latitude);
