@@ -47,9 +47,8 @@ public class RouteServiceImpl implements RouteService {
         User user = userDAO.getUser(name);
         route.setUser(user);
         List<Marker> markerList = new ArrayList<>();
-        markerList.add(markerDAO.getMark(route.getMarkers().get(0)));
+        markerList.add(route.getMarkers().get(0));
         route.setMarkers(markerList);
         routeDAO.saveRoute(route);
-
     }
 }

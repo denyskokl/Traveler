@@ -3,7 +3,7 @@ function createdUserMarkerTitle(marker) {
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
-    '<button onclick="addToTrip()" type="button" class="close" aria-hidden="true" >Add to trip</button>' +
+    "<button objTrip=\"" + marker.markerId+ "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
     '</div>' +
     '<div class="commentBox">' +
     '<p class="taskDescription">' + marker.address + '</p>' +
@@ -58,14 +58,14 @@ function addComments(marker) {
     });
 }
 
-function addToTrip() {
+function addToTrip(marker) {
     $.ajax({
-        url: "/getAllRoute",
+        url: "/route",
         type: "POST",
         contentType: 'application/json',
-        accept: 'application/json',
-        dataType: 'json',
-        data: JSON.stringify(globalMarkers),
+        //accept: 'application/json',
+        //dataType: 'json',
+        data: JSON.stringify(marker),
         success: function (route) {
             calcRoute(route)
         },
@@ -101,6 +101,7 @@ function calcRoute(route) {
             optimizeWaypoints: true,
             travelMode: google.maps.TravelMode.WALKING
         };
+
         directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
