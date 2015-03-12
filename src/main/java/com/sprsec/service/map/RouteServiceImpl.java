@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -46,9 +48,9 @@ public class RouteServiceImpl implements RouteService {
         String name = auth.getName();
         User user = userDAO.getUser(name);
         route.setUser(user);
-        List<Marker> markerList = new ArrayList<>();
-        markerList.add(route.getMarkers().get(0));
-        route.setMarkers(markerList);
+//        Set<Marker> markerList = new LinkedHashSet<>();
+//        markerList.add(route.getMarkers().iterator().next());
+//        route.setMarkers(markerList);
         routeDAO.saveRoute(route);
     }
 }

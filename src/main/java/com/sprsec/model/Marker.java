@@ -109,4 +109,21 @@ public class Marker {
     public void setRoute(List<Route> route) {
         this.route = route;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Marker marker = (Marker) o;
+
+        if (markerId != marker.markerId) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return markerId;
+    }
 }

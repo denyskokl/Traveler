@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class RouteController {
@@ -22,11 +21,13 @@ public class RouteController {
     @ResponseBody
     @RequestMapping(value = "/route", method = RequestMethod.POST)
     public Route saveMarkToRoute(@RequestBody Marker marker) {
-        Route route = new Route();
-        List<Marker> markerList = new ArrayList<>();
-        route.setRouteId(1);
-        markerList.add(marker);
-        route.setMarkers(markerList);
+        Route route = routeService.getRoute(1);
+        route.getMarkers().add(marker);
+//        Route route = new Route();
+//        List<Marker> markerList = new ArrayList<>();
+//        route.setRouteId(1);
+//        markerList.add(marker);
+//        route.setMarkers(markerList);
         routeService.saveRoute(route);
         return routeService.getRoutes().get(0);
     }
