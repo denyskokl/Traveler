@@ -19,15 +19,13 @@ function addEventClick() {
     $(".addComment_js").click(function() {
         var objId = $(this).attr("objId");
         addComments(globalMarkers[objId]);
-    })
+    });
 
     $(".addButtonToTrip_js").click(function() {
         var objTrip = $(this).attr("objTrip");
         addToTrip(globalMarkers[objTrip]);
-    })
+    });
 }
-
-
 
 function addMarkers(markers) {
     var map;

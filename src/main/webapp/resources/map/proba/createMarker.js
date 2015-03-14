@@ -4,18 +4,12 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
         map: map,
         draggable: DragAble,
         animation: google.maps.Animation.DROP,
-        title: "Hello World!",
+        title: MapTitle,
         icon: iconPath
     });
 
 
-    var contentString = $('<div class="marker-info-win">' +
-    '<div class="marker-inner-win"><span class="info-content">' +
-    '<h1 class="marker-heading">' + MapTitle + '</h1>' +
-    MapDesc +
-    '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
-    '</div></div>');
-
+    var contentString = $(MapDesc);
 
     var infoWindow = new google.maps.InfoWindow();
     infoWindow.setContent(contentString[0]);
@@ -25,7 +19,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     var saveBtn = contentString.find('button.save-marker')[0];
 
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
-        remove_marker(marker);
+        remove_marker(marker, fun);
     });
 
     if (typeof saveBtn !== 'undefined') {
@@ -42,6 +36,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
         });
     }
 
+    //ne ponimay
     google.maps.event.addListener(marker, 'click', function () {
         infoWindow.open(map, marker);
     });
