@@ -3,7 +3,6 @@ package com.sprsec.service.map;
 import com.sprsec.dao.map.MarkerDAO;
 import com.sprsec.dao.map.RouteDAO;
 import com.sprsec.dao.user.UserDAO;
-import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 @Transactional
@@ -48,9 +44,6 @@ public class RouteServiceImpl implements RouteService {
         String name = auth.getName();
         User user = userDAO.getUser(name);
         route.setUser(user);
-//        Set<Marker> markerList = new LinkedHashSet<>();
-//        markerList.add(route.getMarkers().iterator().next());
-//        route.setMarkers(markerList);
         routeDAO.saveRoute(route);
     }
 }

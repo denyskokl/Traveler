@@ -3,7 +3,7 @@ function createdUserMarkerTitle(marker) {
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
-    "<button objTrip=\"" + marker.markerId+ "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
+    "<button objTrip=\"" + marker.markerId + "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
     '</div>' +
     '<div class="commentBox">' +
     '<p class="taskDescription">' + marker.address + '</p>' +
@@ -53,7 +53,13 @@ function addComments(marker) {
         contentType: 'application/json',
         data: commentObject,
         success: function (response) {
+            textq ='<li>' +
+            '<div class="commentText">' +
+            '<p class="">' + marker.comments.address + marker.comments.comment + '</p>' +
+            '</div>' +
+            '</li>' ;
 
+            textq.html(response);
         }
     });
 }

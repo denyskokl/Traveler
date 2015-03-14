@@ -19,7 +19,7 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     var saveBtn = contentString.find('button.save-marker')[0];
 
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
-        remove_marker(marker, fun);
+        remove_marker(marker);
     });
 
     if (typeof saveBtn !== 'undefined') {
