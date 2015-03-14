@@ -16,11 +16,10 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
     '</div></div>');
 
-
     var infoWindow = new google.maps.InfoWindow();
     infoWindow.setContent(contentString[0]);
 
-    var removeBtn = contentString.find('button.remove-marker')[0];
+    var removeBtn = contentString.find('button.remove-marker'[0]);
 
     var saveBtn = contentString.find('button.save-marker')[0];
 

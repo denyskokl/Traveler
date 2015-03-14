@@ -47,12 +47,12 @@ function addMarkers(markers) {
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: createdUserMarkerTitle(markers[i])
+            title: markers[i].address
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infoWindow.setContent(marker.title);
+                infoWindow.setContent(createdUserMarkerTitle(markers[i]));
                 infoWindow.open(map, marker);
                 addEventClick()
             }
