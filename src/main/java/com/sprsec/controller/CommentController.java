@@ -23,11 +23,12 @@ public class CommentController {
     @Autowired
     private RouteService routeService;
 
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public void saveComment(@RequestBody Comment comment) {
+    public List<Comment> saveComment(@RequestBody Comment comment) {
         commentService.saveComment(comment);
+        return commentService.getCommentsByMark(comment.getMarker());
     }
 
     @ResponseBody
@@ -39,7 +40,6 @@ public class CommentController {
     @ResponseBody
     @RequestMapping(value = "/getAllRoute", method = RequestMethod.POST)
     public Route getRoute(@RequestBody Marker marker) throws JSONException {
-        System.out.println(marker);
         return routeService.getRoutes().get(0);
     }
 }

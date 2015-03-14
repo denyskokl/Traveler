@@ -15,10 +15,10 @@ var rendererOptions = {
 };
 
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-function addEventClick() {
+function addEventClick(mReplace) {
     $(".addComment_js").click(function() {
         var objId = $(this).attr("objId");
-        addComments(globalMarkers[objId]);
+        addComments(globalMarkers[objId], mReplace);
     });
 
     $(".addButtonToTrip_js").click(function() {
@@ -52,9 +52,12 @@ function addMarkers(markers) {
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infoWindow.setContent(createdUserMarkerTitle(markers[i]));
+                var ggggggggg = $(createdUserMarkerTitle(markers[i]));
+                var mReplace = ggggggggg.find('span.commentList1');
+                //infoWindow.setContent(createdUserMarkerTitle(markers[i]));
+                infoWindow.setContent(ggggggggg[0]);
                 infoWindow.open(map, marker);
-                addEventClick()
+                addEventClick(mReplace)
             }
         })(marker, i));
 

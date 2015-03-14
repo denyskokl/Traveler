@@ -11,7 +11,7 @@ function save_marker(Marker, mName, mAddress, replaceWin) {
         dataType: 'json',
         data: JSON.stringify(myData),
         success: function (marker) {
-            var v1 = "<h1 class=\"marker-heading\">" + marker.message + "</h1><p>" + marker.address + "</p>"
+            var v1 = "<h1 class=\"marker-heading\">" + marker.message + "</h1><p>" + marker.address + "</p>";
             console.log(replaceWin);
             replaceWin.html(v1);
             Marker.setDraggable(false);

@@ -4,6 +4,7 @@ import com.sprsec.dao.comment.CommentDAO;
 import com.sprsec.dao.map.MarkerDAO;
 import com.sprsec.dao.user.UserDAO;
 import com.sprsec.model.Comment;
+import com.sprsec.model.Marker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -38,4 +39,11 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getAllComments() {
         return commentDAO.getAllComments();
     }
+
+    @Override
+    public List<Comment> getCommentsByMark(Marker marker) {
+        return commentDAO.getCommentsByMark(marker);
+    }
+
+
 }

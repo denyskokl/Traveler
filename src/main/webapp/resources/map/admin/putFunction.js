@@ -22,8 +22,8 @@ $(document).ready(function () {
 
         map = new google.maps.Map(document.getElementById("map-canvas"), googleMapOptions);
 
-        $.get("/markers", function (data) {
-            $(data).each(function () {
+        $.get("/markers", function (markers) {
+            $(markers).each(function () {
                 var name = $(this).attr('message');
                 var address = '<p>' + $(this).attr('address') + '</p>';
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));

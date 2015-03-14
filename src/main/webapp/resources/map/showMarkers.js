@@ -1,17 +1,18 @@
 function createdUserMarkerTitle(marker) {
-    //todo як правиьлно воно має бути handlebar!!!
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
-    "<button objTrip=\"" + marker.markerId + "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
+    "<button objTrip=\"" + marker.markerId+ "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
     '</div>' +
     '<div class="commentBox">' +
     '<p class="taskDescription">' + marker.address + '</p>' +
     '</div>' +
     '<div class="actionBox">' +
+        '<span class="commentList1">' +
     '<ul class="commentList">' +
     commentMarker(marker) +
     '</ul>' +
+        '</span>' +
     '<div id="form-inline" class="form-inline" >' +
     '<div class="form-group">' +
     '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
@@ -28,15 +29,15 @@ function commentMarker(marker) {
     var text = '';
     for (var i = marker.comments.length - 1; i >= 0; i--) {
         text += '<li>' +
-        '<div class="commentText">' +
+        '<span class="commentText">' +
         '<p class="">' + marker.comments[i].user.login + ': ' + marker.comments[i].comment + '</p>' +
-        '</div>' +
+        '</span>' +
         '</li>';
     }
     return text;
 }
 
-function addComments(marker) {
+function addComments(marker, pieceOfCode) {
     var comment = $('#form-control').val();
     console.log(comment);
     var commentObject = JSON.stringify({
@@ -52,14 +53,17 @@ function addComments(marker) {
         type: "POST",
         contentType: 'application/json',
         data: commentObject,
-        success: function (response) {
-            textq ='<li>' +
-            '<div class="commentText">' +
-            '<p class="">' + marker.comments.address + marker.comments.comment + '</p>' +
-            '</div>' +
-            '</li>' ;
-
-            textq.html(response);
+        success: function (comments) {
+            var text = '';
+            $(comments).each(function ()  {
+                 text += '<li>' +
+                '<span class="commentText">' +
+                '<p class="">' + $(this).attr("user").login + ': ' + $(this).attr("comment") + '</p>' +
+                '</span>' +
+                '</li>';
+                //todo will fix bug with type form
+            });
+            pieceOfCode.html(text);
         }
     });
 }
