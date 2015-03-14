@@ -4,9 +4,7 @@ import com.sprsec.model.Comment;
 import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.service.comment.CommentService;
-import com.sprsec.service.map.MarkerService;
 import com.sprsec.service.map.RouteService;
-import com.sprsec.service.user.UserService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,11 +19,6 @@ public class CommentController {
     @Autowired
     private CommentService commentService;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private MarkerService markerService;
 
     @Autowired
     private RouteService routeService;

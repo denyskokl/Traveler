@@ -8,16 +8,16 @@ import java.util.List;
 @Table(name = "roles", catalog = "travel")
 public class Role {
 
-	@Id
-	@Column(name = "role_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idRole;
+    @Id
+    @Column(name = "role_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idRole;
 
-	@Column(name = "role")
-	private String role;
+    @Column(name = "role")
+    private String role;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userRoles")
-	private List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     public Role() {
     }
@@ -28,20 +28,20 @@ public class Role {
     }
 
     public int getIdRole() {
-		return idRole;
-	}
+        return idRole;
+    }
 
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
-	}
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public List<User> getUsers() {
         return users;

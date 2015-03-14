@@ -1,7 +1,6 @@
 package com.sprsec.dao.map;
 
 import com.sprsec.model.Marker;
-import com.sprsec.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,8 +27,8 @@ public class MarkerDAOImpl implements MarkerDAO {
 
     @Override
     public Marker saveMarker(Marker marker) {
-            getSession().saveOrUpdate(marker);
-            return marker;
+        getSession().saveOrUpdate(marker);
+        return marker;
     }
 
     @Override
@@ -41,14 +40,8 @@ public class MarkerDAOImpl implements MarkerDAO {
 
     @Override
     public Marker getMark(Marker marker) {
-        List<Marker> markersList;
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
         query.setProperties(marker);
-        markersList = query.list();
-        if (markersList.size() > 0) {
-            return markersList.get(0);
-        } else {
-            return null;
-        }
+        return (Marker) query.uniqueResult();
     }
 }

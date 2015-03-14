@@ -18,7 +18,7 @@ public class UserDAOImpl implements UserDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-
+//todo
     public User getUser(String login) {
         List<User> userList;
         Query query = openSession().createQuery("from User u where u.login = :login");

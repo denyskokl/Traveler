@@ -1,11 +1,7 @@
 package com.sprsec.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,8 +15,8 @@ public class Route {
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "routes_markers", catalog = "travel", joinColumns = {
-            @JoinColumn(name = "router_id", nullable = false, updatable = false) },
-            inverseJoinColumns = { @JoinColumn(name = "marker_id", nullable = false, updatable = false) })
+            @JoinColumn(name = "router_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "marker_id", nullable = false, updatable = false)})
     private Set<Marker> markers = new LinkedHashSet<>();
 
     @ManyToOne(fetch = FetchType.EAGER)

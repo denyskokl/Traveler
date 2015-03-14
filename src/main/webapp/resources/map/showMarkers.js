@@ -1,5 +1,5 @@
 function createdUserMarkerTitle(marker) {
-    //todo як правиьлно воно має бути
+    //todo як правиьлно воно має бути handlebar!!!
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
