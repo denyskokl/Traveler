@@ -9,7 +9,7 @@ function createdUserMarkerTitle(marker) {
     '<div class="actionBox">' +
          '<ul class="commentList">' +
           commentMarker(marker.comments) +
-        '</ul>' +
+    '</ul>' +
     '</div>' +
     '</div>';
     return text;
