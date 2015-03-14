@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class MarkerController {
@@ -19,20 +21,15 @@ public class MarkerController {
     @Autowired
     private MarkerService markerService;
 
-//    @RequestMapping(value = "/markers", method = RequestMethod.GET)
-//    public Map<Integer, Marker> getMarkers() {
-//        List<Marker> markers = markerService.getAllMarkers();
-//        Map<Integer, Marker> markerMap = new HashMap<>();
-//        for (Marker marker : markers) {
-//            markerMap.put(marker.getMarkerId(), marker);
-//        }
-//        //todo як витягувати зразу мап
-//        return markerMap;
-//    }
-//todo refactor!!!!!!
     @RequestMapping(value = "/markers", method = RequestMethod.GET)
-           public List<Marker> getMarkers() {
-        return markerService.getAllMarkers();
+    public Map<Integer, Marker> getMarkers() {
+        List<Marker> markers = markerService.getAllMarkers();
+        Map<Integer, Marker> markerMap = new HashMap<>();
+        for (Marker marker : markers) {
+            markerMap.put(marker.getMarkerId(), marker);
+        }
+        //todo як витягувати зразу мап
+        return markerMap;
     }
 
     @RequestMapping(value = "/save_marker", method = RequestMethod.POST, produces = "application/json")
