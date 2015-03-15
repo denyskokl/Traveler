@@ -45,7 +45,7 @@ public class CommentController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
-    public void removeCommentByAdmin(@RequestBody Comment comment) throws JSONException {
+    public void removeCommentByAdmin(@RequestBody Comment comment) {
         commentService.deleteComment(comment);
     }
 }
