@@ -37,7 +37,8 @@ public class Marker {
     private List<Route> route = new ArrayList<>();
 
     @JsonManagedReference
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "marker")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "marker", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+    @org.hibernate.annotations.Cascade( {org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<Comment> comments = new ArrayList<>();
 
     public Marker() {

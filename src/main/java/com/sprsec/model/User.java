@@ -35,7 +35,8 @@ public class User {
     private List<Route> routes = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
+    @org.hibernate.annotations.Cascade( {org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<Comment> comments = new ArrayList<>();
 
     public User() {

@@ -45,8 +45,8 @@ CREATE TABLE travel.comments (
 	marker_id int NOT NULL,
 	comment varchar(250),
 	PRIMARY KEY (comment_id),
-	CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id),
-	CONSTRAINT fk_comment_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id));
+	CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id) ON DELETE CASCADE,
+	CONSTRAINT fk_comment_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id) ON DELETE CASCADE);
 
 INSERT INTO travel.users(user_id, login, password)
 	VALUES (1, 'den', '1111');
