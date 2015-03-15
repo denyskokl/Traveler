@@ -8,6 +8,7 @@ import com.sprsec.service.map.RouteService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,9 +44,10 @@ public class CommentController {
         return routeService.getRoutes().get(0);
     }
 
-    @ResponseStatus(HttpStatus.OK)
+//    @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
-    public void removeCommentByAdmin(@RequestBody Comment comment) {
+    public List<Comment> removeCommentByAdmin(@RequestBody Comment comment) {
         commentService.deleteComment(comment);
+        return commentService.getCommentsByMark();
     }
 }
