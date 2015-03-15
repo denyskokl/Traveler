@@ -45,5 +45,8 @@ public class CommentServiceImpl implements CommentService {
         return commentDAO.getCommentsByMark(marker);
     }
 
-
+    @Override
+    public void deleteComment(Comment comment) {
+        commentDAO.deleteComment(comment);
+    }
 }

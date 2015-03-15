@@ -18,30 +18,42 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
 
     var saveBtn = contentString.find('button.save-marker')[0];
 
+    var deleteCommentBtn = contentString.find('button.commentAdmin')[0];
+
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
         remove_marker(marker);
     });
 
-    if (typeof saveBtn !== 'undefined') {
-        google.maps.event.addDomListener(saveBtn, "click", function (event) {
-            var mReplace = contentString.find('span.info-content');
-            var mName = contentString.find('input.save-name')[0].value;
-            var mDesc = contentString.find('textarea.save-desc')[0].value;
-
-            if (mName == '' || mDesc == '') {
-                alert("Please enter Name and Description!");
-            } else {
-                save_marker(marker, mName, mDesc, mReplace);
-            }
+    if (typeof deleteCommentBtn !== 'undefined') {
+        google.maps.event.addDomListener(deleteCommentBtn, "click", function (event) {
+            var commentId = $(this).attr("id");
+            var comment = {commentId: commentId};
+            remove_comment(comment)
         });
-    }
 
-    //ne ponimay
-    google.maps.event.addListener(marker, 'click', function () {
-        infoWindow.open(map, marker);
-    });
+        if (typeof saveBtn !== 'undefined') {
+            google.maps.event.addDomListener(saveBtn, "click", function (event) {
+                var mReplace = contentString.find('span.info-content');
+                var mName = contentString.find('input.save-name')[0].value;
+                var mDesc = contentString.find('textarea.save-desc')[0].value;
 
-    if (InfoOpenDefault) {
-        infoWindow.open(map, marker);
+                if (mName == '' || mDesc == '') {
+                    alert("Please enter Name and Description!");
+                } else {
+                    save_marker(marker, mName, mDesc, mReplace);
+                }
+            });
+        }
+
+
+        google.maps.event.addListener(marker, 'click', function () {
+            infoWindow.open(map, marker);
+        });
+
+        if (InfoOpenDefault) {
+            infoWindow.open(map, marker);
+        }
+
+
     }
 }

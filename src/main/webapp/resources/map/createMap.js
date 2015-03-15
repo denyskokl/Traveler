@@ -1,8 +1,3 @@
-//jQuery(function($) {
-//    var script = document.createElement('script');
-//    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-//    document.body.appendChild(script);
-//});
 globalMarkers = {};
 function initialize() {
     $.get("/markers").done(function(markers) {
@@ -54,7 +49,6 @@ function addMarkers(markers) {
             return function () {
                 var ggggggggg = $(createdUserMarkerTitle(markers[i]));
                 var mReplace = ggggggggg.find('span.commentList1');
-                //infoWindow.setContent(createdUserMarkerTitle(markers[i]));
                 infoWindow.setContent(ggggggggg[0]);
                 infoWindow.open(map, marker);
                 addEventClick(mReplace)

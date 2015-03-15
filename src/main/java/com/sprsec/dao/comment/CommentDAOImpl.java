@@ -40,4 +40,12 @@ public class CommentDAOImpl implements CommentDAO {
         query.setParameter("marker", marker);
         return query.list();
     }
+
+    @Override
+    public void deleteComment(Comment comment) {
+//        getSession().delete(comment);
+        Query query = getSession().createQuery("delete from Comment m where m.commentId = :commentId");
+        query.setParameter("commentId", comment.getCommentId());
+        query.executeUpdate();
+    }
 }

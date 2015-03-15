@@ -12,4 +12,6 @@ public interface CommentService {
     List<Comment> getAllComments();
 
     List<Comment> getCommentsByMark(Marker marker);
+
+    void deleteComment(Comment comment);
 }

@@ -42,4 +42,10 @@ public class CommentController {
     public Route getRoute(@RequestBody Marker marker) throws JSONException {
         return routeService.getRoutes().get(0);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
+    public void removeCommentByAdmin(@RequestBody Comment comment) throws JSONException {
+        commentService.deleteComment(comment);
+    }
 }
