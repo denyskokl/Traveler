@@ -10,6 +10,7 @@
     <script src="${pageContext.request.contextPath}/resources/map/proba/createMarker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/proba/removeMarker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/proba/saveMarker.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
 
 </head>
 <body>

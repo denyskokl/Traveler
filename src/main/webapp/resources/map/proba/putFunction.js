@@ -22,19 +22,23 @@ $(document).ready(function () {
 
         map = new google.maps.Map(document.getElementById("map-canvas"), googleMapOptions);
 
-        $.get("/markers", function (data) {
-            jQuery.each(data, function() {
+        $.get("/markers", function (markers) {
+            jQuery.each(markers, function () {
                 var name = $(this).attr('message');
                 var address = '<p>' + $(this).attr('address') + '</p>';
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
                 var contentString = '<div class="marker-info-win">' +
                     '<div class="marker-inner-win"><span class="info-content">' +
-                    '<h1 class="marker-heading">' + name + '</h1>' +
-                    address +
+                        //'<h1 class="marker-heading">' + name + '</h1>' +
+                        //address +
+                    createdAdminMarkerTitle($(this)) +
                     '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
                     '</div></div>';
 
+
                 create_marker(point, name, contentString, false, false, map, 'http://localhost:8080/resources/img/pin_green.png');
+
+
             });
         });
 
@@ -46,13 +50,44 @@ $(document).ready(function () {
                 '</form>' +
                 '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
             var contentString = '<div class="marker-info-win">' +
-            '<div class="marker-inner-win"><span class="info-content">' +
-            '<h1 class="marker-heading">' + 'New Marker' + '</h1>' +
+                '<div class="marker-inner-win"><span class="info-content">' +
+                '<h1 class="marker-heading">' + 'New Marker' + '</h1>' +
                 EditForm +
-            '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
-            '</div></div>';
+                '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
+                '</div></div>';
             create_marker(event.latLng, 'New Marker', contentString, true, true, map, 'http://localhost:8080/resources/img/pin_blue.png');
         });
     }
 });
 
+function createdAdminMarkerTitle(marker) {
+    text = '<div class="detailBox">' +
+    '<div class="titleBox">' +
+    '<label>' + marker.attr('message') + '</label>' +
+    '</div>' +
+    '<div class="commentBox">' +
+    '<p class="taskDescription">' + marker.attr('address') + '</p>' +
+    '</div>' +
+    '<div class="actionBox">' +
+    '<span class="commentList1">' +
+    '<ul class="commentList">' +
+    commentAdminMarker(marker) +
+    '</ul>' +
+    '</span>' +
+    '<div id="form-inline" class="form-inline" >' +
+    '</div>' +
+    '</div>' +
+    '</div>';
+    return text;
+}
+function commentAdminMarker(marker) {
+    var text = '';
+    for (var i = marker.attr('comments').length - 1; i >= 0; i--) {
+        text += '<li>' +
+        '<span class="commentText">' +
+        '<p class="">' + marker.attr('comments')[i].user.login + ': ' + marker.attr('comments')[i].comment + '</p>' +
+        '</span>' +
+        '</li>';
+    }
+    return text;
+}
