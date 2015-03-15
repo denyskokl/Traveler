@@ -23,21 +23,16 @@ $(document).ready(function () {
         map = new google.maps.Map(document.getElementById("map-canvas"), googleMapOptions);
 
         $.get("/markers", function (markers) {
-            jQuery.each(markers, function () {
+            jQuery.each(markers, function (key, value) {
                 var name = $(this).attr('message');
                 var address = '<p>' + $(this).attr('address') + '</p>';
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
                 var contentString = '<div class="marker-info-win">' +
                     '<div class="marker-inner-win"><span class="info-content">' +
-
                     createdAdminMarkerTitle($(this)) +
                     '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
                     '</div></div>';
-
-
                 create_marker(point, name, contentString, false, false, map, 'http://localhost:8080/resources/img/pin_green.png');
-
-
             });
         });
 

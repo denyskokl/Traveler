@@ -4,6 +4,7 @@ import com.sprsec.model.Comment;
 import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.service.comment.CommentService;
+import com.sprsec.service.map.MarkerService;
 import com.sprsec.service.map.RouteService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+
+    @Autowired
+    private MarkerService markerService;
 
 
     @Autowired
@@ -45,9 +49,10 @@ public class CommentController {
     }
 
 //    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     @RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
-    public List<Comment> removeCommentByAdmin(@RequestBody Comment comment) {
+    public Marker removeCommentByAdmin(@RequestBody Comment comment) {
         commentService.deleteComment(comment);
-        return commentService.getCommentsByMark();
+        return markerService.getMarker(comment.getMarker());
     }
 }

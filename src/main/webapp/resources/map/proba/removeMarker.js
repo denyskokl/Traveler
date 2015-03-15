@@ -1,9 +1,9 @@
-function remove_marker(Marker) {
-    if (Marker.getDraggable()) {
-        Marker.setMap(null);
+function remove_marker(marker) {
+    if (marker.getDraggable()) {
+        marker.setMap(null);
     }
     else {
-        var mLatLang = Marker.getPosition().toUrlValue().split(",");
+        var mLatLang = marker.getPosition().toUrlValue().split(",");
         var myData = {longitude: mLatLang[0], latitude: mLatLang[1]};
         $.ajax({
             type: "POST",
@@ -12,7 +12,7 @@ function remove_marker(Marker) {
             dataType: 'json',
             data: JSON.stringify(myData),
             success: function (data, Httpstatus) {
-                Marker.setMap(null);
+                marker.setMap(null);
                 alert(Httpstatus);
             },
             error: function (xhr, ajaxOptions, thrownError) {

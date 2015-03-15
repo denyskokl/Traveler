@@ -18,19 +18,25 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
 
     var saveBtn = contentString.find('button.save-marker')[0];
 
-    var deleteCommentBtn = contentString.find('button.commentAdmin')[0];
+    var deleteCommentBtns = contentString.find('button.commentAdmin');
 
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
         remove_marker(marker);
     });
 
-    if (typeof deleteCommentBtn !== 'undefined') {
-        google.maps.event.addDomListener(deleteCommentBtn, "click", function (event) {
-            var commentId = $(this).attr("id");
-            var comment = {commentId: commentId};
-            remove_comment(comment)
+    if (typeof deleteCommentBtns !== 'undefined') {
+        $.each(deleteCommentBtns, function(index, value ) {
+            google.maps.event.addDomListener(value, "click", function (event) {
+                var commentId = $(this).attr("id");
+                var mLatLang = marker.getPosition().toUrlValue().split(",");
+                var myData = {longitude: mLatLang[0], latitude: mLatLang[1]};
+                var comment = {commentId: commentId, marker: myData};
+
+                remove_comment(comment, contentString.find('span.commentList1'))
+            });
         });
     }
+
     if (typeof saveBtn !== 'undefined') {
         google.maps.event.addDomListener(saveBtn, "click", function (event) {
             var mReplace = contentString.find('span.info-content');

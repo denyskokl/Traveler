@@ -29,4 +29,9 @@ public class MarkerServiceImpl implements MarkerService {
     public int removeMarker(Marker marker) {
         return markerDAO.removeMarker(marker);
     }
+
+    @Override
+    public Marker getMarker(Marker marker) {
+        return markerDAO.getMark(marker);
+    }
 }
