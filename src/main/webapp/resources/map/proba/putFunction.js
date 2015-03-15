@@ -45,10 +45,10 @@ $(document).ready(function () {
         google.maps.event.addListener(map, 'rightclick', function (event) {
             var EditForm = '<p><div class="marker-edit">' +
                 '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
-                '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>' +
-                '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>' +
-                '</form>' +
-                '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
+            '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>' +
+            '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>' +
+            '</form>' +
+            '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
             var contentString = '<div class="marker-info-win">' +
                 '<div class="marker-inner-win"><span class="info-content">' +
                 '<h1 class="marker-heading">' + 'New Marker' + '</h1>' +

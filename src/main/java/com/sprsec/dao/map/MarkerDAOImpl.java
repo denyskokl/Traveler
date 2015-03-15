@@ -1,5 +1,6 @@
 package com.sprsec.dao.map;
 
+import com.sprsec.model.Comment;
 import com.sprsec.model.Marker;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -33,9 +34,16 @@ public class MarkerDAOImpl implements MarkerDAO {
 
     @Override
     public int removeMarker(Marker marker) {
-        Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
-        query.setProperties(marker);
-        return query.executeUpdate();
+        Marker m = getMark(marker);
+        for (Comment com : m.getComments()){
+            getSession().delete(com);
+        }
+        getSession().delete(m);
+
+//        Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
+//        query.setProperties(marker);
+//        return query.executeUpdate();
+        return 1;
     }
 
     @Override

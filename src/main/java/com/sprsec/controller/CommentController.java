@@ -23,7 +23,7 @@ public class CommentController {
     @Autowired
     private RouteService routeService;
 
-//    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public List<Comment> saveComment(@RequestBody Comment comment) {
