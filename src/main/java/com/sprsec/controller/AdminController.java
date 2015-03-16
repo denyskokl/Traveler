@@ -17,7 +17,7 @@ public class AdminController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/bla")
+    @RequestMapping(value = "/admin_management")
     public String getStartPage() {
         return "content/adminManagement";
     }
