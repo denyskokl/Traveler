@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
             }
         }
         user.setUserRoles(roles);
-        user.setUserStatus(UserStatus.ACTIVE);
+        user.setUserStatus(UserStatus.ENABLED);
         userDAO.addUser(user);
     }
 
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getStatusByUser(User user) {
-        return userDAO.getStatusByUser(user);
+    public User changeStatus(User user) {
+        return userDAO.changeStatus(user);
     }
 }

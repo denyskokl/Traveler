@@ -26,6 +26,5 @@
 
 
 </table>
-<button id="admin_list">Get</button>
 </body>
 </html>

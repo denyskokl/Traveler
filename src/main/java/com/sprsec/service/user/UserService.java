@@ -12,5 +12,5 @@ public interface UserService {
 
 	List<User> getAllUsers();
 
-	User getStatusByUser(User user);
+	User changeStatus(User user);
 }

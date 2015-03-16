@@ -32,7 +32,7 @@ public class AdminController {
     @RequestMapping(value = "/admin_user_status", method = RequestMethod.POST)
     private User changeStatus(@RequestBody User user) {
 
-        return userService.getStatusByUser(user);
+        return userService.changeStatus(user);
     }
 
 }
