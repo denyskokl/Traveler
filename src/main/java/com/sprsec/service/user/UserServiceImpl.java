@@ -2,6 +2,7 @@ package com.sprsec.service.user;
 
 import com.sprsec.dao.user.EnumRoles;
 import com.sprsec.dao.user.UserDAO;
+import com.sprsec.dao.user.UserStatus;
 import com.sprsec.model.Role;
 import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -34,6 +36,12 @@ public class UserServiceImpl implements UserService {
             }
         }
         user.setUserRoles(roles);
+        user.setUserStatus(UserStatus.ACTIVE);
         userDAO.addUser(user);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
     }
 }

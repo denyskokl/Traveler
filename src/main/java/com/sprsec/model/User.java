@@ -1,6 +1,7 @@
 package com.sprsec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sprsec.dao.user.UserStatus;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,6 +23,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_status")
+    private UserStatus userStatus;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -97,5 +102,13 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
     }
 }

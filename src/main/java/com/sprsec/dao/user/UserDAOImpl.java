@@ -18,7 +18,8 @@ public class UserDAOImpl implements UserDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-//todo
+
+
     public User getUser(String login) {
         List<User> userList;
         Query query = openSession().createQuery("from User u where u.login = :login");
@@ -34,5 +35,11 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public void addUser(User user) {
         openSession().saveOrUpdate(user);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<User> getAllUsers() {
+        return openSession().createCriteria(User.class).list();
     }
 }

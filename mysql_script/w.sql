@@ -4,6 +4,7 @@ CREATE TABLE travel.users (
 	user_id int NOT NULL AUTO_INCREMENT,
 	login varchar(60) NOT NULL,
 	password varchar(60) NOT NULL,
+	user_status ENUM(60) NOT NULL,
 	PRIMARY KEY (user_id));
 
 CREATE TABLE travel.roles (
