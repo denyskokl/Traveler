@@ -42,4 +42,10 @@ public class UserDAOImpl implements UserDAO {
     public List<User> getAllUsers() {
         return openSession().createCriteria(User.class).list();
     }
+
+    @Override
+    public User getStatusByUser(User user) {
+        Query query = openSession().createQuery("update User u set u.");
+        return null;
+    }
 }

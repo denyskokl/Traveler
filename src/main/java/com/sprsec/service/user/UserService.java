@@ -11,4 +11,6 @@ public interface UserService {
 	public void addUser(User user);
 
 	List<User> getAllUsers();
+
+	User getStatusByUser(User user);
 }
