@@ -11,7 +11,7 @@ function addToTable(obj) {
 }
 $(document).ready(function () {
 
-    $.post("/admin_list", function (data) {
+    $.post("/admin/admin_list", function (data) {
         var contentToTable = '';
         data.forEach(function (el) {
 
@@ -22,26 +22,11 @@ $(document).ready(function () {
 
         $("input:checkbox").change(function () {
             if ($(this).is(":checked")) {
-                alert("good");
-                //$.ajax({
-                //    url: '/admin_user_status',
-                //    type: 'POST',
-                //    data: { idUSer:$(this).attr("user_id"), userStatus:"DISABLED" }
-                //});
-
                 var user = {idUser : $(this).attr("id"), userStatus:"ENABLED"};
                 returnStatus(user);
             } else {
-                alert("basd");
-
                 var user = {idUser : $(this).attr("id"), userStatus:"DISABLED"};
-
                 returnStatus(user);
-                //$.ajax({
-                //    url: '/admin_user_status',
-                //    type: 'POST',
-                //    data: { idUSer:$(this).attr("user_id"), userStatus:"ENABLED"}
-                //});
             }
         });
     });
@@ -50,13 +35,13 @@ $(document).ready(function () {
 
 function returnStatus(user) {
     $.ajax({
-        url: "/admin_user_status",
+        url: "/admin/admin_user_status",
         type: "POST",
         data : JSON.stringify(user),
         contentType: 'application/json',
         dataType: 'json',
-        success : function(user){
-            alert(user);
+        success: function (user) {
+            alert(user.login + ' is ' + user.userStatus.toLowerCase());
         }
     });
 }

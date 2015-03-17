@@ -28,16 +28,22 @@
         <div class="col-lg-6 well">
             <form class="form-signin" id="form" action="/j_spring_security_check"
                   method="POST" onsubmit="function checkForm() {
-                var u_login = document.forms['form']['us_name'].value;
-                var pass = document.forms['form']['us_pass'].value;
-                if (u_login == null || u_login == '') {
-                     document.forms['form']['us_name'].focus(); return false;
-                     }
-                     if (pass == null || pass == '') {document.forms['form']['us_name'].focus();
-                        return false;
-                        } return true;
-                }
+                    var u_login = document.forms['form']['us_name'].value;
+                    var pass = document.forms['form']['us_pass'].value;
+                    if (u_login == null || u_login == '') {
+                         document.forms['form']['us_name'].focus(); return false;
+                    } if (pass == null || pass == '') {document.forms['form']['us_name'].focus();
+                         return false;
+                    } return true;
+                  }
+
             return checkForm()">
+                <c:if test="${not empty error}">
+                    <div class="error">${error}</div>
+                </c:if>
+                <c:if test="${not empty msg}">
+                    <div class="msg">${msg}</div>
+                </c:if>
                 <label for="us_name">Login</label>
                 <input type="text" id="us_name" class="form-control" placeholder="" name="username" required
                        autofocus></br>
