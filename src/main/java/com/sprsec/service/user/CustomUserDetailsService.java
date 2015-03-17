@@ -1,6 +1,7 @@
 package com.sprsec.service.user;
 
 import com.sprsec.dao.user.UserDAO;
+import com.sprsec.dao.user.UserStatus;
 import com.sprsec.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,8 +18,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Service
+@Service("userDetailsService")
 @Transactional(readOnly = true)
+
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -29,10 +31,11 @@ public class CustomUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {
 
         com.sprsec.model.User domainUser = userDAO.getUser(login);
+
         return new User(
                 domainUser.getLogin(),
                 domainUser.getPassword(),
-                true,
+                domainUser.getUserStatus().equals(UserStatus.ENABLED),
                 true,
                 true,
                 true,
@@ -41,9 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     private List<GrantedAuthority> getUserAuthorities(Set<Role> roles) {
-
         Set<GrantedAuthority> authorities = new HashSet<>();
-
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRole()));
         }

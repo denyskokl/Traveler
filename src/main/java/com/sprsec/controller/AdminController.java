@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class AdminController {
 
     @Autowired
@@ -31,7 +32,6 @@ public class AdminController {
     @ResponseBody
     @RequestMapping(value = "/admin_user_status", method = RequestMethod.POST)
     private User changeStatus(@RequestBody User user) {
-
         return userService.changeStatus(user);
     }
 
