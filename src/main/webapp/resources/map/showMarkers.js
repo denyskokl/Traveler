@@ -88,6 +88,11 @@ function addToTrip(marker) {
 function calcRoute(route) {
     var directionsService = new google.maps.DirectionsService();
 
+    var newRouteBtn =  "<button class='newRouteBtn close' aria-hidden='true'>Add new route</button>";
+    $('#route_button').append(newRouteBtn).click(function() {
+        alert('yra');
+    });
+
     if (route.markers.length > 1) {
         var start = new google.maps.LatLng(route.markers[0].longitude, route.markers[0].latitude);
         var end = new google.maps.LatLng(route.markers[route.markers.length - 1]

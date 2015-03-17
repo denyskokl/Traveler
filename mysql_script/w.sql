@@ -4,7 +4,7 @@ CREATE TABLE travel.users (
 	user_id int NOT NULL AUTO_INCREMENT,
 	login varchar(60) NOT NULL,
 	password varchar(60) NOT NULL,
-	user_status ENUM(60) NOT NULL,
+	user_status enum('ENABLED','DISABLED') DEFAULT NULL,
 	PRIMARY KEY (user_id));
 
 CREATE TABLE travel.roles (
@@ -49,10 +49,10 @@ CREATE TABLE travel.comments (
 	CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id) ON DELETE CASCADE,
 	CONSTRAINT fk_comment_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id) ON DELETE CASCADE);
 
-INSERT INTO travel.users(user_id, login, password)
-	VALUES (1, 'den', '1111');
-INSERT INTO travel.users(user_id, login, password)
-	VALUES (2, 'serg', '1111');
+INSERT INTO travel.users(user_id, login, password, user_status)
+	VALUES (1, 'den', '1111', 'ENABLED');
+INSERT INTO travel.users(user_id, login, password, user_status)
+	VALUES (2, 'serg', '1111', 'ENABLED');
 
 INSERT INTO travel.roles (role_id, role)
 	VALUES (1, 'ROLE_ADMIN');
