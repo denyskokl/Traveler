@@ -73,9 +73,7 @@ function addToTrip(marker) {
         url: "/route",
         type: "POST",
         contentType: 'application/json',
-        //accept: 'application/json',
-        //dataType: 'json',
-        data: JSON.stringify(marker),
+        data: JSON.stringify(route),
         success: function (route) {
             calcRoute(route)
         },
@@ -87,11 +85,6 @@ function addToTrip(marker) {
 
 function calcRoute(route) {
     var directionsService = new google.maps.DirectionsService();
-
-    var newRouteBtn =  "<button class='newRouteBtn close' aria-hidden='true'>Add new route</button>";
-    $('#route_button').append(newRouteBtn).click(function() {
-        alert('yra');
-    });
 
     if (route.markers.length > 1) {
         var start = new google.maps.LatLng(route.markers[0].longitude, route.markers[0].latitude);

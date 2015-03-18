@@ -1,6 +1,5 @@
 package com.sprsec.controller;
 
-import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.service.map.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +17,8 @@ public class RouteController {
 
     @ResponseBody
     @RequestMapping(value = "/route", method = RequestMethod.POST)
-    public Route saveMarkToRoute(@RequestBody Marker marker) {
-        Route route = routeService.getRoute(1);
-        route.getMarkers().add(marker);
-        routeService.saveRoute(route);
+    public Route saveMarkToRoute(@RequestBody Route route) {
+        routeService.saveOrUpdateRoute(route);
         return route;
     }
 }

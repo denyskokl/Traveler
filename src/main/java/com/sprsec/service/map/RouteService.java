@@ -9,5 +9,5 @@ public interface RouteService {
 
     public Route getRoute(int id);
 
-    public void saveRoute(Route route);
+    public Route saveOrUpdateRoute(Route route);
 }

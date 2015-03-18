@@ -1,6 +1,5 @@
 package com.sprsec.service.map;
 
-import com.sprsec.dao.map.MarkerDAO;
 import com.sprsec.dao.map.RouteDAO;
 import com.sprsec.dao.user.UserDAO;
 import com.sprsec.model.Route;
@@ -23,8 +22,6 @@ public class RouteServiceImpl implements RouteService {
     @Autowired
     private UserDAO userDAO;
 
-    @Autowired
-    private MarkerDAO markerDAO;
 
     @Override
     public List<Route> getRoutes() {
@@ -39,11 +36,15 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public void saveRoute(Route route) {
+    public Route saveOrUpdateRoute(Route route) {
+        Route nextRoute = routeDAO.getRoute(route.getRouteId());
+        nextRoute.getMarkers().addAll(route.getMarkers());
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        User user = userDAO.getUser(name);
-        route.setUser(user);
-        routeDAO.saveRoute(route);
+        User user = userDAO.getUser(auth.getName());
+        nextRoute.setUser(user);
+        routeDAO.saveRoute(nextRoute);
+
+        return nextRoute;
     }
 }

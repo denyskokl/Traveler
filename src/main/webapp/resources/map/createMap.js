@@ -4,6 +4,9 @@ function initialize() {
         globalMarkers = markers;
         addMarkers(globalMarkers);
     });
+    $('#route_button').click(function() {
+        alert('yra');
+    });
 }
 var rendererOptions = {
     draggable: true
@@ -18,7 +21,9 @@ function addEventClick(mReplace) {
 
     $(".addButtonToTrip_js").click(function() {
         var objTrip = $(this).attr("objTrip");
-        addToTrip(globalMarkers[objTrip]);
+        var routeId = 1;
+        var route = {routeId : routeId, markers: {marker : globalMarkers[objTrip]} };
+        addToTrip(route);
     });
 }
 
@@ -48,9 +53,9 @@ function addMarkers(markers) {
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             //todo refactoring code
             return function () {
-                var ggggggggg = $(createdUserMarkerTitle(markers[i]));
-                var mReplace = ggggggggg.find('span.commentList1');
-                infoWindow.setContent(ggggggggg[0]);
+                var userMarkTitle = $(createdUserMarkerTitle(markers[i]));
+                var mReplace = userMarkTitle.find('span.commentList1');
+                infoWindow.setContent(userMarkTitle[0]);
                 infoWindow.open(map, marker);
                 addEventClick(mReplace)
             }
