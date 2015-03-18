@@ -19,12 +19,12 @@
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
-        <jsp:include page="frames/authorizationMenu.jsp"/>
+        <jsp:include page="frames/adminMenu.jsp"/>
         <jsp:include page="content/contentAdmin.jsp"/>
     </sec:authorize>
 
     <sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-        <jsp:include page="frames/authorizationMenu.jsp"/>
+        <jsp:include page="frames/userMenu.jsp"/>
         <jsp:include page="content/contentUser.jsp"/>
     </sec:authorize>
 </div>

@@ -34,5 +34,4 @@ public class AdminController {
     private User changeStatus(@RequestBody User user) {
         return userService.changeStatus(user);
     }
-
 }

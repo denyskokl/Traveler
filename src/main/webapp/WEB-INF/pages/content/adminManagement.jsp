@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="../frames/authorizationMenu.jsp"/>
+<jsp:include page="../frames/adminMenu.jsp"/>
 <table id="content">
 
     <th>Login</th>
