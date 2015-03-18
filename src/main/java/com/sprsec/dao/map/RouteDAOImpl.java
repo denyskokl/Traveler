@@ -22,11 +22,11 @@ public class RouteDAOImpl implements RouteDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<Route> getRoutes(User user) {
-        List<Route> userList = openSession().createQuery("from Route r where r.user = :user")
+        List<Route> routeList = openSession().createQuery("from Route r where r.user = :user")
                 .setParameter("user", user)
                 .list();
-        if (userList.size() > 0) {
-            return userList;
+        if (routeList.size() > 0) {
+            return routeList;
         }
         return null;
     }
