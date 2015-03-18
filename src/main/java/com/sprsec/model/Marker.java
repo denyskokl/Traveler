@@ -3,7 +3,6 @@ package com.sprsec.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ public class Marker {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "markers")
-    private List<Route> route = new ArrayList<>();
+    private List<Route> routes = new ArrayList<>();
 
     @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "marker", cascade={CascadeType.PERSIST, CascadeType.REMOVE})
@@ -104,12 +103,12 @@ public class Marker {
         this.comments = comments;
     }
 
-    public List<Route> getRoute() {
-        return route;
+    public List<Route> getRoutes() {
+        return routes;
     }
 
-    public void setRoute(List<Route> route) {
-        this.route = route;
+    public void setRoutes(List<Route> routes) {
+        this.routes = routes;
     }
 
     @Override
