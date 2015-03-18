@@ -11,8 +11,8 @@ function save_marker(Marker, mName, mAddress, replaceWin) {
         dataType: 'json',
         data: JSON.stringify(myData),
         success: function (marker) {
-            console.log(marker);
-            var v1 = "<h1 class=\"marker-heading\">" + marker.message + "</h1><p>" + marker.address + "</p>"
+            var v1 = "<h1 class=\"marker-heading\">" + marker.message + "</h1><p>" + marker.address + "</p>";
+            console.log(replaceWin);
             replaceWin.html(v1);
             Marker.setDraggable(false);
             Marker.setIcon('http://localhost:8080/resources/img/pin_green.png');
