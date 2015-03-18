@@ -28,14 +28,9 @@ public class MarkerController {
         for (Marker marker : markers) {
             markerMap.put(marker.getMarkerId(), marker);
         }
-        //todo як витягувати зразу мап
+        //todo перенести в сервіс
         return markerMap;
     }
-//todo refactor!!!!!!
-//    @RequestMapping(value = "/markers", method = RequestMethod.GET)
-//           public List<Marker> getMarkers() {
-//        return markerService.getAllMarkers();
-//    }
 
     @RequestMapping(value = "/save_marker", method = RequestMethod.POST, produces = "application/json")
     public Marker saveMarker(@RequestBody Marker marker) throws JSONException {

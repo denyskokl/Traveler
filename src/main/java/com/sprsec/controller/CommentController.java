@@ -47,7 +47,6 @@ public class CommentController {
         return routeService.getRoutes().get(0);
     }
 
-//    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     @RequestMapping(value = "/remove_comment", method = RequestMethod.POST)
     public Marker removeCommentByAdmin(@RequestBody Comment comment) {
