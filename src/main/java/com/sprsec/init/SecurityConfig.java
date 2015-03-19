@@ -1,10 +1,9 @@
 package com.sprsec.init;
 
+import com.sprsec.service.user.AuthenticationErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -43,7 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login?error=1")
+//                .failureUrl("/login?error=1")
+                .failureHandler(new AuthenticationErrorHandler())
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()

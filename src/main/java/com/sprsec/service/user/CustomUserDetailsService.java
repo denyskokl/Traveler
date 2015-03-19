@@ -31,6 +31,9 @@ public class CustomUserDetailsService implements UserDetailsService {
             throws UsernameNotFoundException {
 
         com.sprsec.model.User domainUser = userDAO.getUser(login);
+        if (!domainUser.getUserStatus().equals(UserStatus.ENABLED)) {
+            throw new UserInactiveException("User is not active");
+        }
 
         return new User(
                 domainUser.getLogin(),

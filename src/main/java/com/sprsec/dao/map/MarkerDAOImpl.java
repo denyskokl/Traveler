@@ -45,4 +45,9 @@ public class MarkerDAOImpl implements MarkerDAO {
         query.setProperties(marker);
         return (Marker) query.uniqueResult();
     }
+
+    @Override
+    public Marker getMark(int markerId) {
+        return (Marker) getSession().get(Marker.class, markerId);
+    }
 }

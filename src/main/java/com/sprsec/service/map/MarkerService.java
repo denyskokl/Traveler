@@ -13,4 +13,6 @@ public interface MarkerService {
     int removeMarker(Marker marker);
 
     Marker getMarker(Marker marker);
+
+    Marker getMarker(int markerId);
 }

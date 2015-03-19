@@ -22,8 +22,7 @@ function addEventClick(mReplace) {
     $(".addButtonToTrip_js").click(function() {
         var objTrip = $(this).attr("objTrip");
         var routeId = 1;
-        var route = {routeId : routeId, markers: [{marker : globalMarkers[objTrip]}] };
-        addToTrip(route);
+        addToTrip(routeId, objTrip);
     });
 }
 

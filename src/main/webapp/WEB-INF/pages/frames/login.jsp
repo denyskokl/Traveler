@@ -51,7 +51,7 @@
                 <input type="password" id="us_pass" name="password" class="form-control" placeholder="" required>
 
                 <div align="right" style="margin-top: 15px">
-                    <label for="remember">Remebmer me:</label>
+                    <label for="remember">Remember me:</label>
                     <input type="checkbox" id="remember" name="_spring_security_remember_me">
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>

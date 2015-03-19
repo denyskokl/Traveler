@@ -1,21 +1,13 @@
 package com.sprsec.controller;
 
-import com.sprsec.dao.user.EnumRoles;
-import com.sprsec.model.Role;
 import com.sprsec.model.User;
-import com.sprsec.service.user.RoleService;
 import com.sprsec.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
-import java.util.Set;
 
 @Controller
 public class LoginController {
@@ -42,7 +34,7 @@ public class LoginController {
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
-            model.addObject("error", "Invalid username and password!");
+            model.addObject("error", error);
         }
         model.setViewName("/frames/login");
         return model;

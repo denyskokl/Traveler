@@ -13,4 +13,6 @@ public interface MarkerDAO {
     int removeMarker(Marker marker);
 
     Marker getMark(Marker marker);
+
+    Marker getMark(int markerId);
 }

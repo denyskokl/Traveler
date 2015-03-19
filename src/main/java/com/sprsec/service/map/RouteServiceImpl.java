@@ -3,7 +3,6 @@ package com.sprsec.service.map;
 import com.sprsec.dao.map.RouteDAO;
 import com.sprsec.dao.user.UserDAO;
 import com.sprsec.model.Route;
-import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -36,15 +35,7 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public Route saveOrUpdateRoute(Route route) {
-        Route nextRoute = routeDAO.getRoute(route.getRouteId());
-        nextRoute.getMarkers().addAll(route.getMarkers());
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userDAO.getUser(auth.getName());
-        nextRoute.setUser(user);
-        routeDAO.saveRoute(nextRoute);
-
-        return nextRoute;
+    public void saveOrUpdateRoute(Route route) {
+        routeDAO.saveRoute(route);
     }
 }

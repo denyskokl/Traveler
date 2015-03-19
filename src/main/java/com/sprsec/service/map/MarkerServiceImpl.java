@@ -34,4 +34,9 @@ public class MarkerServiceImpl implements MarkerService {
     public Marker getMarker(Marker marker) {
         return markerDAO.getMark(marker);
     }
+
+    @Override
+    public Marker getMarker(int markerId) {
+        return markerDAO.getMark(markerId);
+    }
 }

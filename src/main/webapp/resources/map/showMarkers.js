@@ -68,18 +68,26 @@ function addComments(marker, pieceOfCode) {
     });
 }
 
-function addToTrip(route) {
-    $.ajax({
-        url: "/route",
-        type: "POST",
-        contentType: 'application/json',
-        data: JSON.stringify(route),
-        success: function (route) {
-            calcRoute(route)
-        },
-        error: function (err) {
-            alert(JSON.stringify(err));
-        }
+function addToTrip(routeId, markerId) {
+    $.post("/route",  {
+        routeId : routeId,
+        markerId : markerId
+    }, function (route) {
+        calcRoute(route);
+    //}); {
+    //    url: "/route",
+    //    type: "POST",
+    //    contentType: 'application/json',
+    //    data: {
+    //        routeId : routeId,
+    //        markerId : markerId
+    //    },
+    //    success: function (route) {
+    //        calcRoute(route)
+    //    },
+    //    error: function (err) {
+    //        alert(JSON.stringify(err));
+    //    }
     });
 }
 
