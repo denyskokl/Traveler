@@ -68,7 +68,7 @@ function addComments(marker, pieceOfCode) {
     });
 }
 
-function addToTrip(marker) {
+function addToTrip(route) {
     $.ajax({
         url: "/route",
         type: "POST",

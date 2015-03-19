@@ -1,5 +1,6 @@
 package com.sprsec.controller;
 
+import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import com.sprsec.service.map.RouteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Controller
 public class RouteController {

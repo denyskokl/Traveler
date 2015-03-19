@@ -21,11 +21,12 @@ $(document).ready(function () {
 
 
         $("input:checkbox").change(function () {
+            var user;
             if ($(this).is(":checked")) {
-                var user = {idUser : $(this).attr("id"), userStatus:"ENABLED"};
+                user = {idUser : $(this).attr("id"), userStatus:"ENABLED"};
                 returnStatus(user);
             } else {
-                var user = {idUser : $(this).attr("id"), userStatus:"DISABLED"};
+                user = {idUser : $(this).attr("id"), userStatus:"DISABLED"};
                 returnStatus(user);
             }
         });

@@ -54,6 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
     }
 
+    //todo надо ли???
     @Bean
     public DelegatingFilterProxy springSecurityFileterChain() {
         DelegatingFilterProxy filterProxy = new DelegatingFilterProxy();
