@@ -14,7 +14,16 @@
             font-weight: normal;
             border: 1px solid #fef5d5;
         }
+        #content th{
 
+            padding: 10px;
+
+        }
+        #content {
+
+            margin-left: 30px;
+            pa
+        }
     </style>
 </head>
 <body>

@@ -74,17 +74,6 @@ function addToTrip(routeId, markerId) {
         markerId : markerId
     }, function (route) {
         calcRoute(route);
-    //}); {
-    //    url: "/route",
-    //    type: "POST",
-    //    contentType: 'application/json',
-    //    data: {
-    //        routeId : routeId,
-    //        markerId : markerId
-    //    },
-    //    success: function (route) {
-    //        calcRoute(route)
-    //    },
     //    error: function (err) {
     //        alert(JSON.stringify(err));
     //    }
