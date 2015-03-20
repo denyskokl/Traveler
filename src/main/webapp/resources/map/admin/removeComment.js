@@ -15,7 +15,6 @@ function remove_comment(comment, pieceOfCode) {
                 '</span>' +
                 '</li>';
             }
-            //todo не навешиваются слушатели на обновленные коменты
             pieceOfCode.html(text);
         },
         error: function (xhr, ajaxOptions, thrownError) {

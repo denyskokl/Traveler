@@ -23,11 +23,8 @@ public class RouteController {
     @ResponseBody
     @RequestMapping(value = "/route", method = RequestMethod.POST)
     public Route saveMarkToRoute(@RequestParam int routeId,@RequestParam int markerId) {
-
         Route route = routeService.getRoute(routeId);
-
         Marker marker = markerService.getMarker(markerId);
-
         route.getMarkers().add(marker);
         routeService.saveOrUpdateRoute(route);
         return route;

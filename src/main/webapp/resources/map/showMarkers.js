@@ -61,7 +61,6 @@ function addComments(marker, pieceOfCode) {
                 '<p class="">' + $(this).attr("user").login + ': ' + $(this).attr("comment") + '</p>' +
                 '</span>' +
                 '</li>';
-                //todo will fix bug with type form
             });
             pieceOfCode.html(text);
         }
@@ -74,9 +73,6 @@ function addToTrip(routeId, markerId) {
         markerId : markerId
     }, function (route) {
         calcRoute(route);
-    //    error: function (err) {
-    //        alert(JSON.stringify(err));
-    //    }
     });
 }
 

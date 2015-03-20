@@ -26,7 +26,6 @@ public class LoginController {
             @RequestParam("password") String password) {
         User user = new User(login, password);
         userService.addUser(user);
-        //todo validation, spring mvc forward
         return "redirect:/";
     }
 

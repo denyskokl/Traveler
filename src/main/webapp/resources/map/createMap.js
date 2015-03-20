@@ -50,7 +50,6 @@ function addMarkers(markers) {
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            //todo refactoring code
             return function () {
                 var userMarkTitle = $(createdUserMarkerTitle(markers[i]));
                 var mReplace = userMarkTitle.find('span.commentList1');

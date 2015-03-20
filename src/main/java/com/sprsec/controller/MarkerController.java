@@ -28,7 +28,6 @@ public class MarkerController {
         for (Marker marker : markers) {
             markerMap.put(marker.getMarkerId(), marker);
         }
-        //todo перенести в сервіс
         return markerMap;
     }
 
