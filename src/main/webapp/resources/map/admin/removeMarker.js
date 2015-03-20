@@ -11,9 +11,8 @@ function remove_marker(marker) {
             contentType: 'application/json',
             dataType: 'json',
             data: JSON.stringify(myData),
-            success: function (data, Httpstatus) {
+            success: function () {
                 marker.setMap(null);
-                alert(Httpstatus);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError);

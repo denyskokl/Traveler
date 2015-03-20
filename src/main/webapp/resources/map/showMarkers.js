@@ -2,7 +2,7 @@ function createdUserMarkerTitle(marker) {
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
     '<label>' + marker.message + '</label>' +
-    "<button objTrip=\"" + marker.markerId+ "\" class=\"addButtonToTrip_js close\" aria-hidden=\"true\">Add to trip</button>" +
+    "<button objTrip=\"" + marker.markerId+ "\" class=\"addToTrip close\" aria-hidden=\"true\">Add to trip</button>" +
     '</div>' +
     '<div class="commentBox">' +
     '<p class="taskDescription">' + marker.address + '</p>' +
@@ -18,7 +18,7 @@ function createdUserMarkerTitle(marker) {
     '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
     '</div>' +
     '<div class="form-group">' +
-    "<button objId=\"" + marker.markerId + "\" class=\"btn1 addComment_js btn btn-default\">Add</button>" +
+    "<button objId=\"" + marker.markerId + "\" class=\"btn1 addComment btn btn-default\">Add</button>" +
     '</div>' +
     '</div>' +
     '</div>' +

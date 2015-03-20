@@ -14,12 +14,12 @@ var rendererOptions = {
 
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 function addEventClick(mReplace) {
-    $(".addComment_js").click(function() {
+    $(".addComment").click(function() {
         var objId = $(this).attr("objId");
         addComments(globalMarkers[objId], mReplace);
     });
 
-    $(".addButtonToTrip_js").click(function() {
+    $(".addToTrip").click(function() {
         var objTrip = $(this).attr("objTrip");
         var routeId = 1;
         addToTrip(routeId, objTrip);

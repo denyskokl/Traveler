@@ -21,7 +21,10 @@ function create_marker(MapPos, MapTitle, MapDesc, InfoOpenDefault, DragAble, map
     var deleteCommentBtns = contentString.find('button.commentAdmin');
 
     google.maps.event.addDomListener(removeBtn, "click", function (event) {
-        remove_marker(marker);
+        if(confirm("You really wont delete marker?")) {
+            remove_marker(marker);
+        }
+
     });
 
     if (typeof deleteCommentBtns !== 'undefined') {
