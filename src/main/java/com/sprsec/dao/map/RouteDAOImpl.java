@@ -40,4 +40,10 @@ public class RouteDAOImpl implements RouteDAO {
     public void saveRoute(Route route) {
         openSession().saveOrUpdate(route);
     }
+
+    @Override
+    public List<Integer> getRoutesId(String login) {
+        return openSession().createQuery("SELECT routeId FROM Route r where r.user.login = :login")
+                .setParameter("login", login).list();
+    }
 }

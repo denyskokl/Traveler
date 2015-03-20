@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 @Controller
 public class RouteController {
 
@@ -28,5 +30,11 @@ public class RouteController {
         route.getMarkers().add(marker);
         routeService.saveOrUpdateRoute(route);
         return route;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/routes", method = RequestMethod.GET)
+    public List<Integer> getRoutesId() {
+        return routeService.getRoutesId();
     }
 }

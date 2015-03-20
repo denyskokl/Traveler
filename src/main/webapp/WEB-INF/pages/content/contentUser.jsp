@@ -14,6 +14,7 @@
 <div id="map-canvas" style="float:left;width:70%;height:100%;"></div>
 <div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px"></div>
 <button id="route_button" class='newRouteBtn close' aria-hidden='true' >Add new route</button>
+<div id="routes_panel"></div>
 <div id="directions_panel" style="margin:70px;background-color:#FFEE77;"></div>
 </body>
 </html>

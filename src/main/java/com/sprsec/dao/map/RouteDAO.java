@@ -11,4 +11,6 @@ public interface RouteDAO {
     public Route getRoute(int id);
 
     public void saveRoute(Route route);
+
+    List<Integer> getRoutesId(String login);
 }

@@ -1,10 +1,18 @@
 globalMarkers = {};
+rId = null;
 function initialize() {
+    $.post("/routes").done(function(routesId) {
+        text = '';
+        $('#routes_panel');
+        rId = routesId;
+    });
+
     $.get("/markers").done(function(markers) {
         globalMarkers = markers;
         addMarkers(globalMarkers);
     });
     $('#route_button').click(function() {
+        rId = null;
         alert('yra');
     });
 }

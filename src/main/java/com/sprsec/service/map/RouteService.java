@@ -10,4 +10,6 @@ public interface RouteService {
     public Route getRoute(int id);
 
     public void saveOrUpdateRoute(Route route);
+
+    List<Integer> getRoutesId();
 }

@@ -38,4 +38,10 @@ public class RouteServiceImpl implements RouteService {
     public void saveOrUpdateRoute(Route route) {
         routeDAO.saveRoute(route);
     }
+
+    @Override
+    public List<Integer> getRoutesId() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        return routeDAO.getRoutesId(auth.getName());
+    }
 }
