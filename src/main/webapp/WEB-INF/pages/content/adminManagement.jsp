@@ -20,9 +20,7 @@
 
         }
         #content {
-
             margin-left: 30px;
-            pa
         }
     </style>
 </head>

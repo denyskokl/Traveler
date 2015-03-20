@@ -1,3 +1,7 @@
+function log() { // todo: delete after development
+    console.log.apply(console, arguments);
+}
+
 function createdUserMarkerTitle(marker) {
     text = '<div class="detailBox">' +
     '<div class="titleBox">' +
@@ -27,10 +31,11 @@ function createdUserMarkerTitle(marker) {
 }
 function commentMarker(marker) {
     var text = '';
+    //todo send current user to frontend and change name
     for (var i = marker.comments.length - 1; i >= 0; i--) {
         text += '<li>' +
         '<span class="commentText">' +
-        '<p class="">' + marker.comments[i].user.login + ': ' + marker.comments[i].comment + '</p>' +
+        '<p class="">' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
         '</span>' +
         '</li>';
     }
@@ -38,33 +43,27 @@ function commentMarker(marker) {
 }
 
 function addComments(marker, pieceOfCode) {
-    var comment = $('#form-control').val();
-    console.log(comment);
-    var commentObject = JSON.stringify({
-        comment: comment,
-        marker: {
-            latitude: marker.latitude,
-            longitude: marker.longitude
-        }
-    });
-    console.log(commentObject);
-    $.ajax({
-        url: "/comment",
-        type: "POST",
-        contentType: 'application/json',
-        data: commentObject,
-        success: function (comments) {
-            var text = '';
-            $(comments).each(function ()  {
-                 text += '<li>' +
-                '<span class="commentText">' +
-                '<p class="">' + $(this).attr("user").login + ': ' + $(this).attr("comment") + '</p>' +
-                '</span>' +
-                '</li>';
-            });
-            pieceOfCode.html(text);
-        }
-    });
+    var valueElement = $('#form-control');
+    var comment = $.trim(valueElement.val());
+    if (comment.length > 0) {
+        var commentObject = JSON.stringify({
+            comment: comment,
+            marker: {
+                latitude: marker.latitude,
+                longitude: marker.longitude
+            }
+        });
+        marker.comments.push({comment: comment});
+        $.ajax({
+            url: "/comment",
+            type: "POST",
+            contentType: 'application/json',
+            data: commentObject
+        });
+        $(".commentList").empty();
+        $(commentMarker(marker)).appendTo($(".commentList"));
+    }
+    valueElement.val(""); // clear input
 }
 
 function addToTrip(routeId, markerId) {
