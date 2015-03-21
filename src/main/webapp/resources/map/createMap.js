@@ -1,26 +1,47 @@
 globalMarkers = {};
-rId = null;
 function initialize() {
     $.post("/routes").done(function(routesId) {
-        text = '';
-        $('#routes_panel');
-        rId = routesId;
+        var routePanel = document.getElementById('routes_panel');
+        var routeButtons = [];
+        $.each(routesId, function(index, value) {
+            routeButtons.push('<button routeId=' + value + ' class="uRoute">route' + value + '</button>');
+        });
+        routePanel.innerHTML = routeButtons.join('');
+        $.each($(routePanel).find('button.uRoute') , function(index, value) {
+            google.maps.event.addDomListener(value, "click", function (event) {
+                showTrip($(this).attr("routeId"));
+            });
+        });
     });
 
     $.get("/markers").done(function(markers) {
         globalMarkers = markers;
         addMarkers(globalMarkers);
     });
+
     $('#route_button').click(function() {
         rId = null;
         alert('yra');
     });
 }
+
 var rendererOptions = {
     draggable: true
 };
 
+
+function showTrip(routeId) {
+    $.post("/route",  {
+        routeId : routeId
+    }, function (route) {
+        calcRoute(route);
+    }).fail(function() {
+        alert("can't show trip");
+    });
+}
+
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
 function addEventClick(mReplace) {
     $(".addComment").click(function() {
         var objId = $(this).attr("objId");

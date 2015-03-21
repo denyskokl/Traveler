@@ -5,11 +5,13 @@ CREATE TABLE travel.users (
 	login varchar(60) NOT NULL,
 	password varchar(60) NOT NULL,
 	user_status enum('ENABLED','DISABLED') DEFAULT NULL,
+	UNIQUE KEY uni_login (login),
 	PRIMARY KEY (user_id));
 
 CREATE TABLE travel.roles (
 	role_id int NOT NULL AUTO_INCREMENT,
 	role varchar(60) NOT NULL,
+	UNIQUE KEY uni_role (role),
 	PRIMARY KEY (role_id));
 
 CREATE TABLE travel.users_roles (

@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     map_initialize();
 
-
     function map_initialize() {
         var googleMapOptions =
         {

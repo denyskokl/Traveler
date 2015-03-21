@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "roles", catalog = "travel")
+@Table(name = "roles", catalog = "travel", uniqueConstraints = @UniqueConstraint(columnNames = { "role" }))
 public class Role {
 
     @Id
@@ -13,7 +13,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idRole;
 
-    @Column(name = "role")
+    @Column(name = "role", unique = true, nullable = false)
     private String role;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userRoles")

@@ -45,7 +45,8 @@ function commentMarker(marker) {
 function addComments(marker, pieceOfCode) {
     var valueElement = $('#form-control');
     var comment = $.trim(valueElement.val());
-    if (comment.length > 0) {
+    if (comment.length <= 0) {
+    } else {
         var commentObject = JSON.stringify({
             comment: comment,
             marker: {
@@ -67,11 +68,13 @@ function addComments(marker, pieceOfCode) {
 }
 
 function addToTrip(routeId, markerId) {
-    $.post("/route",  {
+    $.post("/routeByMarker",  {
         routeId : routeId,
         markerId : markerId
     }, function (route) {
         calcRoute(route);
+    }).fail(function() {
+        alert("error");
     });
 }
 

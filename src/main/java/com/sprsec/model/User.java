@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "users", catalog = "travel")
+@Table(name = "users", catalog = "travel", uniqueConstraints = @UniqueConstraint(columnNames = { "login" }))
 public class User {
 
     @Id
@@ -18,7 +18,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idUser;
 
-    @Column(name = "login")
+    @Column(name = "login", unique = true, nullable = false)
     private String login;
 
     @Column(name = "password")

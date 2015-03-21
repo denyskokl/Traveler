@@ -23,7 +23,7 @@ public class RouteController {
     private MarkerService markerService;
 
     @ResponseBody
-    @RequestMapping(value = "/route", method = RequestMethod.POST)
+    @RequestMapping(value = "/routeByMarker", method = RequestMethod.POST)
     public Route saveMarkToRoute(@RequestParam int routeId,@RequestParam int markerId) {
         Route route = routeService.getRoute(routeId);
         Marker marker = markerService.getMarker(markerId);
@@ -33,8 +33,14 @@ public class RouteController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/routes", method = RequestMethod.GET)
+    @RequestMapping(value = "/routes", method = RequestMethod.POST)
     public List<Integer> getRoutesId() {
         return routeService.getRoutesId();
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/route", method = RequestMethod.POST)
+    public Route saveMarkToRoute(@RequestParam int routeId) {
+        return routeService.getRoute(routeId);
     }
 }
