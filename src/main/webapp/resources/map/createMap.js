@@ -1,5 +1,5 @@
 globalMarkers = {};
-routesId = {};
+globalRouteId = -1;
 function initialize() {
     $.post("/routes").done(function(routesId) {
         var routePanel = document.getElementById('routes_panel');
@@ -11,6 +11,7 @@ function initialize() {
         $.each($(routePanel).find('button.uRoute') , function(index, value) {
             google.maps.event.addDomListener(value, "click", function (event) {
                 showTrip($(this).attr("routeId"));
+                globalRouteId = $(this).attr("routeId");
             });
         });
     });
@@ -25,7 +26,7 @@ function initialize() {
         alert('yra');
     });
 }
-var routesMarkers = {key: value};
+
 var rendererOptions = {
     draggable: true
 };
@@ -51,7 +52,7 @@ function addEventClick(mReplace) {
 
     $(".addToTrip").click(function() {
         var objTrip = $(this).attr("objTrip");
-        var routeId = routesMarkers[objTrip];
+        var routeId = globalRouteId;
         addToTrip(routeId, objTrip);
     });
 }

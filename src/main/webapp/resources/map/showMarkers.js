@@ -72,6 +72,7 @@ function addToTrip(routeId, markerId) {
         routeId : routeId,
         markerId : markerId
     }, function (route) {
+        globalRouteId = route.routeId;
         calcRoute(route);
     }).fail(function() {
         alert("error");
