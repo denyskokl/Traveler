@@ -1,4 +1,5 @@
 globalMarkers = {};
+routesId = {};
 function initialize() {
     $.post("/routes").done(function(routesId) {
         var routePanel = document.getElementById('routes_panel');
@@ -24,7 +25,7 @@ function initialize() {
         alert('yra');
     });
 }
-
+var routesMarkers = {key: value};
 var rendererOptions = {
     draggable: true
 };
@@ -50,7 +51,7 @@ function addEventClick(mReplace) {
 
     $(".addToTrip").click(function() {
         var objTrip = $(this).attr("objTrip");
-        var routeId = 1;
+        var routeId = routesMarkers[objTrip];
         addToTrip(routeId, objTrip);
     });
 }
