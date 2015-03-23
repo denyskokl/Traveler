@@ -4,11 +4,25 @@ function initialize() {
     $.post("/routes").done(function(routesId) {
         var routePanel = document.getElementById('routes_panel');
         var routeButtons = [];
+        //$.each(routesId, function(index, value) {
+        //    routeButtons.push('<button routeId=' + value + ' class="uRoute">route' + value + '</button>');
+        //});
+
+        //$.each(routesId, function(index, value) {
+        //    routeButtons
+        //        .push('<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value)
+        //
+        //});
         $.each(routesId, function(index, value) {
-            routeButtons.push('<button routeId=' + value + ' class="uRoute">route' + value + '</button>');
+            routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
+            '<label class="btn btn-primary">' +
+             '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
+            '</label>' +
+            '</div>');
+
         });
         routePanel.innerHTML = routeButtons.join('');
-        $.each($(routePanel).find('button.uRoute') , function(index, value) {
+        $.each($(routePanel).find('input.uRoute') , function(index, value) {
             google.maps.event.addDomListener(value, "click", function (event) {
                 showTrip($(this).attr("routeId"));
                 globalRouteId = $(this).attr("routeId");
