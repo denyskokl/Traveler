@@ -17,7 +17,7 @@
           rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <jsp:include page="menu.jsp"/>
 
 

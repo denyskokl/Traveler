@@ -12,7 +12,7 @@
           rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <sec:authorize access="isAnonymous()">
         <jsp:include page="frames/menu.jsp"/>
         <jsp:include page="content/contentAnonymous.jsp"/>
@@ -28,7 +28,7 @@
         <jsp:include page="content/contentUser.jsp"/>
     </sec:authorize>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">

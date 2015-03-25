@@ -36,17 +36,23 @@ $(document).ready(function () {
         });
 
         google.maps.event.addListener(map, 'rightclick', function (event) {
-            var EditForm = '<p><div class="marker-edit">' +
+            var EditForm = '<div class="marker-edit">' +
                 '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
-                '<label for="pName"><span>Place Name :</span><input type="text" name="pName" class="save-name" placeholder="Enter Title" maxlength="40" /></label>' +
-                '<label for="pDesc"><span>Address :</span><textarea name="pDesc" class="save-desc" placeholder="Enter Address" maxlength="150"></textarea></label>' +
+                '<div class="col-md-12 col-xs-12 col-lg-12>' +
+                '<div class="form-group>' +
+                '<label for="pName"><input type="text" name="pName" class="save-name form-control" placeholder="Enter Title" maxlength="40" /></label>' +
+                '</div>' +
+                '<div class = "form-group">' +
+                '<label for="pDesc"><textarea name="pDesc" style="resize: none;" class="save-desc form-control" placeholder="Enter Address" maxlength="150"></textarea></label>' +
+                '</div>' +
+                '</div>' +
                 '</form>' +
-                '</div></p><button name="save-marker" class="save-marker">Save Marker</button>';
+                '</div><button name="save-marker" class="save-marker btn btn-primary">Save Marker</button>';
             var contentString = '<div class="marker-info-win">' +
                 '<div class="marker-inner-win"><span class="info-content">' +
                 '<h1 class="marker-heading">' + 'New Marker' + '</h1>' +
                 EditForm +
-                '</span><button name="remove-marker" class="remove-marker" title="Remove Marker">Remove Marker</button>' +
+                '</span><button name="remove-marker" class="remove-marker btn btn-danger" title="Remove Marker">Remove Marker</button>' +
                 '</div></div>';
             create_marker(event.latLng, 'New Marker', contentString, true, true, map, 'http://localhost:8080/resources/img/pin_blue.png');
         });
@@ -79,7 +85,7 @@ function commentAdminMarker(marker) {
         text += '<li>' +
         '<span class="commentText">' +
         '<p>' + marker.attr('comments')[i].user.login + ': ' + marker.attr('comments')[i].comment +
-        '<button id="'+ marker.attr('comments')[i].commentId +'" type="button" class="close commentAdmin" aria-hidden="true">&times;</button></p>' +
+        '<button id="' + marker.attr('comments')[i].commentId + '" type="button" class="close commentAdmin" aria-hidden="true">&times;</button></p>' +
         '</span>' +
         '</li>';
     }

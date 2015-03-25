@@ -15,6 +15,12 @@
 
 </head>
 <body>
-<div id="map-canvas" style="float:left;width:80%;height:80%;"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 col-xs-12 col-lg-12">
+            <div id="map-canvas" style="float:left;width:100%;height:80%;"></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

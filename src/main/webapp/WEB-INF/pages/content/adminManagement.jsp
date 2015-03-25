@@ -25,13 +25,15 @@
     </style>
 </head>
 <body>
-<jsp:include page="../frames/adminMenu.jsp"/>
-<table id="content">
+<div class="container-fluid">
+    <jsp:include page="../frames/adminMenu.jsp"/>
+    <table id="content">
 
-    <th>Login</th>
-    <th>Status</th>
+        <th>Login</th>
+        <th>Status</th>
 
 
-</table>
+    </table>
+</div>
 </body>
 </html>

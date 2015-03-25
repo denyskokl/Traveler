@@ -15,12 +15,13 @@
           rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<%--<jsp:include page="menu.jsp"/>--%>
+<div class="container-fluid">
     <jsp:include page="menu.jsp"/>
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                <small>Logout</small>
+                <small>Login</small>
             </h1>
         </div>
     </div>

@@ -7,7 +7,7 @@ function initialize() {
         $.each(routesId, function(index, value) {
             routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
             '<label class="btn btn-primary">' +
-             '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
+             '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute btn">route' + value +
             '</label>' +
             '</div>');
 
