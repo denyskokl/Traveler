@@ -35,6 +35,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new UserInactiveException("User is not active");
         }
 
+
         return new User(
                 domainUser.getLogin(),
                 domainUser.getPassword(),

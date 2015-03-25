@@ -41,6 +41,7 @@ public class RouteDAOImpl implements RouteDAO {
         openSession().saveOrUpdate(route);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public List<Integer> getRoutesId(String login) {
         return openSession().createQuery("SELECT routeId FROM Route r where r.user.login = :login")

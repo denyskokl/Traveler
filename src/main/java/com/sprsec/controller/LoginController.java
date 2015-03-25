@@ -21,12 +21,20 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String addNewUser(
+    public ModelAndView addNewUser(
             @RequestParam("login") String login,
             @RequestParam("password") String password) {
+        ModelAndView model = new ModelAndView();
         User user = new User(login, password);
-        userService.addUser(user);
-        return "redirect:/";
+        try {
+            userService.addUser(user);
+            model.setViewName("redirect:/");
+        } catch (Exception e) {
+
+            model.addObject("error", "User is already exist");
+            model.setViewName("frames/registration");
+        }
+        return model;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
