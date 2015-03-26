@@ -2,23 +2,24 @@ package com.sprsec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sprsec.dao.user.UserStatus;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.*;
 
 @Entity
-@Table(name = "users", catalog = "travel", uniqueConstraints = @UniqueConstraint(columnNames = { "login" }))
+@Table(name = "users", catalog = "travel", uniqueConstraints = @UniqueConstraint(columnNames = { "username" }))
 public class User {
 
     @Id
     @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idUser;
+    private int userId;
 
-    @Column(name = "login", unique = true, nullable = false)
+    @Column(name = "username", unique = true, nullable = false)
     private String login;
 
     @Column(name = "password")
@@ -27,6 +28,28 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_status")
     private UserStatus userStatus;
+
+    @NotEmpty
+    @Email
+    @Column(name = "email", nullable = false)
+    private String email;
+
+    @Column(name = "date_reg", nullable = false)
+    private Date dateReg;
+
+    @Column(name = "birthday")
+    private Date birthday;
+
+    @Column(name = "photo", nullable = false)
+    private String photo;
+
+    @NotNull
+    @Size(min = 4, max = 20)
+    @Column(name = "nicname", nullable = false)
+    private String nicname;
+
+    @Column(name = "sex")
+    private String sex;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -56,12 +79,12 @@ public class User {
         this.password = password;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getLogin() {
@@ -78,6 +101,62 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserStatus getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(UserStatus userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getDateReg() {
+        return dateReg;
+    }
+
+    public void setDateReg(Date dateReg) {
+        this.dateReg = dateReg;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public String getNicname() {
+        return nicname;
+    }
+
+    public void setNicname(String nicname) {
+        this.nicname = nicname;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public Set<Role> getUserRoles() {
@@ -102,14 +181,5 @@ public class User {
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }
-
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-
     }
 }

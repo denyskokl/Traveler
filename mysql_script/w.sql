@@ -2,10 +2,16 @@ CREATE SCHEMA IF NOT EXISTS travel DEFAULT CHARACTER SET utf8 COLLATE utf8_gener
 
 CREATE TABLE travel.users (
 	user_id int NOT NULL AUTO_INCREMENT,
-	login varchar(60) NOT NULL,
+  username varchar(60) NOT NULL,
 	password varchar(60) NOT NULL,
 	user_status enum('ENABLED','DISABLED') DEFAULT NULL,
-	UNIQUE KEY uni_login (login),
+  mail varchar(45) NOT NULL,
+  date_reg datetime NOT NULL,
+  birthday date DEFAULT NULL,
+  photo longtext DEFAULT NULL,
+  nicname varchar(45) NOT NULL,
+  sex varchar(50) DEFAULT NULL,
+	UNIQUE KEY uni_login (username),
 	PRIMARY KEY (user_id));
 
 CREATE TABLE travel.roles (
@@ -51,10 +57,11 @@ CREATE TABLE travel.comments (
 	CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES travel.users(user_id) ON DELETE CASCADE,
 	CONSTRAINT fk_comment_marker FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id) ON DELETE CASCADE);
 
-INSERT INTO travel.users(user_id, login, password, user_status)
-	VALUES (1, 'den', '1111', 'ENABLED');
-INSERT INTO travel.users(user_id, login, password, user_status)
-	VALUES (2, 'serg', '1111', 'ENABLED');
+
+INSERT INTO travel.users(user_id, username, password, user_status, mail, date_reg, birthday, photo, nicname, sex)
+VALUES (1, 'den', '1111', 'ENABLED', 'bruams@gmail.ua', '2015-02-19 18:12:19',  NULL , NULL , 'puk', NULL);
+INSERT INTO travel.users(user_id, username, password, user_status, mail, date_reg, birthday, photo, nicname, sex)
+VALUES (2, 'serg', '1111', 'ENABLED', 'bruams@gmail.ua', '2015-02-19 18:12:19',  NULL , NULL , 's', NULL);
 
 INSERT INTO travel.roles (role_id, role)
 	VALUES (1, 'ROLE_ADMIN');
