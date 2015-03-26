@@ -1,13 +1,8 @@
-body {
-    margin: 0;
-    background: url("/resources/img/can.jpg") no-repeat fixed center top;
-}
-
 .trasp {
     box-shadow: none !important;
     border-radius: 0 !important;
     border: none !important;
-    opacity: 0.6 !important;
+    background: rgba(0,0,0,0.4) !important;
 }
 
 .content-index {
@@ -23,12 +18,12 @@ body {
 
 .sign-up-index {
     border-radius: 50%;
-    width: 6em;
-    height: 6em;
-    font-size: 5vw;
+    width: 150px;
+    height: 150px;
+    font-size: 2.2em;
     background: rgba(204, 14, 15, 0.7);
     text-align: center;
-    line-height: 6em;
+    line-height: 150px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -36,5 +31,14 @@ body {
     margin-bottom: 0.7em;
 }
 .sign-up-index:hover {
-    background: rgba(52, 82, 236, 0.7);
+    background: rgba(227, 32, 83, 0.7);
+}
+
+.modal-window {
+    background: rgba(0,0,0,0.9) !important;
+    color: #fff;
+}
+
+.modal-input {
+    background: #000 !important;
 }

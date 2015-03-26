@@ -7,59 +7,62 @@
     <title></title>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/star-rating.min.css" media="all"
           rel="stylesheet"
           type="text/css"/>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-responsive.min.css"
           rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/login.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/indexPage.css"
+          rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+
 </head>
 <body>
-<%--<jsp:include page="menu.jsp"/>--%>
-<div class="container-fluid">
-    <jsp:include page="menu.jsp"/>
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                <small>Login</small>
-            </h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 well">
-            <form class="form-signin" id="form" action="/j_spring_security_check"
-                  method="POST" onsubmit="function checkForm() {
-                    var u_login = document.forms['form']['us_name'].value;
-                    var pass = document.forms['form']['us_pass'].value;
-                    if (u_login == null || u_login == '') {
-                         document.forms['form']['us_name'].focus(); return false;
-                    } if (pass == null || pass == '') {document.forms['form']['us_name'].focus();
-                         return false;
-                    } return true;
-                  }
+<jsp:include page="../frames/menu.jsp"/>
 
-            return checkForm()">
-                <c:if test="${not empty error}">
-                    <div class="error">${error}</div>
-                </c:if>
-                <c:if test="${not empty msg}">
-                    <div class="msg">${msg}</div>
-                </c:if>
-                <label for="us_name">Login</label>
-                <input type="text" id="us_name" class="form-control" placeholder="" name="username" required
-                       autofocus></br>
-                <label for="us_pass">Password</label>
-                <input type="password" id="us_pass" name="password" class="form-control" placeholder="" required>
 
-                <div align="right" style="margin-top: 15px">
-                    <label for="remember">Remember me:</label>
-                    <input type="checkbox" id="remember" name="_spring_security_remember_me">
+<!-- This is a very simple parallax effect achieved by simple CSS 3 multiple backgrounds, made by http://twitter.com/msurguy -->
+
+<div class="container">
+    <div class="row vertical-offset-100">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please sign in</h3>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
-            </form>
+                <div class="panel-body">
+                    <form accept-charset="UTF-8" role="form" id="form" action="/j_spring_security_check"
+                          method="POST" onsubmit="return checkForm()">
+                        <c:if test="${not empty error}">
+                            <div class="error">${error}</div>
+                        </c:if>
+                        <c:if test="${not empty msg}">
+                            <div class="msg">${msg}</div>
+                        </c:if>
+
+                        <fieldset>
+                            <div class="form-group">
+                                <input type="text" id="us_name" class="form-control" placeholder="username" name="username" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="us_pass" name="password" class="form-control" placeholder="password" required>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input name="remember" type="checkbox" value="Remember Me"> Remember Me
+                                </label>
+                            </div>
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <hr>
 </div>
 </body>
 </html>
