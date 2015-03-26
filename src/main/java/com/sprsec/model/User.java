@@ -45,8 +45,8 @@ public class User {
 
     @NotNull
     @Size(min = 4, max = 20)
-    @Column(name = "nicname", nullable = false)
-    private String nicname;
+    @Column(name = "nickname", nullable = false)
+    private String nickname;
 
     @Column(name = "sex")
     private String sex;
@@ -74,10 +74,16 @@ public class User {
         this.login = login;
     }
 
-    public User(String login, String password) {
+    public User(String login, String password, String email, Date birthday, String nickname, String sex) {
         this.login = login;
         this.password = password;
+        this.email = email;
+        this.birthday = birthday;
+        this.nickname = nickname;
+        this.sex = sex;
     }
+
+
 
     public int getUserId() {
         return userId;
@@ -143,12 +149,12 @@ public class User {
         this.photo = photo;
     }
 
-    public String getNicname() {
-        return nicname;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNicname(String nicname) {
-        this.nicname = nicname;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getSex() {
