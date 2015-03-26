@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    background: url("/resources/img/can.jpg") no-repeat fixed center top;
+}
+
+.trasp {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    opacity: 0.6 !important;
+}
+
+.content-index {
+    background: rgba(0,0,0,0.5);
+    padding: 0.7em;
+    width: 84%;
+    text-align: center;
+    margin: 1.7em 8%;
+    color: #fff;
+    font-size: 4vw;
+    border-radius: 2em;
+}
+
+.sign-up-index {
+    border-radius: 50%;
+    width: 6em;
+    height: 6em;
+    font-size: 5vw;
+    background: rgba(204, 14, 15, 0.7);
+    text-align: center;
+    line-height: 6em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    margin-bottom: 0.7em;
+}
+.sign-up-index:hover {
+    background: rgba(52, 82, 236, 0.7);
+}

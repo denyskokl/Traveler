@@ -10,7 +10,7 @@
     <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/showMarkers.css" rel="stylesheet" type="text/css">
 </head>
-<body onload="initialize()">
+<body onload="initialize()" style="background: none;">
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-lg-4">
