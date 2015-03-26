@@ -40,6 +40,17 @@ public class Marker {
     @org.hibernate.annotations.Cascade( {org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<Comment> comments = new ArrayList<>();
 
+
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    @JoinTable(name = "category_markers", catalog = "travel", joinColumns = {
+//            @JoinColumn(name = "category_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "marker_id", nullable = false, updatable = false)})
+//    private Set<Category> categories  = new LinkedHashSet<>();
+
+
+
+
+
     public Marker() {
     }
 
@@ -110,6 +121,15 @@ public class Marker {
     public void setRoutes(List<Route> routes) {
         this.routes = routes;
     }
+//
+//    public Set<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(Set<Category> categories) {
+//        this.categories = categories;
+//    }
+
 
     @Override
     public boolean equals(Object o) {

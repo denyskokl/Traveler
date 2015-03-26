@@ -41,6 +41,6 @@ public class UserDAOImpl implements UserDAO {
         Query query = openSession().createQuery("update User u set u.userStatus = :userStatus where u.idUser = :idUser");
         query.setProperties(user)
                 .executeUpdate();
-        return (User) openSession().get(User.class, user.getIdUser());
+        return (User) openSession().get(User.class, user.getUserId());
     }
 }

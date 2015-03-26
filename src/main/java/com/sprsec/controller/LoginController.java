@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Controller
 public class LoginController {
 
@@ -23,9 +27,15 @@ public class LoginController {
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView addNewUser(
             @RequestParam("login") String login,
-            @RequestParam("password") String password) {
+            @RequestParam("password") String password,
+            @RequestParam("email") String email,
+            @RequestParam("birthday") String birthday,
+            @RequestParam("nickname") String nickname,
+            @RequestParam("sex") String sex) throws ParseException {
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+        Date date = dt.parse(birthday);
         ModelAndView model = new ModelAndView();
-        User user = new User(login, password);
+        User user = new User(login, password,email,date,nickname,sex);
         try {
             userService.addUser(user);
             model.setViewName("redirect:/");

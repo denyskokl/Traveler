@@ -13,4 +13,6 @@ public interface UserService {
 	List<User> getAllUsers();
 
 	User changeStatus(User user);
+
+    User getAllInfAuthUser();
 }

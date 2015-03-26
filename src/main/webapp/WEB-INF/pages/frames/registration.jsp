@@ -3,7 +3,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <html>
@@ -55,6 +54,46 @@
                                name="password" placeholder="Enter password"/>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label for="email">Put email</label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="email"
+                               name="email" placeholder="Enter email"/>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="birthday">Put birthday</label>
+
+                    <div class="input-group">
+                        <input type="date" class="form-control" id="birthday"
+                               name="birthday" placeholder="Enter birthday"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Put nickname</label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nickname"
+                               name="nickname" placeholder="Enter nickname"/>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="birthday">Put sex</label>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="sex"
+                               name="sex" placeholder="Enter sex"/>
+                    </div>
+                </div>
+
                 <input type="submit" id="submit" value="Create"
                        class="btn btn-info pull-right">
             </div>

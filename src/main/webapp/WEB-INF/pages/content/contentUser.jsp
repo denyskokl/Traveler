@@ -26,10 +26,6 @@
             <div id="map-canvas" style="float:left; width: 100%; height:100%;"></div>
         </div>
 
-        <%----%>
-        <%----%>
-        <%----%>
-        <%--<--%>
     </div>
 </div>
 </body>
