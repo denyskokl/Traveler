@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user_account", method = RequestMethod.GET)
-    private String userList() {
+    public String userList() {
         return "/content/contentAccount";
     }
 }
