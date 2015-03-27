@@ -5,7 +5,7 @@ function addToTable(obj) {
     }
     var str = "<tr>";
     str += "<td>" + obj.login + "</td>";
-    str += "<td>" + "<input id ='"+ obj.idUser +"' type='checkbox'" + typeCheckBox + "></td>";
+    str += "<td>" + "<input id ='"+ obj.userId +"' type='checkbox'" + typeCheckBox + "></td>";
     str += "</tr>";
     return str;
 }
@@ -14,19 +14,17 @@ $(document).ready(function () {
     $.post("/admin/admin_list", function (data) {
         var contentToTable = '';
         data.forEach(function (el) {
-
             contentToTable += addToTable(el);
         });
         $("#content").append(contentToTable);
 
-
         $("input:checkbox").change(function () {
             var user;
             if ($(this).is(":checked")) {
-                user = {idUser : $(this).attr("id"), userStatus:"ENABLED"};
+                user = {userId : $(this).attr("id"), userStatus:"ENABLED"};
                 returnStatus(user);
             } else {
-                user = {idUser : $(this).attr("id"), userStatus:"DISABLED"};
+                user = {userId : $(this).attr("id"), userStatus:"DISABLED"};
                 returnStatus(user);
             }
         });

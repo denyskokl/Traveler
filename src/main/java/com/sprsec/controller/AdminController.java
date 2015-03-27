@@ -25,13 +25,13 @@ public class AdminController {
 
     @ResponseBody
     @RequestMapping(value = "/admin_list", method = RequestMethod.POST)
-    private List<User> userList() {
+    public List<User> userList() {
         return userService.getAllUsers();
     }
 
     @ResponseBody
     @RequestMapping(value = "/admin_user_status", method = RequestMethod.POST)
-    private User changeStatus(@RequestBody User user) {
+    public User changeStatus(@RequestBody User user) {
         return userService.changeStatus(user);
     }
 }
