@@ -3,141 +3,79 @@ function log() { // todo: delete after development
 }
 
 function createdUserMarkerTitle(marker) {
-    text =
 
-        '<div class="detailBox">' +
-            '<div class="titleBox">' +
-                '<label>' + marker.message + '</label>' +
-                    "<button objTrip=\"" + marker.markerId+ "\" class=\"addToTrip close\" aria-hidden=\"true\">Add to trip</button>" +
-            '</div>' +
-            '<div class="commentBox">' +
-                '<p class="taskDescription">' + marker.address + '</p>' +
-            '</div>' +
-            '<div class="actionBox">' +
-                '<span class="commentList1">' +
-                    '<ul class="commentList">' +
-                        commentMarker(marker) +
-                    '</ul>' +
-                '</span>' +
-                '<div id="form-inline" class="form-inline" >' +
-                    '<div class="form-group">' +
-                        '<input id="form-control" class="form-control" type="text" placeholder="Your comments" />' +
-                    '</div>' +
-                    '<div class="form-group">' +
-                        "<button objId=\"" + marker.markerId + "\" class=\"btn1 addComment btn btn-default\">Add</button>" +
-                    '</div>' +
-                '</div>' +
-            '</div>' +
-        '</div>';
-    //todo FINISHED!!
-    //var detailBox = $("<div/>", {
-    //    class : "detailBox"
-    //});
-    //var titleBox = $("<div/>", {
-    //   class : "titleBox"
-    //});
-    //var messageLabel = $("<label/>", {
-    //   text: marker.message
-    //});
-    //var buttonAddToTrip = $("<button/>", {
-    //   objTrip : marker.markerId,
-    //    class : "addToTrip close",
-    //    "aria-hidden" : true,
-    //    text : "Add to trip"
-    //});
-    //var commentBox = $("<div/>", {
-    //   class : "commentBox"
-    //});
-    //var taskDescription = $("<p/>", {
-    //   class : "taskDescription",
-    //    text : marker.address
-    //});
-    //var actionBox = $("<div/>", {
-    //   class : "actionBox"
-    //});
-    //var commentList1 = $("<span/>", {
-    //    class : "commentList1"
-    //
-    //});
-    //var ul = $("<ul/>", {
-    //    class : "commentList" + commentMarker(marker)
-    //});
-    //var divForm = $("<div/>", {
-    //    id : "form-inline",
-    //    class : "form-inline"
-    //});
-    //var formGroup = $("<div/>", {
-    //   class : "form-group"
-    //});
-    //var inputForm = $("<input/>", {
-    //   id : "form-control",
-    //    class : "form-control",
-    //    type : "text",
-    //    placeholder : "Your comments"
-    //
-    //});
-    //var divFormGroupButton = $("<div/>", {
-    //   class : "form-group"
-    //});
-    //
-    //var add = $("<button/>", {
-    //    objId : marker.markerId,
-    //    class : "btn1 addComment btn btn-default",
-    //    text : "Add"
-    //});
-    //
-    //
-    //
-    //log("____________________");
-    //titleBox.appendTo(detailBox);
-    //messageLabel.appendTo(titleBox);
-    //buttonAddToTrip.appendTo(titleBox);
-    //commentBox.appendTo(detailBox);
-    //taskDescription.appendTo(commentBox);
-    //actionBox.appendTo(detailBox);
-    //commentList1.appendTo(actionBox);
-    //ul.appendTo(commentList1);
-    //divForm.appendTo(actionBox);
-    //formGroup.appendTo(divForm);
-    //inputForm.appendTo(formGroup);
-    //divFormGroupButton.appendTo(divForm);
-    //add.appendTo(divFormGroupButton);
-    //log(detailBox[0].outerHTML);
-    return text;
+    var detailBox = createHtmlTag("div", {class : "detailBox"});
+    var titleBox = createHtmlTag("div", {class : "titleBox"});
+    var messageLabel = createHtmlTag("label", {text: marker.message});
+    var buttonAddToTrip = createHtmlTag("button", {
+       objTrip : marker.markerId,
+        class : "addToTrip close",
+        "aria-hidden" : true,
+        text : "Add to trip"
+    });
+    var commentBox = createHtmlTag("div", {class : "commentBox"});
+    var taskDescription = createHtmlTag("p", {
+       class : "taskDescription",
+        text : marker.address
+    });
+    var actionBox = createHtmlTag("div", {
+       class : "actionBox"
+    });
+    var commentList1 = createHtmlTag("span", {class : "commentList1"});
+    var ul = createHtmlTag("ul", {
+        class : "commentList"
+    });
+    var divForm = createHtmlTag("div", {
+        id : "form-inline",
+        class : "form-inline"
+    });
+    var formGroup = createHtmlTag("div", {class : "form-group"});
+    var inputForm = createHtmlTag("input", {
+       id : "form-control",
+        class : "form-control",
+        type : "text",
+        placeholder : "Your comments"
+    });
+    var divFormGroupButton = createHtmlTag("div", {class : "form-group"});
+    var add = createHtmlTag("button", {
+        objId : marker.markerId,
+        class : "btn1 addComment btn btn-default",
+        text : "Add"
+    });
+    titleBox.appendTo(detailBox);
+    messageLabel.appendTo(titleBox);
+    buttonAddToTrip.appendTo(titleBox);
+    commentBox.appendTo(detailBox);
+    taskDescription.appendTo(commentBox);
+    actionBox.appendTo(detailBox);
+    commentList1.appendTo(actionBox);
+    commentMarker(marker, ul);
+    ul.appendTo(commentList1);
+    divForm.appendTo(actionBox);
+    formGroup.appendTo(divForm);
+    inputForm.appendTo(formGroup);
+    divFormGroupButton.appendTo(divForm);
+    add.appendTo(divFormGroupButton);
+    return detailBox[0].outerHTML;
 }
 
-function commentMarker(marker) {
-    var text = '';
+function createHtmlTag(nameTag, attrs) {
+    return $("<" + nameTag + "/>", attrs);
+}
+
+function commentMarker(marker, parentElement) { //TODO rename
     //todo send current user to frontend and change name
     for (var i = marker.comments.length - 1; i >= 0; i--) {
-        text += '<li>' +
-        '<span class="commentText">' +
-        '<p class="">' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
-        '</span>' +
-        '</li>';
+        var li = createHtmlTag("li", {});
+        var commentText = createHtmlTag("span", {class: "commentText"});
+        var someUSer = createHtmlTag("p", {
+            class: "",
+            text: "some user : " + marker.comments[i].comment
+        });
+        someUSer.appendTo(commentText);
+        commentText.appendTo(li);
+        li.appendTo(parentElement);
     }
-    //todo  finished!!!!
-    //for (var i = marker.comments.length - 1; i >= 0; i--) {
-    //
-    //    var li = $("<li/>", {});
-    //
-    //    var commentText = $("<span/>", {
-    //        class: "commentText"
-    //    });
-    //    var someUSer = $("<p/>", {
-    //        class: "",
-    //        text: "some user : " + marker.comments[i].comment
-    //
-    //    });
-    //
-    //
-    //    log("@@@@@@@@@@@@@@@@@@@@");
-    //
-    //    someUSer.appendTo(commentText);
-    //    commentText.appendTo(li);
-    //    log(li[0].outerHTML);
-    //}
-    return text;
 }
 
 function addComments(marker, pieceOfCode) {
@@ -160,7 +98,7 @@ function addComments(marker, pieceOfCode) {
             data: commentObject
         });
         $(".commentList").empty();
-        $(commentMarker(marker)).appendTo($(".commentList"));
+        $(commentMarker(marker, $(".commentList")));
     }
     valueElement.val(""); // clear input
 }

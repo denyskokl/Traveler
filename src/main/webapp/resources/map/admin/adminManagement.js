@@ -1,3 +1,6 @@
+function createHtmlTag(nameTag, attrs) {
+    return $("<" + nameTag + "/>", attrs);
+}
 function addToTable(obj) {
     var typeCheckBox = '';
     if (obj.userStatus === 'ENABLED') {
@@ -11,19 +14,17 @@ function addToTable(obj) {
 
 }
 //todo : FINISHED?? review
-//var trStart = $("<tr/>", {});
-//var tdFirst = $("<td/>", {
-//    text : obj.login
-//});
+//    var trStart = createHtmlTag("tr", {});
+//    var tdFirst = createHtmlTag("td", {text : obj.login});
 //
-//var tdSecond = $("<td/>",{
-//    input : {
-//        id : obj.userId,
-//        type : "checkbox" + typeCheckBox
-//    }
-//})
-//tdFirst.appendTo(trStart);
-//tdSecond.append(trStart);
+//    var tdSecond = createHtmlTag("td",{
+//        input : {
+//            id : obj.userId,
+//            type : "checkbox" + typeCheckBox
+//        }
+//    })
+//    tdFirst.appendTo(trStart);
+//    tdSecond.append(trStart);
 
 $(document).ready(function () {
 

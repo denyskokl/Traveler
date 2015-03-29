@@ -1,5 +1,10 @@
 globalMarkers = {};
 globalRouteId = -1;
+
+function createHtmlTag(nameTag, attrs) {
+    return $("<" + nameTag + "/>", attrs);
+}
+
 function initialize() {
     var routePanel = document.getElementById('routes_panel');
     $.post("/routes").done(function(routesId) {
@@ -15,31 +20,22 @@ function initialize() {
         });
         //todo FINISHED!!!!
         //$.each(routesId, function(index, value) {
-        //    var btnGroup = $("<div/>", {
+        //    var btnGroup = createHtmlTag("div", {
         //        class: "btn-group",
         //        "data-toggle": "buttons"
-        //
         //    });
-        //    var btnBtnPrimary = $("<label/>", {
-        //        class: "btn btn-primary"
-        //    });
-        //    var inputBtn = $("<input/>", {
+        //    var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary"});
+        //    var inputBtn = createHtmlTag("input", {
         //        type: "radio",
         //        "data-toggle": "buttons",
         //        "routeId": value,
-        //        class: "uRoute btn"
+        //        class: "uRoute btn",
+        //        text : "route " + value
         //    });
-        //    var valueParam = $("", {
-        //        text : "route"
-        //
-        //        //todo не моду запхати route i value ------- 'route' + value +
-        //    });
-        //    log("____________________");
+        //    console.log("_________________________")
         //    btnBtnPrimary.appendTo(btnGroup);
         //    inputBtn.appendTo(btnBtnPrimary);
-        //    valueParam.appendTo(inputBtn);
-        //
-        //    log(btnGroup[0].outerHTML);
+        //    console.log(btnGroup[0].outerHTML);
         //});
         routePanel.innerHTML = routeButtons.join('');
         $.each($(routePanel).find('input.uRoute') , function(index, value) {
@@ -60,11 +56,23 @@ function initialize() {
         $.post("/routes").done(function(routesId) {
             var routeButtons = [];
             $.each(routesId, function(index, value) {
-                routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
-                '<label class="btn btn-primary">' +
-                '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
-                '</label>' +
-                '</div>');
+                routeButtons.push(
+                    '<div class="btn-group" data-toggle="buttons">' +
+                        '<label class="btn btn-primary">' +
+                            '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
+                        '</label>' +
+                    '</div>');
+                //    var btnGroup = createHtmlTag("div", {
+                //        class : "btn-group",
+                //        "data-toggle" : "buttons"
+                //    });
+                //var btnBtnPrimary = createHtmlTag("input", {
+                //    type : "radio",
+                //    "data-toggle" : "buttons",
+                //    routeID : value,
+                //    class : "uRoute",
+                //    text : "route" + value
+                //});
 
             });
             routePanel.innerHTML = routeButtons.join('');
