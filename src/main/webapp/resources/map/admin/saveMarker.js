@@ -12,7 +12,6 @@ function save_marker(Marker, mName, mAddress, replaceWin) {
         data: JSON.stringify(myData),
         success: function (marker) {
             var v1 = "<h1 class=\"marker-heading\">" + marker.message + "</h1><p>" + marker.address + "</p>";
-            console.log(replaceWin);
             replaceWin.html(v1);
             Marker.setDraggable(false);
             Marker.setIcon('http://localhost:8080/resources/img/pin_green.png');
@@ -21,4 +20,14 @@ function save_marker(Marker, mName, mAddress, replaceWin) {
             alert(thrownError);
         }
     });
+    //todo : FINISHED!! check out
+    //var markerHeading = $("<h1/>", {
+    //    class : "marker-heading" + marker.message
+    //
+    //});
+    //var markerAddress = $("<p/>", {
+    //    test : marker.address
+    //})
+    //markerAddress.appendTo(markerHeading);
+    //log(markerHeading[0].outerHTML);
 }

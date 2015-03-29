@@ -11,12 +11,13 @@
     <link href="${pageContext.request.contextPath}/resources/css/showMarkers.css" rel="stylesheet" type="text/css">
 </head>
 
-<body style="background: none !important;" onload="initialize()">
+<body onload="initialize()">
+<jsp:include page="../frames/userMenu.jsp"/>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-4 col-lg-4">
             <div class="col-md-12 col-lg-12 col-xs-12">
-                <button id="route_button" class='newRouteBtn close' aria-hidden='true' >Add new route</button>
+                <button id="route_button" class='newRouteBtn route-add' aria-hidden='true' >Add new route</button>
             </div>
             <div id="routes_panel"></div>
             <div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px"></div>
@@ -24,7 +25,7 @@
 
         </div>
         <div class="col-md-8 col-lg-8 col-xs-12">
-            <div id="map-canvas" style="float:left; width: 100%; height:100%;"></div>
+            <div id="map-canvas" style="float:left; width: 100%; height:80%; border: 1px solid #000"></div>
         </div>
 
     </div>

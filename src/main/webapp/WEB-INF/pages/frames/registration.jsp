@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                            <input type="password" class="form-control" placeholder="Enter Password" id="password" name="password"/>
+                            <input type="password" class="form-control" placeholder="password" id="password" name="password"/>
                         </div>
 
                         <div class="form-group input-group">

@@ -8,7 +8,23 @@ function addToTable(obj) {
     str += "<td>" + "<input id ='"+ obj.userId +"' type='checkbox'" + typeCheckBox + "></td>";
     str += "</tr>";
     return str;
+
 }
+//todo : FINISHED?? review
+//var trStart = $("<tr/>", {});
+//var tdFirst = $("<td/>", {
+//    text : obj.login
+//});
+//
+//var tdSecond = $("<td/>",{
+//    input : {
+//        id : obj.userId,
+//        type : "checkbox" + typeCheckBox
+//    }
+//})
+//tdFirst.appendTo(trStart);
+//tdSecond.append(trStart);
+
 $(document).ready(function () {
 
     $.post("/admin/admin_list", function (data) {
@@ -44,5 +60,9 @@ function returnStatus(user) {
         }
     });
 }
+
+
+
+
 
 

@@ -5,13 +5,42 @@ function initialize() {
     $.post("/routes").done(function(routesId) {
         var routeButtons = [];
         $.each(routesId, function(index, value) {
-            routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
-            '<label class="btn btn-primary">' +
-             '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute btn">route' + value +
-            '</label>' +
-            '</div>');
+            routeButtons.push(
+                '<div class="btn-group" data-toggle="buttons">' +
+                     '<label class="btn btn-primary">' +
+                         '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute btn">route' + value +
+                    '</label>' +
+                '</div>');
 
         });
+        //todo FINISHED!!!!
+        //$.each(routesId, function(index, value) {
+        //    var btnGroup = $("<div/>", {
+        //        class: "btn-group",
+        //        "data-toggle": "buttons"
+        //
+        //    });
+        //    var btnBtnPrimary = $("<label/>", {
+        //        class: "btn btn-primary"
+        //    });
+        //    var inputBtn = $("<input/>", {
+        //        type: "radio",
+        //        "data-toggle": "buttons",
+        //        "routeId": value,
+        //        class: "uRoute btn"
+        //    });
+        //    var valueParam = $("", {
+        //        text : "route"
+        //
+        //        //todo не моду запхати route i value ------- 'route' + value +
+        //    });
+        //    log("____________________");
+        //    btnBtnPrimary.appendTo(btnGroup);
+        //    inputBtn.appendTo(btnBtnPrimary);
+        //    valueParam.appendTo(inputBtn);
+        //
+        //    log(btnGroup[0].outerHTML);
+        //});
         routePanel.innerHTML = routeButtons.join('');
         $.each($(routePanel).find('input.uRoute') , function(index, value) {
             google.maps.event.addDomListener(value, "click", function (event) {

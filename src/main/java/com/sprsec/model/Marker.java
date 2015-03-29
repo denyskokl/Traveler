@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "markers", catalog = "travel")
@@ -42,13 +40,13 @@ public class Marker {
     @org.hibernate.annotations.Cascade( {org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<Comment> comments = new ArrayList<>();
 
-
-    @JsonManagedReference
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "category_markers", catalog = "travel", joinColumns = {
-            @JoinColumn(name = "category_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "marker_id", nullable = false, updatable = false)})
-    private Set<Category> categories  = new LinkedHashSet<>();
+//
+//    @JsonManagedReference
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "category_markers", catalog = "travel", joinColumns = {
+//            @JoinColumn(name = "category_id", nullable = false, updatable = false)},
+//            inverseJoinColumns = {@JoinColumn(name = "marker_id", nullable = false, updatable = false)})
+//    private Set<Category> categories  = new LinkedHashSet<>();
 
 
 
@@ -125,13 +123,13 @@ public class Marker {
         this.routes = routes;
     }
 
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
+//    public Set<Category> getCategories() {
+//        return categories;
+//    }
+//
+//    public void setCategories(Set<Category> categories) {
+//        this.categories = categories;
+//    }
 
 
     @Override

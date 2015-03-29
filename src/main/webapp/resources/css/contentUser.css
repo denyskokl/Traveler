@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+}
+
+.route-add {
+    color: #c12e2a;
+}
+
+.nav-custom {
+    border: none !important;
+    border-radius: 0 !important;
+    background: rgba(0,0,0, 0.4) !important;
+}
+
+.nav-custom ul li ul {
+    background: rgba(0,0,0,1);
+}
+
+.nav-custom ul li ul a {
+    color: #fff;
+}
+.nav-custom ul li ul li a:hover {
+    background: #313131;
+    color: #fff;
+}

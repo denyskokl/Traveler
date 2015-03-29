@@ -1,11 +1,6 @@
 package com.sprsec.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "category", catalog = "travel")
@@ -23,9 +18,9 @@ public class Category {
     @Column(name = "photo")
     private String photo;
 
-    @JsonBackReference
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "categories")
-    private List<Marker> markersList = new ArrayList<>();
+//    @JsonBackReference
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "categories")
+//    private List<Marker> markersList = new ArrayList<>();
 
     public Category() {
     }
@@ -60,12 +55,12 @@ public class Category {
         this.photo = photo;
     }
 
-    public List<Marker> getMarkersList() {
-        return markersList;
-    }
-
-    public void setMarkersList(List<Marker> markersList) {
-        this.markersList = markersList;
-    }
+//    public List<Marker> getMarkersList() {
+//        return markersList;
+//    }
+//
+//    public void setMarkersList(List<Marker> markersList) {
+//        this.markersList = markersList;
+//    }
 
 }
