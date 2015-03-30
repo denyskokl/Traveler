@@ -15,4 +15,6 @@ public interface MarkerDAO {
     Marker getMark(Marker marker);
 
     Marker getMark(int markerId);
+
+    List<Marker> getMarkersByCategory(int categoryId);
 }

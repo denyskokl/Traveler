@@ -1,12 +1,9 @@
 package com.sprsec.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "markers", catalog = "travel")
@@ -18,7 +15,6 @@ public class Marker {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int markerId;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
     @Column(name = "latitude")
     private Double latitude;
 
@@ -40,17 +36,13 @@ public class Marker {
     @org.hibernate.annotations.Cascade( {org.hibernate.annotations.CascadeType.SAVE_UPDATE})
     private List<Comment> comments = new ArrayList<>();
 
-//
-//    @JsonManagedReference
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JoinTable(name = "category_markers", catalog = "travel", joinColumns = {
-//            @JoinColumn(name = "category_id", nullable = false, updatable = false)},
-//            inverseJoinColumns = {@JoinColumn(name = "marker_id", nullable = false, updatable = false)})
-//    private Set<Category> categories  = new LinkedHashSet<>();
 
-
-
-
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "category_markers", catalog = "travel", joinColumns = {
+            @JoinColumn(name = "marker_id", nullable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "category_id", nullable = false, updatable = false)})
+    private Set<Category> categories = new HashSet<>();
 
     public Marker() {
     }
@@ -123,14 +115,13 @@ public class Marker {
         this.routes = routes;
     }
 
-//    public Set<Category> getCategories() {
-//        return categories;
-//    }
-//
-//    public void setCategories(Set<Category> categories) {
-//        this.categories = categories;
-//    }
+    public Set<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -39,4 +39,9 @@ public class MarkerServiceImpl implements MarkerService {
     public Marker getMarker(int markerId) {
         return markerDAO.getMark(markerId);
     }
+
+    @Override
+    public List<Marker> getMarkersByCategory(int categoryId) {
+        return markerDAO.getMarkersByCategory(categoryId);
+    }
 }

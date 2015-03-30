@@ -31,14 +31,14 @@ public class RouteController {
     @ResponseBody
     @RequestMapping(value = "/routeByMarker", method = RequestMethod.POST)
     public Route saveMarkToRoute(@RequestParam int routeId,@RequestParam int markerId) {
-            Route route;
+        Route route;
         if (routeId < 0) {
-           route = new Route();
+            route = new Route();
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String name = auth.getName();
-           route.setUser(userService.getUser(name));
+            route.setUser(userService.getUser(name));
         } else {
-           route = routeService.getRoute(routeId);
+            route = routeService.getRoute(routeId);
         }
 
         Marker marker = markerService.getMarker(markerId);

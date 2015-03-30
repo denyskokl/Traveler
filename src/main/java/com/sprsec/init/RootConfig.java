@@ -66,4 +66,9 @@ public class RootConfig {
         transactionManager.setSessionFactory(sessionFactory);
         return transactionManager;
     }
+
+//    @Bean
+//    public OpenSessionInViewFilter springSecurityFilterChain() {
+//        return new OpenSessionInViewFilter();
+//    }
 }

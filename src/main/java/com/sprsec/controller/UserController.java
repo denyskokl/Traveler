@@ -15,6 +15,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
+
     @ResponseBody
     @RequestMapping(value = "/user_profile", method = RequestMethod.POST)
     public User showUserProfile() {

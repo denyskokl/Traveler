@@ -2,9 +2,11 @@ package com.sprsec.dao.map;
 
 import com.sprsec.model.Comment;
 import com.sprsec.model.Marker;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -49,5 +51,12 @@ public class MarkerDAOImpl implements MarkerDAO {
     @Override
     public Marker getMark(int markerId) {
         return (Marker) getSession().get(Marker.class, markerId);
+    }
+
+    public List<Marker> getMarkersByCategory(int categoryId) {
+        Criteria crit = getSession().createCriteria(Marker.class);
+        crit.createAlias("categories", "category_markers");
+        crit.add(Restrictions.eq("category_markers.categoryId", categoryId));
+        return crit.list();
     }
 }

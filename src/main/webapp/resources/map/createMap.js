@@ -6,6 +6,36 @@ function createHtmlTag(nameTag, attrs) {
 }
 
 function initialize() {
+
+    var categoryPanel = document.getElementById('categories');
+    $.post("/categories").done(function(categories) {
+        var categoryButtons = [];
+        $.each(categories, function(index, value) {
+            categoryButtons.push('<div class="btn-group" data-toggle="buttons">' +
+            '<label class="btn btn-primary">' +
+            '<input type="radio" data-toggle="buttons" categoryId=' + value.categoryId +
+            ' class="uCategory btn">' + value.category +
+            '</label>' +
+            '</div>');
+        });
+        categoryPanel.innerHTML = categoryButtons.join('');
+
+        $.each($(categoryPanel).find('input.uCategory') , function(index, value) {
+            google.maps.event.addDomListener(value, "click", function (event) {
+                var categoryId = $(this).attr("categoryId");
+                $.post("/markersByCategory",  {
+                    categoryId : categoryId
+                }, function (markers) {
+                    globalMarkers = markers;
+                    addMarkers(globalMarkers);
+                }).fail(function() {
+                    alert("error");
+                });
+            });
+        });
+    });
+
+
     var routePanel = document.getElementById('routes_panel');
     $.post("/routes").done(function (routesId) {
         var routeButtons = [];

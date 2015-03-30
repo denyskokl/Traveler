@@ -17,6 +17,7 @@
 <jsp:include page="../frames/userMenu.jsp"/>
 <div class="container-fluid">
     <div class="row">
+        <div id="categories"></div>
         <div class="col-md-4 col-lg-4">
             <div class="col-md-12 col-lg-12 col-xs-12">
                 <button id="route_button" class='newRouteBtn route-add' aria-hidden='true' >Add new route</button>

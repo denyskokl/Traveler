@@ -1,25 +1,28 @@
 package com.sprsec.controller;
 
+import com.sprsec.model.Category;
 import com.sprsec.model.Marker;
+import com.sprsec.service.map.CategoryService;
 import com.sprsec.service.map.MarkerService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 public class MarkerController {
 
     @Autowired
     private MarkerService markerService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/markers", method = RequestMethod.GET)
     public Map<Integer, Marker> getMarkers() {
@@ -44,5 +47,15 @@ public class MarkerController {
         } else {
             return new ResponseEntity<>(marker, HttpStatus.NO_CONTENT);
         }
+    }
+
+    @RequestMapping(value = "/categories", method = RequestMethod.POST)
+    public List<Category> getCategories() {
+        return categoryService.getCategories();
+    }
+
+    @RequestMapping(value = "/markersByCategory", method = RequestMethod.POST)
+    public List<Marker> getMarkersByCategory(@RequestParam int categoryId) {
+        return markerService.getMarkersByCategory(categoryId);
     }
 }

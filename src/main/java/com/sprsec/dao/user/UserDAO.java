@@ -5,12 +5,12 @@ import com.sprsec.model.User;
 import java.util.List;
 
 public interface UserDAO {
-	
-	public User getUser(String login);
 
-	public void addUser(User user);
+    public User getUser(String login);
 
-	List<User> getAllUsers();
+    public void addUser(User user);
 
-	User changeStatus(User user);
+    List<User> getAllUsers();
+
+    User changeStatus(User user);
 }

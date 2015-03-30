@@ -25,7 +25,6 @@ public class CommentController {
     @Autowired
     private MarkerService markerService;
 
-
     @Autowired
     private RouteService routeService;
 
@@ -36,7 +35,7 @@ public class CommentController {
 
     @ResponseBody
     @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
-    public List<Comment> getAllComments() throws JSONException {
+    public List<Comment> getAllComments() {
         return commentService.getAllComments();
     }
 
