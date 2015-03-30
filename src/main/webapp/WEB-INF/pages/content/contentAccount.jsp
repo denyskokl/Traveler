@@ -8,6 +8,7 @@
     <script src="${pageContext.request.contextPath}/resources/user/userInfo.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/contentAccount.css"
           rel="stylesheet">
+
 </head>
 <body>
 

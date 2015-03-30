@@ -23,3 +23,15 @@ body {
     background: #313131;
     color: #fff;
 }
+
+#control_panel {
+    float:right;width:30%;text-align:left;padding-top:20px
+}
+
+#directions_panel {
+    margin:70px;background-color:#FFEE77;
+}
+
+#map-canvas {
+    float:left; width: 100%; height:80%; border: 1px solid #000;
+}

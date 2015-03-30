@@ -12,13 +12,15 @@
     <script src="${pageContext.request.contextPath}/resources/map/admin/saveMarker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/admin/removeComment.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
-
+    <link href="${pageContext.request.contextPath}/resources/css/contentAdmin.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
 </head>
-<body style="background: none">
+<body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12 col-xs-12 col-lg-12">
-            <div id="map-canvas" style="float:left;width:100%;height:80%;"></div>
+            <div id="map-canvas" class="map"></div>
         </div>
     </div>
 </div>

@@ -63,7 +63,7 @@ function createHtmlTag(nameTag, attrs) {
     return $("<" + nameTag + "/>", attrs);
 }
 
-function commentMarker(marker, parentElement) { //TODO rename
+function commentMarker(marker, parentElement) {
     //todo send current user to frontend and change name
     for (var i = marker.comments.length - 1; i >= 0; i--) {
         var li = createHtmlTag("li", {});

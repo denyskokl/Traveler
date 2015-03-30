@@ -9,6 +9,8 @@
     <script src="${pageContext.request.contextPath}/resources/map/createMap.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/showMarkers.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/contentUser.css"
+          rel="stylesheet">
 </head>
 
 <body onload="initialize()">
@@ -20,12 +22,12 @@
                 <button id="route_button" class='newRouteBtn route-add' aria-hidden='true' >Add new route</button>
             </div>
             <div id="routes_panel"></div>
-            <div id="control_panel" style="float:right;width:30%;text-align:left;padding-top:20px"></div>
-            <div id="directions_panel" style="margin:70px;background-color:#FFEE77;"></div>
+            <div id="control_panel"></div>
+            <div id="directions_panel"></div>
 
         </div>
         <div class="col-md-8 col-lg-8 col-xs-12">
-            <div id="map-canvas" style="float:left; width: 100%; height:80%; border: 1px solid #000"></div>
+            <div id="map-canvas"></div>
         </div>
 
     </div>
