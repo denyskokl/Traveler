@@ -13,19 +13,22 @@
 
 </head>
 <body>
+<jsp:include page="../frames/adminMenu.jsp"/>
 <div class="container-fluid">
-    <jsp:include page="../frames/adminMenu.jsp"/>
-    <table id="content">
 
-        <th>Login</th>
-        <th>Status</th>
-        <tr>
-            <td></td>
-            <td></td>
-        </tr>
+    <div class="row">
+        <div class="col-md-11">
+            <table id="content" class="table table-bordered table-custom table-hover">
 
+                <th>Login</th>
+                <th>E-mail</th>
+                <th>Nickname</th>
+                <th>Birthday</th>
+                <th>Status</th>
 
-    </table>
+            </table>
+        </div>
+    </div>
 
 </div>
 </body>

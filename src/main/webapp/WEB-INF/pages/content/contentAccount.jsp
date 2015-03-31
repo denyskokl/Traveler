@@ -69,7 +69,7 @@
 
                                 </tbody>
                             </table>
-
+                            <button id="submit" class="btn btn-success right">Save</button>
                         </div>
                     </div>
                 </div>

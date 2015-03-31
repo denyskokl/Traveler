@@ -12,9 +12,9 @@ function initialize() {
         var categoryButtons = [];
         $.each(categories, function(index, value) {
             categoryButtons.push('<div class="btn-group" data-toggle="buttons">' +
-            '<label class="btn btn-primary">' +
+            '<label class="btn btn-primary btn-custom">' +
             '<input type="radio" data-toggle="buttons" categoryId=' + value.categoryId +
-            ' class="uCategory btn">' + value.category +
+            ' class="uCategory btn btn-custom">' + value.category +
             '</label>' +
             '</div>');
         });
@@ -41,12 +41,12 @@ function initialize() {
         var routeButtons = [];
         $.each(routesId, function (index, value) {
             var btnGroup = createHtmlTag("div", {class: "btn-group", "data-toggle": "buttons"});
-            var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary"});
+            var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary btn-custom"});
             var inputBtn = createHtmlTag("input", {
                 type: "radio",
                 "data-toggle": "buttons",
                 "routeId": value,
-                class: "uRoute btn"
+                class: "uRoute btn btn-custom"
             });
             btnBtnPrimary.appendTo(btnGroup);
             inputBtn.appendTo(btnBtnPrimary);
@@ -74,7 +74,7 @@ function initialize() {
             var routeButtons = [];
             $.each(routesId, function (index, value) {
                 var btnGroup = createHtmlTag("div", {class: "btn-group", "data-toggle": "buttons"});
-                var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary"});
+                var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary btn-custom"});
                 var inputType = createHtmlTag("input", {
                     type: "radio",
                     "data-toggle": "buttons",

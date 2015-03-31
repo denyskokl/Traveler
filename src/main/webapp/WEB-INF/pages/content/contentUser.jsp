@@ -17,16 +17,19 @@
 <jsp:include page="../frames/userMenu.jsp"/>
 <div class="container-fluid">
     <div class="row">
-        <div id="categories"></div>
-        <div class="col-md-4 col-lg-4">
-            <div class="col-md-12 col-lg-12 col-xs-12">
-                <button id="route_button" class='newRouteBtn route-add' aria-hidden='true' >Add new route</button>
-            </div>
-            <div id="routes_panel"></div>
-            <div id="control_panel"></div>
-            <div id="directions_panel"></div>
+        <div class="col-md-4 col-lg-4 panel-body pan">
 
+            <p class="head">Categories:</p>
+            <div id="categories"></div>
+            <p class="head">Routes: </p>
+            <button id="route_button" class='btn newRouteBtn route-add' aria-hidden='true' >Add new route</button>
+            <br/>
+            <br/>
+            <div id="routes_panel"></div>
+            <%--<div id="control_panel"></div>--%>
+            <div id="directions_panel" class="adr"></div>
         </div>
+
         <div class="col-md-8 col-lg-8 col-xs-12">
             <div id="map-canvas"></div>
         </div>

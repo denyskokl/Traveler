@@ -14,13 +14,13 @@
           rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/login.css"
           rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
 
 </head>
 <body>
 <sec:authorize access="isAnonymous()">
     <jsp:include page="frames/menu.jsp"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
     <div class="content-index">
         HELLO, TRAVEL WITH US!
     </div>

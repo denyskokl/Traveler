@@ -6,25 +6,16 @@ function addToTable(obj) {
     if (obj.userStatus === 'ENABLED') {
         typeCheckBox = 'checked = "checked"';
     }
-    var str = "<tr>";
+    var str = "<tbody><tr>";
     str += "<td>" + obj.login + "</td>";
+    str += "<td>" + obj.email + "</td>";
+    str += "<td>" + obj.nickname + "</td>";
+    str += "<td>" + new Date(obj.birthday) + "</td>";
     str += "<td>" + "<input id ='"+ obj.userId +"' type='checkbox'" + typeCheckBox + "></td>";
-    str += "</tr>";
+    str += "</tr></tbody>";
     return str;
 
 }
-//todo : FINISHED?? review
-//    var trStart = createHtmlTag("tr", {});
-//    var tdFirst = createHtmlTag("td", {text : obj.login});
-//
-//    var tdSecond = createHtmlTag("td",{
-//        input : {
-//            id : obj.userId,
-//            type : "checkbox" + typeCheckBox
-//        }
-//    })
-//    tdFirst.appendTo(trStart);
-//    tdSecond.append(trStart);
 
 $(document).ready(function () {
 

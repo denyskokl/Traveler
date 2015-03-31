@@ -40,7 +40,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Please sign in</h3>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body" style="margin-bottom: -15px;">
                     <form accept-charset="UTF-8" role="form" id="form" action="/j_spring_security_check"
                           method="POST" onsubmit="return checkForm()">
                         <c:if test="${not empty error}">
@@ -62,23 +62,23 @@
                                     <input name="remember" type="checkbox" value="Remember Me"> Remember Me
                                 </label>
                             </div>
-                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">
+                            <input class="btn btn-lg btn-success btn-block" type="submit" value="Login"> <br>
+                            <span id="signinButton">
+      <span
+              class="g-signin"
+              data-callback="signinCallback"
+              data-clientid="384049767054-d7j646gk9h5rrerbh6o15gcig46rgsen.apps.googleusercontent.com"
+              data-cookiepolicy="single_host_origin"
+              data-requestvisibleactions="http://schemas.google.com/AddActivity"
+              data-scope="https://www.googleapis.com/auth/plus.login">
+      </span>
+    </span>
                         </fieldset>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <span id="signinButton">
-  <span
-          class="g-signin"
-          data-callback="signinCallback"
-          data-clientid="384049767054-d7j646gk9h5rrerbh6o15gcig46rgsen.apps.googleusercontent.com"
-          data-cookiepolicy="single_host_origin"
-          data-requestvisibleactions="http://schemas.google.com/AddActivity"
-          data-scope="https://www.googleapis.com/auth/plus.login">
-  </span>
-</span>
 </div>
 
 <script type="text/javascript">
