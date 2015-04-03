@@ -30,9 +30,6 @@
 <body>
 <jsp:include page="../frames/menu.jsp"/>
 
-
-<!-- This is a very simple parallax effect achieved by simple CSS 3 multiple backgrounds, made by http://twitter.com/msurguy -->
-
 <div class="container">
     <div class="row vertical-offset-100">
         <div class="col-md-4 col-md-offset-4">

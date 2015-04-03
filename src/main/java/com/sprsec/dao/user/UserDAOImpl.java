@@ -4,6 +4,7 @@ import com.sprsec.model.User;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +24,7 @@ public class UserDAOImpl implements UserDAO {
         return (User) openSession().createQuery("from User u where u.login = :login")
                 .setParameter("login", login)
                 .uniqueResult();
+//        return (User) openSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
     }
 
     @Override
@@ -42,5 +44,6 @@ public class UserDAOImpl implements UserDAO {
         query.setProperties(user)
                 .executeUpdate();
         return (User) openSession().get(User.class, user.getUserId());
+        //??????
     }
 }

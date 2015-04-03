@@ -13,7 +13,6 @@ $(document).ready(function () {
         addToTable(user);
     });
 
-    // TODO: implement
     $('#edit').click(function() {
         $('#email').replaceWith('<input id="#email" class="form-control">');
         $('#login').replaceWith('<input id="#login" class="form-control">');
@@ -24,7 +23,24 @@ $(document).ready(function () {
     });
 
     $('#submit').click(function() {
-        // TODO: Implement ajax
+        // var bla = {
+        //    login : $("login").selector,
+        //        birthday : $("birthday").selector,
+        //    email : $("email").selector,
+        //    nickname : $("nickname").selector,
+        //    sex : $("sex").selector
+        //};
+        $.post("/registration", {
+            login : $("login").selector,
+            birthday : $("birthday").selector,
+            email : $("email").selector,
+            nickname : $("nickname").selector,
+            sex : $("sex").selector,
+            password : 1111
+        },function () {
+           log("------------------")
+            alert("d");
+        });
     });
 });
 

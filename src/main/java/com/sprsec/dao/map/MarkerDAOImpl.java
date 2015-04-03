@@ -39,6 +39,12 @@ public class MarkerDAOImpl implements MarkerDAO {
         Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
         query.setProperties(marker);
         return query.executeUpdate();
+//        Criteria criteria = getSession().createCriteria(Marker.class);
+//        criteria
+//                .add(Restrictions.eq("latitude", marker.getLatitude()))
+//                .add(Restrictions.eq("longitude", marker.getLongitude())).uniqueResult();
+//        getSession().delete(criteria);
+//        return 0; ?????
     }
 
     @Override
@@ -46,6 +52,11 @@ public class MarkerDAOImpl implements MarkerDAO {
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
         query.setProperties(marker);
         return (Marker) query.uniqueResult();
+//        Criteria criteria = getSession().createCriteria(Marker.class);
+//        criteria
+//                .add(Restrictions.eq("latitude", marker.getLatitude()))
+//                .add(Restrictions.eq("longitude", marker.getLongitude())).uniqueResult();
+//        return (Marker) criteria;
     }
 
     @Override

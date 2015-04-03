@@ -20,7 +20,7 @@ public class UserController {
     @ResponseBody
     @RequestMapping(value = "/user_profile", method = RequestMethod.POST)
     public User showUserProfile() {
-
+//todo : refactor
         return userService.getAllInfAuthUser();
     }
 

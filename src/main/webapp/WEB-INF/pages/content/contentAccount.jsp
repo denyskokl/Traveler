@@ -29,18 +29,6 @@
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
 
-                        <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                          <dl>
-                            <dt>DEPARTMENT:</dt>
-                            <dd>Administrator</dd>
-                            <dt>HIRE DATE</dt>
-                            <dd>11/12/2013</dd>
-                            <dt>DATE OF BIRTH</dt>
-                               <dd>11/12/2013</dd>
-                            <dt>GENDER</dt>
-                            <dd>Male</dd>
-                          </dl>
-                        </div>-->
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>
@@ -52,7 +40,6 @@
                                     <td>Date of Birth</td>
                                     <td id="birthday"></td>
                                 </tr>
-
                                 <tr>
                                 <tr>
                                     <td>Sex</td>
@@ -66,7 +53,6 @@
                                     <td>Email</td>
                                     <td id="email"></td>
                                 </tr>
-
                                 </tbody>
                             </table>
                             <button id="submit" class="btn btn-success right">Save</button>

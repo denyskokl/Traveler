@@ -32,7 +32,7 @@ public class LoginController {
             @RequestParam("birthday") String birthday,
             @RequestParam("nickname") String nickname,
             @RequestParam("sex") String sex) throws ParseException {
-        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");//todo : constant
         Date date = dt.parse(birthday);
         ModelAndView model = new ModelAndView();
         User user = new User(login, password,email,date,nickname,sex);

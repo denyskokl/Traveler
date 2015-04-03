@@ -26,7 +26,6 @@
             <br/>
             <br/>
             <div id="routes_panel"></div>
-            <%--<div id="control_panel"></div>--%>
             <div id="directions_panel" class="adr"></div>
         </div>
 

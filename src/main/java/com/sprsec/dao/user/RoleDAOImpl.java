@@ -19,7 +19,7 @@ public class RoleDAOImpl implements RoleDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-
+//todo : подумать переробить на ліст
     public Set<Role> getRoles() {
         List<Role> userRole = openSession().createQuery("from Role").list();
         if (userRole.size() > 0)

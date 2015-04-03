@@ -2,8 +2,10 @@ package com.sprsec.dao.map;
 
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +31,9 @@ public class RouteDAOImpl implements RouteDAO {
             return routeList;
         }
         return null;
+//        Criteria criteria = openSession().createCriteria(Route.class);
+//        criteria.add(Restrictions.eq("user", user));
+//        return criteria.list();
     }
 
     @Override
@@ -46,5 +51,6 @@ public class RouteDAOImpl implements RouteDAO {
     public List<Integer> getRoutesId(String login) {
         return openSession().createQuery("SELECT routeId FROM Route r where r.user.login = :login")
                 .setParameter("login", login).list();
+     //????????
     }
 }

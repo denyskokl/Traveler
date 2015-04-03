@@ -40,7 +40,7 @@ public class RouteController {
         } else {
             route = routeService.getRoute(routeId);
         }
-
+//todo : put in service
         Marker marker = markerService.getMarker(markerId);
         route.getMarkers().add(marker);
         routeService.saveOrUpdateRoute(route);

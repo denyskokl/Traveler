@@ -4,6 +4,11 @@ function log() { // todo: delete after development
 
 function createdUserMarkerTitle(marker) {
 
+
+    Handlebars.templates["marker"] ({
+        name : "kafe"
+
+    });
     var detailBox = createHtmlTag("div", {class : "detailBox"});
     var titleBox = createHtmlTag("div", {class : "titleBox"});
     var messageLabel = createHtmlTag("label", {text: marker.message});
