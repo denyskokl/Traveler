@@ -1,10 +1,5 @@
 globalMarkers = {};
 globalRouteId = -1;
-
-function createHtmlTag(nameTag, attrs) {
-    return $("<" + nameTag + "/>", attrs);
-}
-
 function initialize() {
 
     var categoryPanel = document.getElementById('categories');
@@ -35,27 +30,19 @@ function initialize() {
         });
     });
 
-
     var routePanel = document.getElementById('routes_panel');
-    $.post("/routes").done(function (routesId) {
+    $.post("/routes").done(function(routesId) {
         var routeButtons = [];
-        $.each(routesId, function (index, value) {
-            var btnGroup = createHtmlTag("div", {class: "btn-group", "data-toggle": "buttons"});
-            var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary btn-custom"});
-            var inputBtn = createHtmlTag("input", {
-                type: "radio",
-                "data-toggle": "buttons",
-                "routeId": value,
-                class: "uRoute btn btn-custom"
-            });
-            btnBtnPrimary.appendTo(btnGroup);
-            inputBtn.appendTo(btnBtnPrimary);
-            inputBtn.after("route ", value);
-            routeButtons.push(btnGroup[0].outerHTML);
-            return btnGroup[0].outerHTML;
+        $.each(routesId, function(index, value) {
+            routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
+            '<label class="btn btn-primary btn-custom">' +
+            '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute btn">route' + value +
+            '</label>' +
+            '</div>');
+
         });
         routePanel.innerHTML = routeButtons.join('');
-        $.each($(routePanel).find('input.uRoute'), function (index, value) {
+        $.each($(routePanel).find('input.uRoute') , function(index, value) {
             google.maps.event.addDomListener(value, "click", function (event) {
                 showTrip($(this).attr("routeId"));
                 globalRouteId = $(this).attr("routeId");
@@ -63,33 +50,25 @@ function initialize() {
         });
     });
 
-    $.get("/markers").done(function (markers) {
+    $.get("/markers").done(function(markers) {
         globalMarkers = markers;
         addMarkers(globalMarkers);
     });
 
-    $('#route_button').click(function () {
+    $('#route_button').click(function() {
         globalRouteId = -1;
-        $.post("/routes").done(function (routesId) {
+        $.post("/routes").done(function(routesId) {
             var routeButtons = [];
-            $.each(routesId, function (index, value) {
-                var btnGroup = createHtmlTag("div", {class: "btn-group", "data-toggle": "buttons"});
-                var btnBtnPrimary = createHtmlTag("label", {class: "btn btn-primary btn-custom"});
-                var inputType = createHtmlTag("input", {
-                    type: "radio",
-                    "data-toggle": "buttons",
-                    routeID: value,
-                    class: "uRoute"
-                });
-                btnBtnPrimary.appendTo(btnGroup);
-                inputType.appendTo(btnBtnPrimary);
-                inputType.after("route ", value);
-                routeButtons.push(btnGroup[0].outerHTML);
-                return btnGroup[0].outerHTML;
+            $.each(routesId, function(index, value) {
+                routeButtons.push('<div class="btn-group" data-toggle="buttons">' +
+                '<label class="btn btn-primary btn-custom">' +
+                '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
+                '</label>' +
+                '</div>');
 
             });
             routePanel.innerHTML = routeButtons.join('');
-            $.each($(routePanel).find('input.uRoute'), function (index, value) {
+            $.each($(routePanel).find('input.uRoute') , function(index, value) {
                 google.maps.event.addDomListener(value, "click", function (event) {
                     showTrip($(this).attr("routeId"));
                     globalRouteId = $(this).attr("routeId");
@@ -105,11 +84,11 @@ var rendererOptions = {
 
 
 function showTrip(routeId) {
-    $.post("/route", {
-        routeId: routeId
+    $.post("/route",  {
+        routeId : routeId
     }, function (route) {
         calcRoute(route);
-    }).fail(function () {
+    }).fail(function() {
         alert("can't show trip");
     });
 }
@@ -117,12 +96,12 @@ function showTrip(routeId) {
 var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
 
 function addEventClick(mReplace) {
-    $(".addComment").click(function () {
+    $(".addComment").click(function() {
         var objId = $(this).attr("objId");
         addComments(globalMarkers[objId], mReplace);
     });
 
-    $(".addToTrip").click(function () {
+    $(".addToTrip").click(function() {
         var objTrip = $(this).attr("objTrip");
         var routeId = globalRouteId;
         addToTrip(routeId, objTrip);
@@ -140,7 +119,7 @@ function addMarkers(markers) {
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    var infoWindow = new google.maps.InfoWindow(), marker;
+    var infoWindow = new google.maps.InfoWindow(), marker, i;
 
 
     for (var i in markers) {

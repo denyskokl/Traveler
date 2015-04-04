@@ -8,6 +8,7 @@ function addToTable(obj) {
     }
     var str = "<tbody><tr>";
     str += "<td>" + obj.login + "</td>";
+    str += "<td>" + obj.password + "</td>";
     str += "<td>" + obj.email + "</td>";
     str += "<td>" + obj.nickname + "</td>";
     str += "<td>" + new Date(obj.birthday) + "</td>";
