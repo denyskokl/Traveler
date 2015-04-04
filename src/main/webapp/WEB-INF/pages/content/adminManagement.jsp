@@ -21,6 +21,7 @@
             <table id="content" class="table table-bordered table-custom table-hover">
 
                 <th>Login</th>
+                <th>Password</th>
                 <th>E-mail</th>
                 <th>Nickname</th>
                 <th>Birthday</th>
