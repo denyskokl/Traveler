@@ -5,6 +5,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/handlebars-v3.0.0.js"></script>
     <script src="${pageContext.request.contextPath}/resources/user/userInfo.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/contentAccount.css"
           rel="stylesheet">
@@ -31,28 +32,30 @@
 
                         <div class=" col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
-                                <tbody>
-                                <tr>
-                                    <td>Login:</td>
-                                    <td id="login"></td>
-                                </tr>
-                                <tr>
-                                    <td>Date of Birth</td>
-                                    <td id="birthday"></td>
-                                </tr>
-                                <tr>
-                                <tr>
-                                    <td>Sex</td>
-                                    <td id="sex"></td>
-                                </tr>
-                                <tr>
-                                    <td>Nickname</td>
-                                    <td id="nickname"></td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td id="email"></td>
-                                </tr>
+                                <tbody id="user-content">
+                                <script id="user-template" type="text/x-handlebars-template">
+                                    <tr>
+                                        <td>Login:</td>
+                                        <td>{{login}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date of Birth</td>
+                                        <td>{{birthday}}</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>Sex</td>
+                                        <td>{{sex}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nickname</td>
+                                        <td>{{nickname}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{email}}</td>
+                                    </tr>
+                                </script>
                                 </tbody>
                             </table>
                             <button id="submit" class="btn btn-success right">Save</button>

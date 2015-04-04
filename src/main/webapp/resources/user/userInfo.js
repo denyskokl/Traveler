@@ -1,16 +1,25 @@
-function addToTable(obj) {
-    $('#login').text(obj.login);
-    $('#birthday').text(new Date(obj.birthday));
-    $('#email').text(obj.email);
-    $('#nickname').text(obj.nickname);
-    $('#sex').text(obj.sex);
-    $('#submit').hide();
-}
+//function addToTable(obj) {
+//    $('#login').text(obj.login);
+//    $('#birthday').text(new Date(obj.birthday));
+//    $('#email').text(obj.email);
+//    $('#nickname').text(obj.nickname);
+//    $('#sex').text(obj.sex);
+//    $('#submit').hide();
+//}
 $(document).ready(function () {
 
     $.post("/user/user_profile", function (user) {
-
-        addToTable(user);
+        var template = $("#user-template").html();
+        var hbar = Handlebars.compile(template);
+        var data = {
+            login : user.login,
+            birthday: new Date(user.birthday),
+            email: user.email,
+            nickname: user.nickname,
+            sex: user.sex
+        };
+        var templates = hbar(data);
+        $("#user-content").html(templates);
     });
 
     $('#edit').click(function() {
