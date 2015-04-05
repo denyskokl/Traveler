@@ -32,7 +32,7 @@ public class MarkerServiceImpl implements MarkerService {
 
     @Override
     public Marker getMarker(Marker marker) {
-        return markerDAO.getMark(marker);
+        return markerDAO.getMarker(marker);
     }
 
     @Override

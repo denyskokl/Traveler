@@ -39,12 +39,12 @@ public class CommentDAOImpl implements CommentDAO {
     @SuppressWarnings("unchecked")
     //todo : criteria
     public List<Comment> getCommentsByMark(Marker marker) {
-        Query query = getSession().createQuery("from Comment m where m.marker = :marker");
-        query.setParameter("marker", marker);
-        return query.list();
-//        Criteria criteria = getSession().createCriteria(Comment.class);
-//        criteria.add(Restrictions.eq("marker", marker));
-//        return criteria.list();
+//        Query query = getSession().createQuery("from Comment m where m.marker = :marker");
+//        query.setParameter("marker", marker);
+//        return query.list();
+        Criteria criteria = getSession().createCriteria(Comment.class);
+        criteria.add(Restrictions.eq("marker", marker));
+        return criteria.list();
     }
 
     @Override

@@ -48,7 +48,7 @@ public class MarkerDAOImpl implements MarkerDAO {
     }
 
     @Override
-    public Marker getMark(Marker marker) {
+    public Marker getMarker(Marker marker) {
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
         query.setProperties(marker);
         return (Marker) query.uniqueResult();

@@ -31,7 +31,7 @@ public class CommentServiceImpl implements CommentService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         comment.setUser(userDAO.getUser(name));
-        comment.setMarker(markerDAO.getMark(comment.getMarker()));
+        comment.setMarker(markerDAO.getMarker(comment.getMarker()));
         return commentDAO.saveComment(comment);
     }
 
