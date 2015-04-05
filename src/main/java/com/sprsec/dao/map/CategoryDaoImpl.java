@@ -26,5 +26,8 @@ public class CategoryDAOImpl implements CategoryDAO{
     @SuppressWarnings("unchecked")
     public List<Category> getCategories() {
         return getSession().createCriteria(Category.class).list();
+
+
+
     }
 }
