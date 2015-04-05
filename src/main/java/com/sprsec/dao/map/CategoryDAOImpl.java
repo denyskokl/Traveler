@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CategoryDAOImpl1 implements CategoryDAO1 {
+public class CategoryDAOImpl implements CategoryDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

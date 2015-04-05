@@ -1,6 +1,6 @@
 package com.sprsec.service.map;
 
-import com.sprsec.dao.map.CategoryDAO1;
+import com.sprsec.dao.map.CategoryDAO;
 import com.sprsec.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,10 @@ import java.util.List;
 @Transactional
 public class CategoryServiceImpl implements CategoryService{
     @Autowired
-    private CategoryDAO1 categoryDAO1;
+    private CategoryDAO categoryDAO;
 
     @Override
     public List<Category> getCategories() {
-        return categoryDAO1.getCategories();
+        return categoryDAO.getCategories();
     }
 }

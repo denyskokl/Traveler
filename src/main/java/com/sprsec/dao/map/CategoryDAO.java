@@ -4,6 +4,6 @@ import com.sprsec.model.Category;
 
 import java.util.List;
 
-public interface CategoryDAO1 {
+public interface CategoryDAO {
     List<Category> getCategories();
 }
