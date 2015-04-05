@@ -21,7 +21,6 @@ public class CategoryDAOImpl implements CategoryDAO{
     @Override
     @SuppressWarnings("unchecked")
     public List<Category> getCategories() {
-        return getSession().createQuery("from Category").list();
-//        return getSession().createCriteria(Category.class).list();
+        return getSession().createCriteria(Category.class).list();
     }
 }
