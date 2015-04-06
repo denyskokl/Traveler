@@ -23,7 +23,7 @@
 
             <div class="panel panel-info">
                 <div class="panel-heading">
-                    <h3 class="panel-title">My profile <span class="pull-right" id="edit">Edit</span></h3>
+                    <h3 class="panel-title"><a id="profile">My profile</a> </a> <a class="pull-right" id="edit">Edit</a></h3>
 
                 </div>
                 <div class="panel-body">
@@ -31,7 +31,8 @@
                         <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"> </div>
 
                         <div class=" col-md-9 col-lg-9 ">
-                            <table class="table table-user-information">
+                            <div id="edit-form"></div>
+                            <table id="user-info" class="table table-user-information">
                                 <tbody id="user-content">
                                 <script id="user-template" type="text/x-handlebars-template">
                                     <tr>
@@ -42,7 +43,6 @@
                                         <td>Date of Birth</td>
                                         <td>{{birthday}}</td>
                                     </tr>
-                                    <tr>
                                     <tr>
                                         <td>Sex</td>
                                         <td>{{sex}}</td>
@@ -55,10 +55,30 @@
                                         <td>Email</td>
                                         <td>{{email}}</td>
                                     </tr>
-                                </script>
+                               </script>
+                                <div class="edit-form" id="user-edit-form">
+                                    <div class="form-group">
+                                        <input class="form-control" id="email" placeholder="E-mail">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="login" class="form-control" placeholder="Login">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="birthday" type="date" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="sex" class="form-control" placeholder="Sex">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="nickname" class="form-control" placeholder="Nickname">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="button" id="submit" class="btn btn-success" value="Save">
+                                    </div>
+                                </div>
                                 </tbody>
                             </table>
-                            <button id="submit" class="btn btn-success right">Save</button>
                         </div>
                     </div>
                 </div>
