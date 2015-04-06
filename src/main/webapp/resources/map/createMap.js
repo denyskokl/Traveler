@@ -4,8 +4,6 @@ function initialize() {
 
     var categoryPanel = document.getElementById('categories');
     $.post("/categories").done(function(categories) {
-        //var categoryButtons = [];
-        console.log(categories);
         var template = $('#categories-template').html();
         var hb = Handlebars.compile(template);
         var objects = hb(categories);

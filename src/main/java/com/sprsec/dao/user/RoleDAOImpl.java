@@ -1,7 +1,6 @@
 package com.sprsec.dao.user;
 
 import com.sprsec.model.Role;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +19,6 @@ public class RoleDAOImpl implements RoleDAO {
     }
     @SuppressWarnings("unchecked")
     public List<Role> getRoles() {
-        Criteria criteria = openSession().createCriteria(Role.class);
-        return criteria.list();
-
+        return openSession().createCriteria(Role.class).list();
     }
 }

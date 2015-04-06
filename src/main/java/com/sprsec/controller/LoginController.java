@@ -19,7 +19,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    public final SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
+    public static final SimpleDateFormat dt = new SimpleDateFormat("yyyy-mm-dd");
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String register() {

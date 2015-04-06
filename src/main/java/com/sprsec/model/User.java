@@ -83,8 +83,6 @@ public class User {
         this.sex = sex;
     }
 
-
-
     public int getUserId() {
         return userId;
     }

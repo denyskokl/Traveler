@@ -37,18 +37,14 @@ public class CommentDAOImpl implements CommentDAO {
 
     @Override
     @SuppressWarnings("unchecked")
-    //todo : criteria
     public List<Comment> getCommentsByMark(Marker marker) {
-//        Query query = getSession().createQuery("from Comment m where m.marker = :marker");
-//        query.setParameter("marker", marker);
-//        return query.list();
         Criteria criteria = getSession().createCriteria(Comment.class);
         criteria.add(Restrictions.eq("marker", marker));
         return criteria.list();
     }
 
     @Override
-    //todo : too
+    //todo :1
     public void deleteComment(Comment comment) {
         Query query = getSession().createQuery("delete from Comment m where m.commentId = :commentId");
         query.setParameter("commentId", comment.getCommentId());

@@ -33,7 +33,7 @@ public class MarkerDAOImpl implements MarkerDAO {
         getSession().saveOrUpdate(marker);
         return marker;
     }
-
+// todo:2
     @Override
     public int removeMarker(Marker marker) {
         Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
@@ -46,7 +46,7 @@ public class MarkerDAOImpl implements MarkerDAO {
 //        getSession().delete(criteria);
 //        return 0; ?????
     }
-
+//todo: 3
     @Override
     public Marker getMarker(Marker marker) {
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");

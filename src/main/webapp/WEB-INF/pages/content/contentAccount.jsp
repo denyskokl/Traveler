@@ -61,9 +61,6 @@
                                         <input class="form-control" id="email" placeholder="E-mail">
                                     </div>
                                     <div class="form-group">
-                                        <input id="login" class="form-control" placeholder="Login">
-                                    </div>
-                                    <div class="form-group">
                                         <input id="birthday" type="date" class="form-control">
                                     </div>
                                     <div class="form-group">

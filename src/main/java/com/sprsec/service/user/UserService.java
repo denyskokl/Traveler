@@ -2,6 +2,7 @@ package com.sprsec.service.user;
 
 import com.sprsec.model.User;
 
+import java.util.Date;
 import java.util.List;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
     User changeStatus(User user);
 
     User getAllInfAuthUser();
+
+    void updateUser(String email, Date date, String nickname, String sex);
 }

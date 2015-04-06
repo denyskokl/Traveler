@@ -23,19 +23,21 @@ $(document).ready(function () {
     $('#profile').click(showProfileData);
 
     $('#submit').click(function() {
-        $.post("", function () {
+        $.post("/user/edit_user", {
+            birthday: $("#birthday").val(),
+            email: $("#email").val(),
+            nickname: $("#nickname").val(),
+            sex: $("#sex").val()
+        }, function () {
+        showProfileData();
 
         });
-
-
-        showProfileData();
     });
 
     function showProfileData() {
         $("#user-info").show();
         $('#user-edit-form').hide();
     }
-
 });
 
 

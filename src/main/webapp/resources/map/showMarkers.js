@@ -30,7 +30,6 @@ function createdUserMarkerTitle(marker) {
 }
 function commentMarker(marker) {
     var text = '';
-    //todo send current user to frontend and change name
     for (var i = marker.comments.length - 1; i >= 0; i--) {
         text +=
             '<li>' +

@@ -13,4 +13,6 @@ public interface UserDAO {
     List<User> getAllUsers();
 
     User changeStatus(User user);
+
+    void updateUser(User user);
 }

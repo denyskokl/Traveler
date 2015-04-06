@@ -41,7 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .defaultSuccessUrl("/")
-//                .failureUrl("/login?error=1")
                 .failureHandler(new AuthenticationErrorHandler())
                 .usernameParameter("username")
                 .passwordParameter("password")
@@ -52,11 +51,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
     }
-
-    //todo надо ли???
-//    @Bean
-//    public DelegatingFilterProxy springSecurityFilterChain() {
-//        DelegatingFilterProxy filterProxy = new DelegatingFilterProxy();
-//        return filterProxy;
-//    }
 }

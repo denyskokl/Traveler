@@ -19,7 +19,7 @@ public class UserDAOImpl implements UserDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-
+//todo: 5
     public User getUser(String login) {
         return (User) openSession().createQuery("from User u where u.login = :login")
                 .setParameter("login", login)
@@ -39,11 +39,17 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
+    //todo: 6
     public User changeStatus(User user) {
         Query query = openSession().createQuery("update User u set u.userStatus = :userStatus where u.userId = :userId");
         query.setProperties(user)
                 .executeUpdate();
         return (User) openSession().get(User.class, user.getUserId());
         //??????
+    }
+
+    @Override
+    public void updateUser(User user) {
+        openSession().saveOrUpdate(user);
     }
 }

@@ -63,4 +63,16 @@ public class UserServiceImpl implements UserService {
         String username = auth.getName();
         return userDAO.getUser(username);
     }
+
+    @Override
+    public void updateUser(String email, Date date, String nickname, String sex) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String userName = auth.getName();
+        User user = userDAO.getUser(userName);
+        user.setEmail(email);
+        user.setBirthday(date);
+        user.setNickname(nickname);
+        user.setSex(sex);
+        userDAO.updateUser(user);
+    }
 }
