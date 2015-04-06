@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $.post("/user/user_profile", function (user) {
+    $.get("/user/user_profile", function (user) {
         $('#user-edit-form').hide();
         var template = $("#user-template").html();
         var hbar = Handlebars.compile(template);
@@ -23,7 +23,11 @@ $(document).ready(function () {
     $('#profile').click(showProfileData);
 
     $('#submit').click(function() {
-        //TODO: implement ajax request
+        $.post("", function () {
+
+        });
+
+
         showProfileData();
     });
 

@@ -18,9 +18,8 @@ public class UserController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/user_profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/user_profile", method = RequestMethod.GET)
     public User showUserProfile() {
-//todo : refactor
         return userService.getAllInfAuthUser();
     }
 
@@ -28,4 +27,13 @@ public class UserController {
     public String userList() {
         return "/content/contentAccount";
     }
+
+//    @RequestMapping(value = "/edit_user", method = RequestMethod.POST)
+//    public void editUser( @RequestParam("login") String login,
+//                          @RequestParam("birthday") String birthday,
+//                          @RequestParam("email") String email,
+//                          @RequestParam("nickname") String nickname,
+//                          @RequestParam("sex") String sex) {
+//
+//    }
 }
