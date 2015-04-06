@@ -24,16 +24,16 @@ public class RouteDAOImpl implements RouteDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<Route> getRoutes(User user) {
-        List<Route> routeList = openSession().createQuery("from Route r where r.user = :user")
-                .setParameter("user", user)
-                .list();
-        if (routeList.size() > 0) {
-            return routeList;
-        }
-        return null;
-//        Criteria criteria = openSession().createCriteria(Route.class);
-//        criteria.add(Restrictions.eq("user", user));
-//        return criteria.list();
+//        List<Route> routeList = openSession().createQuery("from Route r where r.user = :user")
+//                .setParameter("user", user)
+//                .list();
+//        if (routeList.size() > 0) {
+//            return routeList;
+//        }
+//        return null;
+        Criteria criteria = openSession().createCriteria(Route.class);
+        criteria.add(Restrictions.eq("user", user));
+        return criteria.list();
     }
 
     @Override

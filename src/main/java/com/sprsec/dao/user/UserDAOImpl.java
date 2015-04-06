@@ -21,10 +21,10 @@ public class UserDAOImpl implements UserDAO {
     }
 
     public User getUser(String login) {
-        return (User) openSession().createQuery("from User u where u.login = :login")
-                .setParameter("login", login)
-                .uniqueResult();
-//        return (User) openSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
+//        return (User) openSession().createQuery("from User u where u.login = :login")
+//                .setParameter("login", login)
+//                .uniqueResult();
+        return (User) openSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
     }
 
     @Override
