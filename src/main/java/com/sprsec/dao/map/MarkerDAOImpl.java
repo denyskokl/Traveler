@@ -47,17 +47,12 @@ public class MarkerDAOImpl implements MarkerDAO {
 //        return 0; ?????
     }
 
-    //todo: 3
     @Override
     public Marker getMarker(Marker marker) {
-        Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
-        query.setProperties(marker);
-        return (Marker) query.uniqueResult();
-//        Criteria cr = getSession().createCriteria(Marker.class);
-//        cr.add(Restrictions.eq("latitude", "latitude"));
-//        cr.add(Restrictions.eq("longitude", "longitude"));
-//        cr.add(Restrictions.eq("marker", "marker"));
-//        return (Marker) cr.uniqueResult();
+        Criteria cr = getSession().createCriteria(Marker.class);
+        cr.add(Restrictions.eq("latitude", marker.getLatitude()));
+        cr.add(Restrictions.eq("longitude", marker.getLongitude()));
+        return (Marker) cr.uniqueResult();
     }
 
     @Override

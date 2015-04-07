@@ -53,7 +53,6 @@ public class RouteServiceImpl implements RouteService {
         routeDAO.saveRoute(route);
     }
 
-
     @Override
     public List<Integer> getRoutesId() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
