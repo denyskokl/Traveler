@@ -9,7 +9,7 @@ public interface RouteService {
 
     public Route getRoute(int id);
 
-    public void saveOrUpdateRoute(Route route);
+    public void saveOrUpdateRoute(int routeId, int markerId);
 
     List<Integer> getRoutesId();
 }

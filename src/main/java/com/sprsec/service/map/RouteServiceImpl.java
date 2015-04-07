@@ -2,6 +2,7 @@ package com.sprsec.service.map;
 
 import com.sprsec.dao.map.RouteDAO;
 import com.sprsec.dao.user.UserDAO;
+import com.sprsec.model.Marker;
 import com.sprsec.model.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -21,6 +22,8 @@ public class RouteServiceImpl implements RouteService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private MarkerService markerService;
 
     @Override
     public List<Route> getRoutes() {
@@ -35,9 +38,21 @@ public class RouteServiceImpl implements RouteService {
     }
 
     @Override
-    public void saveOrUpdateRoute(Route route) {
+    public void saveOrUpdateRoute(int routeId, int markerId) {
+        Route route;
+        if (routeId < 0) {
+            route = new Route();
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String name = auth.getName();
+            route.setUser(userDAO.getUser(name));
+        } else {
+            route = routeDAO.getRoute(routeId);
+        }
+        Marker marker = markerService.getMarker(markerId);
+        route.getMarkers().add(marker);
         routeDAO.saveRoute(route);
     }
+
 
     @Override
     public List<Integer> getRoutesId() {

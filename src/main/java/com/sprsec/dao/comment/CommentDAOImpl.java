@@ -50,7 +50,7 @@ public class CommentDAOImpl implements CommentDAO {
         query.setParameter("commentId", comment.getCommentId());
         query.executeUpdate();
 //        Criteria criteria = getSession().createCriteria(Comment.class);
-//        criteria.add(Restrictions.eq("comment_id", comment.getCommentId())).uniqueResult();
+//        criteria.add(Restrictions.eq("commentId", comment.getCommentId())).uniqueResult();
 //        getSession().delete(criteria);
 
     }

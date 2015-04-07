@@ -22,16 +22,17 @@ $(document).ready(function () {
 
     $('#profile').click(showProfileData);
 
-    $('#submit').click(function() {
+    $('#submit').click(function(user) {
+
         $.post("/user/edit_user", {
             birthday: $("#birthday").val(),
             email: $("#email").val(),
             nickname: $("#nickname").val(),
             sex: $("#sex").val()
         }, function () {
-        showProfileData();
 
         });
+        showProfileData();
     });
 
     function showProfileData() {

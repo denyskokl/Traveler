@@ -1,6 +1,5 @@
 package com.sprsec.dao.map;
 
-import com.sprsec.model.Comment;
 import com.sprsec.model.Marker;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -33,7 +32,8 @@ public class MarkerDAOImpl implements MarkerDAO {
         getSession().saveOrUpdate(marker);
         return marker;
     }
-// todo:2
+
+    // todo:2
     @Override
     public int removeMarker(Marker marker) {
         Query query = getSession().createQuery("delete from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
@@ -46,17 +46,18 @@ public class MarkerDAOImpl implements MarkerDAO {
 //        getSession().delete(criteria);
 //        return 0; ?????
     }
-//todo: 3
+
+    //todo: 3
     @Override
     public Marker getMarker(Marker marker) {
         Query query = getSession().createQuery("from Marker m where m.latitude = :latitude and m.longitude = :longitude ");
         query.setProperties(marker);
         return (Marker) query.uniqueResult();
-//        Criteria criteria = getSession().createCriteria(Marker.class);
-//        criteria
-//                .add(Restrictions.eq("latitude", marker.getLatitude()))
-//                .add(Restrictions.eq("longitude", marker.getLongitude())).uniqueResult();
-//        return (Marker) criteria;
+//        Criteria cr = getSession().createCriteria(Marker.class);
+//        cr.add(Restrictions.eq("latitude", "latitude"));
+//        cr.add(Restrictions.eq("longitude", "longitude"));
+//        cr.add(Restrictions.eq("marker", "marker"));
+//        return (Marker) cr.uniqueResult();
     }
 
     @Override
