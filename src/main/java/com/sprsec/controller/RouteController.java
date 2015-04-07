@@ -1,9 +1,7 @@
 package com.sprsec.controller;
 
 import com.sprsec.model.Route;
-import com.sprsec.service.map.MarkerService;
 import com.sprsec.service.map.RouteService;
-import com.sprsec.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +16,6 @@ public class RouteController {
 
     @Autowired
     private RouteService routeService;
-
-    @Autowired
-    private MarkerService markerService;
-
-    @Autowired
-    private UserService userService;
 
     @ResponseBody
     @RequestMapping(value = "/routeByMarker", method = RequestMethod.POST)

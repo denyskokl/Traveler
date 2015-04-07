@@ -2,9 +2,9 @@ package com.sprsec.dao.map;
 
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -39,10 +39,11 @@ public class RouteDAOImpl implements RouteDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    //todo: 4
     public List<Integer> getRoutesId(String login) {
-        return openSession().createQuery("SELECT routeId FROM Route r where r.user.login = :login")
-                .setParameter("login", login).list();
-     //????????
+        return openSession().createCriteria(Route.class, "route")
+                .createCriteria("route.user", "user")
+                .add(Restrictions.eq("user.login", login))
+                .setProjection(Projections.property("route.routeId"))
+                .list();
     }
 }
