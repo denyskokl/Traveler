@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <html>
 <head>
@@ -22,7 +21,6 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login">Login</a></li>
 
@@ -30,6 +28,5 @@
         </div>
     </div>
 </nav>
-
 </body>
 </html>

@@ -1,8 +1,7 @@
-function log() { // todo: delete after development
-    console.log.apply(console, arguments);
-}
-
 function createdUserMarkerTitle(marker) {
+
+    //var text = $("#detailBox");
+    //text.find("#marker-message").text(marker.message);
     text =
         '<div class="detailBox">' +
             '<div class="titleBox">' +

@@ -22,9 +22,4 @@ public class Initializer extends
         return new String[]{"/"};
     }
 
-//    @Override
-//    protected Filter[] getServletFilters() {
-//        OpenSessionInViewFilter openSessionInViewFilter = new OpenSessionInViewFilter();
-//        return new Filter[]{ openSessionInViewFilter };
-//    }
 }

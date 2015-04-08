@@ -13,7 +13,6 @@
     <script src="https://apis.google.com/js/plus.js?onload=OnLoadCallback"></script>
 
 
-
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/star-rating.min.css" media="all"
           rel="stylesheet"
@@ -49,22 +48,14 @@
 
                         <fieldset>
                             <div class="form-group">
-                                <input type="text" id="us_name" class="form-control" placeholder="username" name="username" required autofocus>
+                                <input type="text" id="us_name" class="form-control" placeholder="username"
+                                       name="username" required autofocus>
                             </div>
                             <div class="form-group">
-                                <input type="password" id="us_pass" name="password" class="form-control" placeholder="password" required>
+                                <input type="password" id="us_pass" name="password" class="form-control"
+                                       placeholder="password" required>
                             </div>
                             <input class="btn btn-lg btn-success btn-block" type="submit" value="Login"> <br>
-                            <span id="signinButton">
-      <span
-              class="g-signin"
-              data-callback="signinCallback"
-              data-clientid="384049767054-d7j646gk9h5rrerbh6o15gcig46rgsen.apps.googleusercontent.com"
-              data-cookiepolicy="single_host_origin"
-              data-requestvisibleactions="http://schemas.google.com/AddActivity"
-              data-scope="https://www.googleapis.com/auth/plus.login">
-      </span>
-    </span>
                         </fieldset>
                     </form>
                 </div>
@@ -72,40 +63,5 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-    (function() {
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js?onload=OnLoadCallback';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
-</script>
-<script type="text/javascript">
-    function disconnectUser(access_token) {
-        var revokeUrl = 'https://accounts.google.com/o/oauth2/revoke?token=' +
-                access_token;
-
-        // Выполните асинхронный запрос GET.
-        $.ajax({
-            type: 'GET',
-            url: revokeUrl,
-            async: false,
-            contentType: "application/json",
-            dataType: 'jsonp',
-            success: function(nullResponse) {
-                // Выполните любое действие после отключения пользователя
-                // Ответ всегда неопределенный.
-            },
-            error: function(e) {
-                // Обработайте ошибку
-                // console.log(e);
-                // Вы можете предложить пользователю отключится вручную
-                // https://plus.google.com/apps
-            }
-        });
-    }
-    // Отключение может быть выполнено при нажатии на кнопку
-    $('#revokeButton').click(disconnectUser);
-</script>
 </body>
 </html>

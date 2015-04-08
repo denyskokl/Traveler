@@ -19,7 +19,6 @@ public class UserDAOImpl implements UserDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-
     public User getUser(String login) {
         return (User) openSession().createCriteria(User.class).add(Restrictions.eq("login", login)).uniqueResult();
     }
@@ -36,7 +35,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    //todo: 6
     public User changeStatus(User user) {
         Query query = openSession().createQuery("update User u set u.userStatus = :userStatus where u.userId = :userId");
         query.setProperties(user)

@@ -64,8 +64,6 @@
                             <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
                             <input type="date" class="form-control" placeholder="birthday" id="birthday" name="birthday"/>
                         </div>
-
-
                         <input type="submit" id="submit" value="Create" class="btn btn-success col-md-12">
                         <hr />
                         Already Registered ?  <a href="/login" >Login here</a>
@@ -74,11 +72,8 @@
 
             </div>
         </div>
-
-
     </div>
 </div>
-
 <script src="assets/plugins/jquery-1.10.2.js"></script>
 <script src="assets/plugins/bootstrap.js"></script>
 
