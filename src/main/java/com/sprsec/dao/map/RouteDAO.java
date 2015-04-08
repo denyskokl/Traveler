@@ -3,12 +3,14 @@ package com.sprsec.dao.map;
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
 
-import java.util.Set;
+import java.util.List;
 
 public interface RouteDAO {
-    public Set<Route> getRoutes(User user);
+    public List<Route> getRoutes(User user);
 
     public Route getRoute(int id);
 
-    public void addRoute(Route route);
+    public void saveRoute(Route route);
+
+    List<Integer> getRoutesId(String login);
 }

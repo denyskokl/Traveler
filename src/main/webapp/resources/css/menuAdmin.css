@@ -1,0 +1,19 @@
+.nav-custom {
+    border: none;
+    border-radius: 0;
+    background: rgba(0,0,0,0.6) !important;
+
+}
+
+
+.nav-custom ul li ul {
+    background: rgba(0,0,0,1);
+}
+
+.nav-custom ul li ul a {
+    color: #fff;
+}
+.nav-custom ul li ul li a:hover {
+    background: #313131;
+    color: #fff;
+}

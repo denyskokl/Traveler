@@ -1,14 +1,13 @@
 package com.sprsec.init;
 
+import com.sprsec.service.user.AuthenticationErrorHandler;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.filter.DelegatingFilterProxy;
 
 import javax.sql.DataSource;
 
@@ -25,7 +24,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication().dataSource(dataSource);
+        auth.jdbcAuthentication()
+                .dataSource(dataSource);
+
     }
 
     @Override
@@ -34,15 +35,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/control/**").hasRole("ADMIN")
-                .antMatchers("/acount/**").authenticated()
-                .antMatchers("/reviews/create").authenticated()
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/j_spring_security_check")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login?err=1")
+                .failureHandler(new AuthenticationErrorHandler())
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .and()
@@ -51,11 +50,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true);
-    }
-
-    @Bean
-    public DelegatingFilterProxy springSecurityFileterChain() {
-        DelegatingFilterProxy filterProxy = new DelegatingFilterProxy();
-        return filterProxy;
     }
 }

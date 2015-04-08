@@ -2,10 +2,10 @@ package com.sprsec.dao.user;
 
 import com.sprsec.model.Role;
 
-import java.util.Set;
+import java.util.List;
 
 public interface RoleDAO {
 	
-	public Set<Role> getRole(String role);
+	public List<Role> getRoles();
 
 }

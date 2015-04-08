@@ -2,18 +2,17 @@ package com.sprsec.dao.map;
 
 import com.sprsec.model.Route;
 import com.sprsec.model.User;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Repository
-public class RouteDAOImpl implements RouteDAO{
+public class RouteDAOImpl implements RouteDAO {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -23,33 +22,28 @@ public class RouteDAOImpl implements RouteDAO{
     }
 
     @Override
-    public Set<Route> getRoutes(User user) {
-        List<Route> userList;
-        Query query = openSession().createQuery("from Route r where r.user = :user");
-        query.setParameter("user", user);
-        userList = query.list();
-        if (userList.size() > 0) {
-            return new HashSet<>(userList);
-        } else {
-            return null;
-        }
+    @SuppressWarnings("unchecked")
+    public List<Route> getRoutes(User user) {
+         return openSession().createCriteria(Route.class).add(Restrictions.eq("user", user)).list();
     }
 
     @Override
     public Route getRoute(int id) {
-        List<Route> userList;
-        Query query = openSession().createQuery("from Route r where r.routeId = :routeId");
-        query.setParameter("routeId", id);
-        userList = query.list();
-        if (userList.size() > 0) {
-            return userList.get(0);
-        } else {
-            return null;
-        }
+        return (Route) openSession().get(Route.class, id);
     }
 
     @Override
-    public void addRoute(Route route) {
+    public void saveRoute(Route route) {
+        openSession().saveOrUpdate(route);
+    }
 
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<Integer> getRoutesId(String login) {
+        return openSession().createCriteria(Route.class, "route")
+                .createCriteria("route.user", "user")
+                .add(Restrictions.eq("user.login", login))
+                .setProjection(Projections.property("route.routeId"))
+                .list();
     }
 }

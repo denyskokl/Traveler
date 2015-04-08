@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+}
+
+.route-add {
+    background: rgba(41,41,41,1);
+    border: 1px solid rgba(24, 137, 243, 1);
+    color: #fff;
+    width: 100%;
+}
+
+.route-add:hover, .route-add:active {
+    color: #fdfdfd;
+}
+.nav-custom {
+    border: none !important;
+    border-radius: 0 !important;
+    background: rgba(0,0,0, 0.4) !important;
+}
+
+.nav-custom ul li ul {
+    background: rgba(0,0,0,1);
+}
+
+.nav-custom ul li ul a {
+    color: #fff;
+}
+.nav-custom ul li ul li a:hover {
+    background: #313131;
+    color: #fff;
+}
+
+#control_panel {
+    float:right;width:30%;text-align:left;padding-top:20px
+}
+
+#directions_panel {
+    margin:70px;background-color:#FFEE77;
+}
+
+#map-canvas {
+    float:left; width: 100%; height:80%; border: 1px solid #000;
+}
+
+.pan {
+    background: rgba(41,41,41, 0.9);
+}
+
+.head {
+    color: #fff;
+    font-size: 24px;
+}
+
+.btn-custom {
+    background: rgba(41, 41, 41, 1) !important;
+}
+
+.adr {
+    background: rgba(35, 65, 91, 1) !important;
+    color: #fff;
+}

@@ -1,0 +1,44 @@
+.trasp {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background: rgba(0,0,0,0.4) !important;
+}
+
+.content-index {
+    background: rgba(0,0,0,0.5);
+    padding: 0.7em;
+    width: 84%;
+    text-align: center;
+    margin: 1.7em 8%;
+    color: #fff;
+    font-size: 4vw;
+    border-radius: 2em;
+}
+
+.sign-up-index {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    font-size: 2.2em;
+    background: rgba(204, 14, 15, 0.7);
+    text-align: center;
+    line-height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+    margin-bottom: 0.7em;
+}
+.sign-up-index:hover {
+    background: rgba(227, 32, 83, 0.7);
+}
+
+.modal-window {
+    background: rgba(0,0,0,0.9) !important;
+    color: #fff;
+}
+
+.modal-input {
+    background: #000 !important;
+}

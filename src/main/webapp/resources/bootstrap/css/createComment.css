@@ -1,0 +1,12 @@
+span.label {
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 6px;
+}
+div {
+    margin: 4px;
+}
+.field {
+    width: 250px;
+}

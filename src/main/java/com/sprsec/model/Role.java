@@ -1,52 +1,53 @@
 package com.sprsec.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "user_roles", catalog = "w")
+@Table(name = "roles", catalog = "travel", uniqueConstraints = @UniqueConstraint(columnNames = { "role" }))
 public class Role {
 
-	@Id
-	@Column(name = "role_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idRole;
+    @Id
+    @Column(name = "role_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int idRole;
 
-	@Column(name = "role")
-	private String role;
+    @Column(name = "role", unique = true, nullable = false)
+    private String role;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "userRoles")
+    private List<User> users = new ArrayList<>();
 
     public Role() {
     }
 
-    public Role(String role, User user) {
+    public Role(String role, List<User> users) {
         this.role = role;
-        this.user = user;
+        this.users = users;
     }
 
     public int getIdRole() {
-		return idRole;
-	}
+        return idRole;
+    }
 
-	public void setIdRole(int idRole) {
-		this.idRole = idRole;
-	}
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getRole() {
+        return role;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setRole(String role) {
+        this.role = role;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public List<User> getUsers() {
+        return users;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
 }

@@ -1,22 +1,101 @@
-jQuery(function($) {
-    var script = document.createElement('script');
-    script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-    document.body.appendChild(script);
-});
+globalMarkers = {};
+globalRouteId = -1;
 function initialize() {
-    $.get("/markers").done(function(data) {
-        var markers = [];
 
-        for (var i = 0; i < data.length; i++) {
-            var marker = [];
-            marker.push(data[i].address);
-            marker.push(data[i].longitude);
-            marker.push(data[i].latitude);
-            marker.push(data[i].message);
-            markers.push(marker);
-        }
+    var categoryPanel = document.getElementById('categories');
+    $.post("/categories").done(function(categories) {
+        var template = $('#categories-template').html();
+        var hb = Handlebars.compile(template);
+        var objects = hb(categories);
+        $('#categories').html(objects);
 
-        addMarkers(markers);
+        $.each($(categoryPanel).find('input.uCategory') , function(index, value) {
+            google.maps.event.addDomListener(value, "click", function (event) {
+                var categoryId = $(this).attr("categoryId");
+                $.post("/markersByCategory",  {
+                    categoryId : categoryId
+                }, function (markers) {
+                    globalMarkers = markers;
+                    addMarkers(globalMarkers);
+                }).fail(function() {
+                    alert("error");
+                });
+            });
+        });
+    });
+
+    var routePanel = document.getElementById('routes-panel');
+    $.post("/routes").done(function(routesId) {
+
+        var template = $('#routes-template').html();
+        var hb = Handlebars.compile(template);
+        var object = hb(routesId);
+        $('#routes-panel').html(object);
+
+        $.each($(routePanel).find('input.uRoute') , function(index, value) {
+            google.maps.event.addDomListener(value, "click", function (event) {
+                showTrip($(this).attr("routeId"));
+                globalRouteId = $(this).attr("routeId");
+            });
+        });
+    });
+
+    $.get("/markers").done(function(markers) {
+        globalMarkers = markers;
+        addMarkers(globalMarkers);
+    });
+
+    $('#route_button').click(function() {
+        globalRouteId = -1;
+        $.post("/routes").done(function(routesId) {
+            var routeButtons = [];
+            $.each(routesId, function(index, value) {
+                routeButtons.push(
+                    '<div class="btn-group" data-toggle="buttons">' +
+                        '<label class="btn btn-primary btn-custom">' +
+                            '<input type="radio" data-toggle="buttons" routeId=' + value + ' class="uRoute">route' + value +
+                        '</label>' +
+                    '</div>');
+
+            });
+            routePanel.innerHTML = routeButtons.join('');
+            $.each($(routePanel).find('input.uRoute') , function(index, value) {
+                google.maps.event.addDomListener(value, "click", function (event) {
+                    showTrip($(this).attr("routeId"));
+                    globalRouteId = $(this).attr("routeId");
+                });
+            });
+        });
+    });
+}
+
+var rendererOptions = {
+    draggable: true
+};
+
+
+function showTrip(routeId) {
+    $.post("/route",  {
+        routeId : routeId
+    }, function (route) {
+        calcRoute(route);
+    }).fail(function() {
+        alert("can't show trip");
+    });
+}
+
+var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+function addEventClick(mReplace) {
+    $(".addComment").click(function() {
+        var objId = $(this).attr("objId");
+        addComments(globalMarkers[objId], mReplace);
+    });
+
+    $(".addToTrip").click(function() {
+        var objTrip = $(this).attr("objTrip");
+        var routeId = globalRouteId;
+        addToTrip(routeId, objTrip);
     });
 }
 
@@ -30,54 +109,35 @@ function addMarkers(markers) {
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    map.setTilt(45);
-
-
-    function infoWindowContent(locationName,description){
-        var pattern = '<div class="info_content">' +
-            '<button onclick="myFunction()">Click me</button>' +
-            '<h3>'+locationName+'</h3>' +
-            '<a href="https://www.google.com">'+description+'</a>' +
-            '<p>'+locationName+'</p>' + '</div>'
-    }
-
-    var infoWindowContent = [
-        ['<div class="info_content">' +
-        '<button onclick="myFunction()">Click me</button>' +
-        '<h3>Lubava</h3>' +
-        '<a href="https://www.google.com">=)-------</a>' +
-        '<p>lubava</p>' + '</div>'],
-        ['<div class="info_content">' +
-        '<button onclick="myFunction()">Click me</button>' +
-        '<h3>Kontrabas</h3>' +
-        '<p>kontrabas</p>' +
-        '</div>']
-    ];
 
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
 
-    for (i = 0; i < markers.length; i++) {
-        var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+    for (var i in markers) {
+        var position = new google.maps.LatLng(markers[i].longitude, markers[i].latitude);
         bounds.extend(position);
         marker = new google.maps.Marker({
             position: position,
             map: map,
-            title: markers[i][0]
+            title: markers[i].address
         });
 
         google.maps.event.addListener(marker, 'click', (function (marker, i) {
             return function () {
-                infoWindow.setContent(infoWindowContent[i][0]);
+                var userMarkTitle = $(createdUserMarkerTitle(markers[i]));
+                var mReplace = userMarkTitle.find('span.commentList1');
+                infoWindow.setContent(userMarkTitle[0]);
                 infoWindow.open(map, marker);
+                addEventClick(mReplace)
             }
         })(marker, i));
 
         map.fitBounds(bounds);
     }
-
     var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
         this.setZoom(14);
         google.maps.event.removeListener(boundsListener);
     });
+
+    directionsDisplay.setMap(map);
 }

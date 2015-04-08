@@ -6,5 +6,15 @@ import java.util.List;
 
 public interface MarkerService {
 
-    public List<Marker> getAllMarkers();
+    List<Marker> getAllMarkers();
+
+    Marker saveMarker(Marker marker);
+
+    int removeMarker(Marker marker);
+
+    Marker getMarker(Marker marker);
+
+    Marker getMarker(int markerId);
+
+    List<Marker> getMarkersByCategory(int categoryId);
 }

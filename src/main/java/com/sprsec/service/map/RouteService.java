@@ -1,14 +1,15 @@
 package com.sprsec.service.map;
 
 import com.sprsec.model.Route;
-import com.sprsec.model.User;
 
-import java.util.Set;
+import java.util.List;
 
 public interface RouteService {
-    public Set<Route> getRoutes(User user);
+    public List<Route> getRoutes();
 
     public Route getRoute(int id);
 
-    public void addRoute(Route route);
+    public void saveOrUpdateRoute(int routeId, int markerId);
+
+    List<Integer> getRoutesId();
 }

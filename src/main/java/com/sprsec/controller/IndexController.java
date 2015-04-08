@@ -17,8 +17,8 @@ public class IndexController {
     @ResponseBody
     @RequestMapping(value = "/")
     public ModelAndView index() {
-        ModelAndView m = new ModelAndView("index");
-        m.addObject(markerService.getAllMarkers());
-        return m;
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject(markerService.getAllMarkers());
+        return modelAndView;
     }
 }

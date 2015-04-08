@@ -6,40 +6,37 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
-    <title>qwe</title>
+    <title>Welcome to Traveler</title>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/bootstrap/js/jquery.js"></script>
-    <%--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&language=ru"></script>--%>
     <link href="${pageContext.request.contextPath}/resources/bootstrap/css/bootstrap-responsive.min.css"
           rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/indexPage.css"
+          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/login.css"
+          rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/login.js"></script>
+
 </head>
-
 <body>
-<div class="container">
-    <sec:authorize access="isAnonymous()">
-        <jsp:include page="frames/menu.jsp"/>
-        <jsp:include page="content/contentAnonymous.jsp"/>
-    </sec:authorize>
-
-    <sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
-        <jsp:include page="frames/authorizationMenu.jsp"/>
-        <jsp:include page="content/contentAdmin.jsp"/>
-    </sec:authorize>
-
-    <sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
-        <jsp:include page="frames/authorizationMenu.jsp"/>
-        <jsp:include page="content/contentUser.jsp"/>
-    </sec:authorize>
-
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-               вава
-            </h1>
-        </div>
+<sec:authorize access="isAnonymous()">
+    <jsp:include page="frames/menu.jsp"/>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.16.1/TweenMax.min.js"></script>
+    <div class="content-index">
+        HELLO, TRAVEL WITH US!
     </div>
-</div>
+    <div class="sign-up-index" onclick="location.href='/registration'">
+        Sign Up!
+    </div>
+</sec:authorize>
+
+<sec:authorize access="isAuthenticated() and hasRole('ROLE_ADMIN')">
+    <jsp:include page="frames/adminMenu.jsp"/>
+    <jsp:include page="content/contentAdmin.jsp"/>
+</sec:authorize>
+
+<sec:authorize access="isAuthenticated() and hasRole('ROLE_USER')">
+    <jsp:include page="content/contentUser.jsp"/>
+</sec:authorize>
+
 </body>
 </html>
-
