@@ -74,8 +74,8 @@
         </div>
     </div>
 </div>
-<script src="assets/plugins/jquery-1.10.2.js"></script>
-<script src="assets/plugins/bootstrap.js"></script>
+<%--<script src="assets/plugins/jquery-1.10.2.js"></script>--%>
+<%--<script src="assets/plugins/bootstrap.js"></script>--%>
 
 </body>
 </html>

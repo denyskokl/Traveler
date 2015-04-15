@@ -1,6 +1,5 @@
 package com.sprsec.service.user;
 
-import com.sprsec.dao.user.EnumRoles;
 import com.sprsec.dao.user.UserDAO;
 import com.sprsec.dao.user.UserStatus;
 import com.sprsec.model.Role;
@@ -34,12 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void addUser(User user) {
         Set<Role> roles = new HashSet<>();
-
-        for (Role role : roleService.getRoles()) {
-            if (role.getRole().equals(EnumRoles.ROLE_USER.toString())) {
-                roles.add(role);
-            }
-        }
+        roles.add(roleService.getRole(2));
         user.setUserRoles(roles);
         Date date = new java.util.Date();
         user.setDateReg(new Timestamp(date.getTime()));

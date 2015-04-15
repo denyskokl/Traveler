@@ -8,6 +8,8 @@ import com.sprsec.service.map.MarkerService;
 import com.sprsec.service.map.RouteService;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +31,11 @@ public class CommentController {
     private RouteService routeService;
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
-    public void saveComment(@RequestBody Comment comment) {
+    public ResponseEntity saveComment(@RequestBody Comment comment) {
         commentService.saveComment(comment);
-    }
+            return new ResponseEntity<>( HttpStatus.OK);
+
+        }
 
     @ResponseBody
     @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)

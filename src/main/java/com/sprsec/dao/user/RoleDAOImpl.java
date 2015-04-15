@@ -6,8 +6,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public class RoleDAOImpl implements RoleDAO {
 
@@ -17,8 +15,9 @@ public class RoleDAOImpl implements RoleDAO {
     private Session openSession() {
         return sessionFactory.getCurrentSession();
     }
-    @SuppressWarnings("unchecked")
-    public List<Role> getRoles() {
-        return openSession().createCriteria(Role.class).list();
+
+    @Override
+    public Role getRole(int idRole) {
+        return (Role) openSession().get(Role.class, idRole);
     }
 }
