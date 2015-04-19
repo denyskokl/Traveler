@@ -1,7 +1,6 @@
 package com.sprsec.service.user;
 
 import com.sprsec.dao.user.UserDAO;
-import com.sprsec.dao.user.UserStatus;
 import com.sprsec.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,19 +26,18 @@ public class CustomUserDetailsService implements UserDetailsService {
     private UserDAO userDAO;
 
     @Override
-    public UserDetails loadUserByUsername(String login)
+    public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
-
-        com.sprsec.model.User domainUser = userDAO.getUser(login);
-        if (!domainUser.getUserStatus().equals(UserStatus.ENABLED)) {
+        com.sprsec.model.User domainUser = userDAO.getUser(username);
+        if (!domainUser.getEnabled().equals(true)) {
             throw new UserInactiveException("User is not active");
         }
 
 
         return new User(
-                domainUser.getLogin(),
+                domainUser.getUsername(),
                 domainUser.getPassword(),
-                domainUser.getUserStatus().equals(UserStatus.ENABLED),
+                domainUser.getEnabled(),
                 true,
                 true,
                 true,

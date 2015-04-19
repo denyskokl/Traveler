@@ -12,5 +12,5 @@ public interface RouteDAO {
 
     public void saveRoute(Route route);
 
-    List<Integer> getRoutesId(String login);
+    List<Integer> getRoutesId(String username);
 }

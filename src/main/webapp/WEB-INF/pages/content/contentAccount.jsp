@@ -37,7 +37,7 @@
                                 <script id="user-template" type="text/x-handlebars-template">
                                     <tr>
                                         <td>Login:</td>
-                                        <td>{{login}}</td>
+                                        <td>{{username}}</td>
                                     </tr>
                                     <tr>
                                         <td>Date of Birth</td>

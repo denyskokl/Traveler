@@ -28,7 +28,7 @@ public class LoginController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView addNewUser(
-            @RequestParam("login") String login,
+            @RequestParam("username") String username,
             @RequestParam("password") String password,
             @RequestParam("email") String email,
             @RequestParam("birthday") String birthday,
@@ -37,7 +37,7 @@ public class LoginController {
         
         Date date = dt.parse(birthday);
         ModelAndView model = new ModelAndView();
-        User user = new User(login, password,email,date,nickname,sex);
+        User user = new User(username, password,email,date,nickname,sex);
         try {
             userService.addUser(user);
             model.setViewName("redirect:/");

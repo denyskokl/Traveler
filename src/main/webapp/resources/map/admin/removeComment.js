@@ -11,7 +11,7 @@ function remove_comment(comment, pieceOfCode) {
                 text +=
                     '<li>' +
                         '<span class="commentText">' +
-                            '<p>' + marker.comments[i].user.login + ': ' + marker.comments[i].comment +
+                            '<p>' + marker.comments[i].user.username + ': ' + marker.comments[i].comment +
                                 '<button id="'+ marker.comments[i].commentId +'" type="button" class="close commentAdmin" aria-hidden="true">&times;</button>' +
                             '</p>' +
                         '</span>' +

@@ -1,7 +1,6 @@
 package com.sprsec.service.user;
 
 import com.sprsec.dao.user.UserDAO;
-import com.sprsec.dao.user.UserStatus;
 import com.sprsec.model.Role;
 import com.sprsec.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private RoleService roleService;
 
-    public User getUser(String login) {
-        return userDAO.getUser(login);
+    public User getUser(String username) {
+        return userDAO.getUser(username);
     }
 
     @Override
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
         user.setUserRoles(roles);
         Date date = new java.util.Date();
         user.setDateReg(new Timestamp(date.getTime()));
-        user.setUserStatus(UserStatus.ENABLED);
+        user.setEnabled(true);
         userDAO.addUser(user);
     }
 

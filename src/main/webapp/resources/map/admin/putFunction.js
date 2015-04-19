@@ -96,7 +96,7 @@ function commentAdminMarker(marker) {
         text +=
             '<li>' +
                 '<span class="commentText">' +
-                    '<p>' + marker.attr('comments')[i].user.login + ': ' + marker.attr('comments')[i].comment +
+                    '<p>' + marker.attr('comments')[i].user.username + ': ' + marker.attr('comments')[i].comment +
                         '<button id="' + marker.attr('comments')[i].commentId + '" type="button" class="close commentAdmin" aria-hidden="true">&times;</button>' +
                     '</p>' +
                 '</span>' +

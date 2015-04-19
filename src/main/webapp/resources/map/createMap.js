@@ -49,6 +49,7 @@ function initialize() {
         globalRouteId = -1;
         $.post("/routes").done(function(routesId) {
             var routeButtons = [];
+            globalRouteId = routesId[routesId.length - 1];
             $.each(routesId, function(index, value) {
                 routeButtons.push(
                     '<div class="btn-group" data-toggle="buttons">' +

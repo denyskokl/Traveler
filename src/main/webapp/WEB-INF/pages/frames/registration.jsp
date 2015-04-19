@@ -40,7 +40,7 @@
                         <br/>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-circle-o-notch"  ></i></span>
-                            <input type="text" class="form-control" placeholder="login" id="login" name="login" />
+                            <input type="text" class="form-control" placeholder="username" id="username" name="username" />
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>

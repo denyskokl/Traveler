@@ -1,7 +1,6 @@
 package com.sprsec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sprsec.dao.user.UserStatus;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,14 +19,14 @@ public class User {
     private int userId;
 
     @Column(name = "username", unique = true, nullable = false)
-    private String login;
+    private String username;
 
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_status")
-    private UserStatus userStatus;
+
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @NotEmpty
     @Email
@@ -70,12 +69,12 @@ public class User {
     public User() {
     }
 
-    public User(String login) {
-        this.login = login;
+    public User(String username) {
+        this.username = username;
     }
 
-    public User(String login, String password, String email, Date birthday, String nickname, String sex) {
-        this.login = login;
+    public User(String username, String password, String email, Date birthday, String nickname, String sex) {
+        this.username = username;
         this.password = password;
         this.email = email;
         this.birthday = birthday;
@@ -91,12 +90,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -107,12 +106,12 @@ public class User {
         this.password = password;
     }
 
-    public UserStatus getUserStatus() {
-        return userStatus;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getEmail() {

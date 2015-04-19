@@ -4,7 +4,7 @@ CREATE TABLE travel.users (
   user_id int NOT NULL AUTO_INCREMENT,
   username varchar(60) NOT NULL,
   password varchar(60) NOT NULL,
-  user_status enum('ENABLED','DISABLED') DEFAULT NULL,
+  enabled BOOLEAN,
   email varchar(45) NOT NULL,
   date_reg datetime NOT NULL,
   birthday date DEFAULT NULL,
@@ -73,10 +73,10 @@ CREATE TABLE travel.category_markers (
   CONSTRAINT fk_marker_position FOREIGN KEY (marker_id) REFERENCES travel.markers(marker_id));
 
 
-INSERT INTO travel.users(user_id, username, password, user_status, email, date_reg, birthday, photo, nickname, sex)
-VALUES (1, 'den', '1111', 'ENABLED', 'bruams@gmail.ua', '2015-02-19 18:12:19',  '2015-03-11' , NULL , 'puk', 'mail');
-INSERT INTO travel.users(user_id, username, password, user_status, email, date_reg, birthday, photo, nickname, sex)
-VALUES (2, 'serg', '1111', 'ENABLED', 'bruams@gmail.ua', '2015-02-19 18:12:19',  '2015-03-11' , NULL , 's', 'mail');
+INSERT INTO travel.users(user_id, username, password, enabled, email, date_reg, birthday, photo, nickname, sex)
+VALUES (1, 'den', '1111', TRUE , 'bruams@gmail.ua', '2015-02-19 18:12:19',  '2015-03-11' , NULL , 'puk', 'mail');
+INSERT INTO travel.users(user_id, username, password, enabled, email, date_reg, birthday, photo, nickname, sex)
+VALUES (2, 'serg', '1111', TRUE , 'bruams@gmail.ua', '2015-02-19 18:12:19',  '2015-03-11' , NULL , 's', 'mail');
 
 INSERT INTO travel.roles (role_id, role)
 VALUES (1, 'ROLE_ADMIN');
