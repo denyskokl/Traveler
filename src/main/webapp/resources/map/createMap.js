@@ -46,8 +46,7 @@ function initialize() {
     });
 
     $('#route_button').click(function() {
-        globalRouteId = -1;
-        $.post("/routes").done(function(routesId) {
+        $.post("/create_route").done(function(routesId) {
             var routeButtons = [];
             globalRouteId = routesId[routesId.length - 1];
             $.each(routesId, function(index, value) {

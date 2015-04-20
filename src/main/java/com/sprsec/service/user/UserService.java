@@ -17,5 +17,5 @@ public interface UserService {
 
     User getAllInfAuthUser();
 
-    void updateUser(String email, Date date, String nickname, String sex);
+    void updateUser(String email, String birthday, String nickname, String sex);
 }

@@ -12,4 +12,6 @@ public interface RouteService {
     public void saveOrUpdateRoute(int routeId, int markerId);
 
     List<Integer> getRoutesId();
+
+    void createRouteByUserName(String name);
 }

@@ -66,15 +66,17 @@ function addComments(marker, pieceOfCode) {
 }
 
 function addToTrip(routeId, markerId) {
-    $.post("/routeByMarker",  {
-        routeId : routeId,
-        markerId : markerId
-    }, function (route) {
-        globalRouteId = route.routeId;
-        calcRoute(route);
-    }).fail(function() {
-        alert("error1111");
-    });
+    if (routeId <= 0) {
+        alert('Choose "Add new route"');
+    } else {
+        $.post("/routeByMarker",  {
+            routeId : routeId,
+            markerId : markerId
+        }, function (route) {
+            globalRouteId = route.routeId;
+            calcRoute(route);
+        })
+    }
 }
 
 function calcRoute(route) {

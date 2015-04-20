@@ -58,4 +58,11 @@ public class RouteServiceImpl implements RouteService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return routeDAO.getRoutesId(auth.getName());
     }
+
+    @Override
+    public void createRouteByUserName(String name) {
+        Route route = new Route();
+        route.setUser(userDAO.getUser(name));
+        routeDAO.saveRoute(route);
+    }
 }

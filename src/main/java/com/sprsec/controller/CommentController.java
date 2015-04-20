@@ -31,9 +31,8 @@ public class CommentController {
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     public ResponseEntity saveComment(@RequestBody Comment comment) {
         commentService.saveComment(comment);
-            return new ResponseEntity<>( HttpStatus.OK);
-
-        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @ResponseBody
     @RequestMapping(value = "/getAllComments", method = RequestMethod.GET)
