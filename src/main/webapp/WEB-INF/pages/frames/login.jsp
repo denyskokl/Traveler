@@ -40,7 +40,7 @@
                     <form accept-charset="UTF-8" role="form" id="form" action="/j_spring_security_check"
                           method="POST" onsubmit="return checkForm()">
                         <c:if test="${not empty error}">
-                            <div class="error">${error}</div>
+                            <div class="error">Wrong password or login</div>
                         </c:if>
                         <c:if test="${not empty msg}">
                             <div class="msg">${msg}</div>
