@@ -46,5 +46,6 @@ public class CommentController {
     public Marker removeCommentByAdmin(@RequestBody Comment comment) {
         commentService.deleteComment(comment);
         return markerService.getMarker(comment.getMarker());
+
     }
 }

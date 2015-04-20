@@ -79,6 +79,7 @@ public class UserServiceImpl implements UserService {
         } if (!sex.equals("")) {
             user.setSex(sex);
         }
+
         userDAO.updateUser(user);
     }
 }

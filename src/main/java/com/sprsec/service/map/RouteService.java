@@ -5,7 +5,7 @@ import com.sprsec.model.Route;
 import java.util.List;
 
 public interface RouteService {
-    public List<Route> getRoutes();
+    public List<Route> getRoutes() ;
 
     public Route getRoute(int id);
 

@@ -29,6 +29,7 @@ public class UserController {
     @RequestMapping(value = "/user_account", method = RequestMethod.GET)
     public String userList() {
         return "/content/contentAccount";
+
     }
 
     @RequestMapping(value = "/edit_user", method = RequestMethod.POST)

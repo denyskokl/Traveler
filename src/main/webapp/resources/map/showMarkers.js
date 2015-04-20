@@ -86,7 +86,6 @@ function calcRoute(route) {
         var start = new google.maps.LatLng(route.markers[0].longitude, route.markers[0].latitude);
         var end = new google.maps.LatLng(route.markers[route.markers.length - 1]
             .longitude, route.markers[route.markers.length - 1].latitude);
-
         if (route.markers.length > 2) {
             var waypts = [];
             for (var i = 1; i < route.markers.length - 1; i++) {
@@ -97,7 +96,6 @@ function calcRoute(route) {
                 });
             }
         }
-
         var request = {
             origin: start,
             destination: end,

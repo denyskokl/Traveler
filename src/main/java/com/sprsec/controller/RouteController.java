@@ -24,6 +24,7 @@ public class RouteController {
     public Route saveMarkToRoute(@RequestParam int routeId, @RequestParam int markerId) {
         routeService.saveOrUpdateRoute(routeId, markerId);
         return routeService.getRoute(routeId);
+
     }
 
     @ResponseBody

@@ -26,7 +26,6 @@ function initialize() {
 
     var routePanel = document.getElementById('routes-panel');
     $.post("/routes").done(function(routesId) {
-
         var template = $('#routes-template').html();
         var hb = Handlebars.compile(template);
         var object = hb(routesId);
