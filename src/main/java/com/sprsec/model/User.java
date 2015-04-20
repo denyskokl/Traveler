@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.*;
 
 @Entity
@@ -43,7 +42,6 @@ public class User {
     private String photo;
 
     @NotNull
-    @Size(min = 4, max = 20)
     @Column(name = "nickname", nullable = false)
     private String nickname;
 
