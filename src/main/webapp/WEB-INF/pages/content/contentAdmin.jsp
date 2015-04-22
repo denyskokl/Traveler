@@ -27,15 +27,35 @@
 </div>
 
 <div id="marker-admin">
-            {{#each this}}
-            <li>
-            <span class="commentText">
-                <p>{{login}} : {{comment}}
-                    <button id="{{commentId}}" type="button" class="close commentAdmin"  aria-hidden="true">×</button>
-                </p>
-            </span>
-            </li>
-            {{/each}}
-    </div>
+    {{#each this}}
+    <li>
+        <span class="commentText">
+            <p>{{login}} : {{comment}}
+                <button id="{{commentId}}" type="button" class="close commentAdmin" aria-hidden="true">×</button>
+            </p>
+        </span>
+    </li>
+    {{/each}}
+</div>
+
+
+<div id="marker-title">
+
+        <div class="detailBox">
+            <div class="titleBox">
+                <label>{{markerMessage}}</label>
+            </div>
+            <div class="commentBox">
+                <p class="taskDescription">{{markerAddress}}</p>
+            </div>
+            <div class="actionBox">
+            <span class="commentList1">
+                    <ul class="commentList"> вв</ul>
+                </span>
+                <div id="form-inline" class="form-inline">
+                </div>
+            </div>
+        </div>
+</div>
 </body>
 </html>

@@ -72,23 +72,33 @@ $(document).ready(function () {
 });
 
 function createdAdminMarkerTitle(marker) {
-    text =
-        '<div class="detailBox">' +
-            '<div class="titleBox">' +
-                '<label>' + marker.attr('message') + '</label>' +
-            '</div>' +
-            '<div class="commentBox">' +
-                '<p class="taskDescription">' + marker.attr('address') + '</p>' +
-            '</div>' +
-            '<div class="actionBox">' +
-                '<span class="commentList1">' +
-                    '<ul class="commentList">' + commentAdminMarker(marker) + '</ul>' +
-                '</span>' +
-                 '<div id="form-inline" class="form-inline" >' +
-                '</div>' +
-            '</div>' +
-        '</div>';
-    return text;
+    //text =
+    //    '<div class="detailBox">' +
+    //        '<div class="titleBox">' +
+    //            '<label>' + marker.attr('message') + '</label>' +
+    //        '</div>' +
+    //        '<div class="commentBox">' +
+    //            '<p class="taskDescription">' + marker.attr('address') + '</p>' +
+    //        '</div>' +
+    //        '<div class="actionBox">' +
+    //            '<span class="commentList1">' +
+    //                '<ul class="commentList">' + commentAdminMarker(marker) + '</ul>' +
+    //            '</span>' +
+    //             '<div id="form-inline" class="form-inline" >' +
+    //            '</div>' +
+    //        '</div>' +
+    //    '</div>';
+    //return text;
+    var template = $("#marker-title").html();
+    var hbs = Handlebars.compile(template);
+    var attributes = {
+        markerMessage: marker.attr('message'),
+        markerAddress : marker.attr('address'),
+        commentAdminMarker : commentAdminMarker(marker)
+    };
+    var templates = hbs(attributes);
+    //$("#marker-admin-title").html(templates);
+    return templates;
 }
 function commentAdminMarker(marker) {
     var template = $("#marker-admin").html();
@@ -103,8 +113,6 @@ function commentAdminMarker(marker) {
     }
 
     var templates = hbs(comments);
-
-    console.log(templates);
 return templates;
 
 }
