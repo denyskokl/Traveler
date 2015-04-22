@@ -22,7 +22,7 @@ $(document).ready(function () {
         map = new google.maps.Map(document.getElementById("map-canvas"), googleMapOptions);
 
         $.get("/markers", function (markers) {
-            jQuery.each(markers, function (key, value) {
+            $.each(markers, function (key, value) {
                 var name = $(this).attr('message');
                 var address = '<p>' + $(this).attr('address') + '</p>';
                 var point = new google.maps.LatLng(parseFloat($(this).attr('longitude')), parseFloat($(this).attr('latitude')));
@@ -91,16 +91,20 @@ function createdAdminMarkerTitle(marker) {
     return text;
 }
 function commentAdminMarker(marker) {
-    var text = '';
+    var template = $("#marker-admin").html();
+    var hbs = Handlebars.compile(template);
+    var comments = [];
     for (var i = marker.attr('comments').length - 1; i >= 0; i--) {
-        text +=
-            '<li>' +
-                '<span class="commentText">' +
-                    '<p>' + marker.attr('comments')[i].user.username + ': ' + marker.attr('comments')[i].comment +
-                        '<button id="' + marker.attr('comments')[i].commentId + '" type="button" class="close commentAdmin" aria-hidden="true">&times;</button>' +
-                    '</p>' +
-                '</span>' +
-            '</li>';
+        var comment = {};
+        comment['login'] = marker.attr('comments')[i].user.username;
+        comment['comment'] = marker.attr('comments')[i].comment;
+        comment['commentId'] = marker.attr('comments')[i].commentId;
+        comments.push(comment);
     }
-    return text;
+
+    var templates = hbs(comments);
+
+    console.log(templates);
+return templates;
+
 }
