@@ -40,28 +40,29 @@ $(document).ready(function () {
         });
 
         google.maps.event.addListener(map, 'rightclick', function (event) {
-            var EditForm =
-                '<div class="marker-edit">' +
-                    '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
-                        '<div class="col-md-12 col-xs-12 col-lg-12>' +
-                            '<div class="form-group>' +
-                                '<label for="pName">' +
-                                    '<input type="text" name="pName" class="save-name form-control" placeholder="Enter Title" maxlength="40" /></label>' +
-                            '</div>' +
-                            '<div class = "form-group">' +
-                                '<label for="pDesc">' +
-                                    '<textarea name="pDesc" style="resize: none;" class="save-desc form-control" placeholder="Enter Address" maxlength="150"></textarea>' +
-                                '</label>' +
-                            '</div>' +
-                        '</div>' +
-                    '</form>' +
-                '</div>' +
-                '<button name="save-marker" class="save-marker btn btn-primary">Save Marker</button>';
+
             var contentString =
                 '<div class="marker-info-win">' +
                     '<div class="marker-inner-win">' +
                         '<span class="info-content">' +
-                            '<h1 class="marker-heading">' + 'New Marker' + '</h1>' + EditForm +
+                            '<h1 class="marker-heading">' + 'New Marker' + '</h1>' +
+
+                            '<div class="marker-edit">' +
+                                 '<form action="/save_markers" method="POST" name="SaveMarker" id="SaveMarker">' +
+                                    '<div class="col-md-12 col-xs-12 col-lg-12>' +
+                                         '<div class="form-group>' +
+                                             '<label for="pName">' +
+                                                 '<input type="text" name="pName" class="save-name form-control" placeholder="Enter Title" maxlength="40" /></label>' +
+                                         '</div>' +
+                                         '<div class = "form-group">' +
+                                            '<label for="pDesc">' +
+                                                '<textarea name="pDesc" style="resize: none;" class="save-desc form-control" placeholder="Enter Address" maxlength="150"></textarea>' +
+                                            '</label>' +
+                                         '</div>' +
+                                     '</div>' +
+                                '</form>' +
+                            '</div>' +
+                            '<button name="save-marker" class="save-marker btn btn-primary">Save Marker</button>' +
                         '</span>' +
                         '<button name="remove-marker" class="remove-marker btn btn-danger" title="Remove Marker">Remove Marker</button>' +
                     '</div>' +
