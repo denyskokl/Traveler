@@ -21,14 +21,12 @@
         <div class="col-md-4 col-lg-4 panel-body pan">
 
             <p class="head">Categories:</p>
-
             <div id="categories">
                 <script id="categories-template" type="text/x-handlebars-template">
                     {{#each this}}
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary btn-custom">
-                            <input type="radio" data-toggle="buttons" categoryId="{{categoryId}}"
-                                   class="uCategory btn btn-custom">
+                            <input type="radio" data-toggle="buttons" categoryId="{{categoryId}}" class="uCategory btn btn-custom">
                             {{category}}
                         </label>
                     </div>
@@ -36,17 +34,15 @@
                 </script>
             </div>
             <p class="head">Routes: </p>
-            <button id="route_button" class='btn newRouteBtn route-add' aria-hidden='true'>Add new route</button>
+            <button id="route_button" class='btn newRouteBtn route-add' aria-hidden='true' >Add new route</button>
             <br/>
             <br/>
-
             <div id="routes-panel">
-                <script id="routes-template" type="text/x-handlebars-template">
+                <script id = "routes-template" type="text/x-handlebars-template">
                     {{#each this}}
                     <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-primary btn-custom">
-                            <input type="radio" data-toggle="buttons" routeId={{this}} class="uRoute btn"> route
-                            {{this}} </input>
+                            <input type="radio" data-toggle="buttons" routeId={{this}} class="uRoute btn"> route {{this}} </input>
                         </label>
                     </div>
                     {{/each}}
@@ -54,18 +50,10 @@
             </div>
             <div id="directions_panel" class="adr"></div>
         </div>
-
         <div class="col-md-8 col-lg-8 col-xs-12">
             <div id="map-canvas"></div>
         </div>
-
     </div>
-</div>
-
-<div id="comment-user-marker">
-    <li>
-    <span class="commentText"><p>some user : {{comment}}</p></span>
-    </li>
 </div>
 </body>
 </html>

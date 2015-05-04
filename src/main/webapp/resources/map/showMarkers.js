@@ -26,28 +26,17 @@ function createdUserMarkerTitle(marker) {
 }
 
 function commentMarker(marker) {
-    //var text = '';
-    //for (var i = marker.comments.length - 1; i >= 0; i--) {
-    //    text +=
-    //        '<li>' +
-    //            '<span class="commentText">' +
-    //                '<p>' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
-    //            '</span>' +
-    //        '</li>';
-    //}
-    //return text;
-    var template = $("#comment-user-marker").html();
-    var hbs = Handlebars.compile(template);
-    var comments = [];
+    var text = '';
     for (var i = marker.comments.length - 1; i >= 0; i--) {
-        var comment = {};
-        comment['comment'] = marker.comments[i].comment;
-        comments.push(comment);
+        text +=
+            '<li>' +
+                '<span class="commentText">' +
+                    '<p>' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
+                '</span>' +
+            '</li>';
     }
+    return text;
 
-    var templates = hbs(comments);
-    //$("#comment-marker-user-script").html(templates)
-    return templates;
 }
 
 function addComments(marker, pieceOfCode) {
