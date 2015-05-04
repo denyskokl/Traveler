@@ -5,7 +5,7 @@ $(document).ready(function () {
         var template = $("#user-template").html();
         var hbar = Handlebars.compile(template);
         var data = {
-            login : user.login,
+            username : user.username,
             birthday: new Date(user.birthday),
             email: user.email,
             nickname: user.nickname,

@@ -39,10 +39,10 @@ public class RouteDAOImpl implements RouteDAO {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<Integer> getRoutesId(String login) {
+    public List<Integer> getRoutesId(String username) {
         return openSession().createCriteria(Route.class, "route")
                 .createCriteria("route.user", "user")
-                .add(Restrictions.eq("user.login", login))
+                .add(Restrictions.eq("user.username", username))
                 .setProjection(Projections.property("route.routeId"))
                 .list();
     }

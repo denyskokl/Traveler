@@ -26,7 +26,7 @@
     <script id="adminManagement-template" type="text/x-handlebars-template">
         {{#each this}}
         <tr>
-            <th>{{login}}</th>
+            <th>{{username}}</th>
             <th>{{password}}</th>
             <th>{{email}}</th>
             <th>{{nickname}}</th>

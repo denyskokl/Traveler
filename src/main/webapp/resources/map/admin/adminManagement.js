@@ -9,10 +9,10 @@ $(document).ready(function () {
         $("input:checkbox").change(function () {
             var user;
             if ($(this).is(":checked")) {
-                user = {userId: $(this).attr("id"), userStatus: "ENABLED"};
+                user = {userId: $(this).attr("id"), enabled: true};
                 returnStatus(user);
             } else {
-                user = {userId: $(this).attr("id"), userStatus: "DISABLED"};
+                user = {userId: $(this).attr("id"), enabled: false};
                 returnStatus(user);
             }
         });
@@ -28,7 +28,7 @@ function returnStatus(user) {
         contentType: 'application/json',
         dataType: 'json',
         success: function (user) {
-            alert(user.login + ' is ' + user.userStatus.toLowerCase());
+            alert(user.username + ' is ' + user.enabled);
         }
     });
 }

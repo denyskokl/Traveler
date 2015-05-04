@@ -12,6 +12,7 @@
     <script src="${pageContext.request.contextPath}/resources/map/admin/saveMarker.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/admin/removeComment.js"></script>
     <script src="${pageContext.request.contextPath}/resources/map/showMarkers.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/handlebars-v3.0.0.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/contentAdmin.css"
           rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login.css">
@@ -22,30 +23,39 @@
         <div class="col-md-12 col-xs-12 col-lg-12">
             <div id="map-canvas" class="map"></div>
         </div>
-        <%--<div class="detailBox" id="detailBox" style="visibility: hidden">--%>
-            <%--<div class="titleBox">--%>
-                <%--<label class="marker-message"></label>--%>
-                <%--<button objTrip="" class="addToTrip close" aria-hidden="true">Add to trip</button>--%>
-            <%--</div>--%>
-            <%--<div class="commentBox">--%>
-                <%--<p class="taskDescription" ></p>--%>
-            <%--</div>--%>
-            <%--<div class="actionBox">--%>
-            <%--<span class="commentList1">--%>
-                    <%--<ul class="commentList"></ul>--%>
-                <%--</span>--%>
-
-                <%--<div id="form-inline" class="form-inline">--%>
-                    <%--<div class="form-group">--%>
-                        <%--<input id="form-control" class="form-control" type="text" placeholder="Your comments"/>--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<button objId="" class="btn1 addComment btn btn-default">Add</button>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
     </div>
+</div>
+
+<div id="marker-admin">
+    {{#each this}}
+    <li>
+        <span class="commentText">
+            <p>{{login}} : {{comment}}
+                <button id="{{commentId}}" type="button" class="close commentAdmin" aria-hidden="true">×</button>
+            </p>
+        </span>
+    </li>
+    {{/each}}
+</div>
+
+
+<div id="marker-title">
+
+        <div class="detailBox">
+            <div class="titleBox">
+                <label>{{markerMessage}}</label>
+            </div>
+            <div class="commentBox">
+                <p class="taskDescription">{{markerAddress}}</p>
+            </div>
+            <div class="actionBox">
+            <span class="commentList1">
+                    <ul class="commentList"> вв</ul>
+                </span>
+                <div id="form-inline" class="form-inline">
+                </div>
+            </div>
+        </div>
 </div>
 </body>
 </html>

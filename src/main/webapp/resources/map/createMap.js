@@ -26,7 +26,6 @@ function initialize() {
 
     var routePanel = document.getElementById('routes-panel');
     $.post("/routes").done(function(routesId) {
-
         var template = $('#routes-template').html();
         var hb = Handlebars.compile(template);
         var object = hb(routesId);
@@ -46,9 +45,9 @@ function initialize() {
     });
 
     $('#route_button').click(function() {
-        globalRouteId = -1;
-        $.post("/routes").done(function(routesId) {
+        $.post("/create_route").done(function(routesId) {
             var routeButtons = [];
+            globalRouteId = routesId[routesId.length - 1];
             $.each(routesId, function(index, value) {
                 routeButtons.push(
                     '<div class="btn-group" data-toggle="buttons">' +

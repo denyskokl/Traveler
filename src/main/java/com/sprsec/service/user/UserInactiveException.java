@@ -7,3 +7,4 @@ public class UserInactiveException extends AuthenticationException {
         super(msg);
     }
 }
+

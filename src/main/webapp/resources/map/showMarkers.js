@@ -1,7 +1,4 @@
 function createdUserMarkerTitle(marker) {
-
-    //var text = $("#detailBox");
-    //text.find("#marker-message").text(marker.message);
     text =
         '<div class="detailBox">' +
             '<div class="titleBox">' +
@@ -27,17 +24,30 @@ function createdUserMarkerTitle(marker) {
         '</div>';
     return text;
 }
+
 function commentMarker(marker) {
-    var text = '';
+    //var text = '';
+    //for (var i = marker.comments.length - 1; i >= 0; i--) {
+    //    text +=
+    //        '<li>' +
+    //            '<span class="commentText">' +
+    //                '<p>' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
+    //            '</span>' +
+    //        '</li>';
+    //}
+    //return text;
+    var template = $("#comment-user-marker").html();
+    var hbs = Handlebars.compile(template);
+    var comments = [];
     for (var i = marker.comments.length - 1; i >= 0; i--) {
-        text +=
-            '<li>' +
-                '<span class="commentText">' +
-                    '<p class="">' + "some user" + ': ' + marker.comments[i].comment + '</p>' +
-                '</span>' +
-            '</li>';
+        var comment = {};
+        comment['comment'] = marker.comments[i].comment;
+        comments.push(comment);
     }
-    return text;
+
+    var templates = hbs(comments);
+    //$("#comment-marker-user-script").html(templates)
+    return templates;
 }
 
 function addComments(marker, pieceOfCode) {
@@ -66,15 +76,17 @@ function addComments(marker, pieceOfCode) {
 }
 
 function addToTrip(routeId, markerId) {
-    $.post("/routeByMarker",  {
-        routeId : routeId,
-        markerId : markerId
-    }, function (route) {
-        globalRouteId = route.routeId;
-        calcRoute(route);
-    }).fail(function() {
-        alert("error");
-    });
+    if (routeId <= 0) {
+        alert('Choose "Add new route"');
+    } else {
+        $.post("/routeByMarker",  {
+            routeId : routeId,
+            markerId : markerId
+        }, function (route) {
+            globalRouteId = route.routeId;
+            calcRoute(route);
+        })
+    }
 }
 
 function calcRoute(route) {
@@ -84,7 +96,6 @@ function calcRoute(route) {
         var start = new google.maps.LatLng(route.markers[0].longitude, route.markers[0].latitude);
         var end = new google.maps.LatLng(route.markers[route.markers.length - 1]
             .longitude, route.markers[route.markers.length - 1].latitude);
-
         if (route.markers.length > 2) {
             var waypts = [];
             for (var i = 1; i < route.markers.length - 1; i++) {
@@ -95,7 +106,6 @@ function calcRoute(route) {
                 });
             }
         }
-
         var request = {
             origin: start,
             destination: end,

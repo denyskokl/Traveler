@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService {
 
-    public User getUser(String login);
+    public User getUser(String username) ;
 
     public void addUser(User user);
 
@@ -17,5 +17,5 @@ public interface UserService {
 
     User getAllInfAuthUser();
 
-    void updateUser(String email, Date date, String nickname, String sex);
+    void updateUser(String email, String birthday, String nickname, String sex);
 }
